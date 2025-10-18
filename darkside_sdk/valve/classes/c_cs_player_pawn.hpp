@@ -123,7 +123,7 @@ public:
 	c_schema_class_info* get_schema_class_info( ) {
 		c_schema_class_info* class_info = nullptr;
 
-		vmt::call_virtual<void>( this, 38, &class_info );
+		vmt::call_virtual<void>( this, 42, &class_info );
 
 		return class_info;
 	}
@@ -344,17 +344,19 @@ public:
 	SCHEMA( m_burst_mode, bool, "C_CSWeaponBase", "m_bBurstMode" );
 	SCHEMA( m_burst_shots_remaining, int, "C_CSWeaponBaseGun", "m_iBurstShotsRemaining" );
 
-	c_cs_weapon_base_v_data* get_weapon_data( ) {
-		return *reinterpret_cast<c_cs_weapon_base_v_data**>( reinterpret_cast<uintptr_t>( this ) + 0x380 );
-	}
+	schema_add_with_offset(m_get_sub_class_id, void*, "C_BaseEntity", "m_nSubclassID", 0x8);
 
+	c_cs_weapon_base_v_data* get_weapon_data()
+	{
+		return static_cast<c_cs_weapon_base_v_data*>(m_get_sub_class_id());
+	}
 	float get_max_speed( ) {
 		return vmt::call_virtual<float>( this, 340 );
 	}
 
 	float get_inaccuracy( ) {
 		using fn_get_inaccuracy_t = float( __fastcall* )( void* );
-		static fn_get_inaccuracy_t fn = reinterpret_cast<fn_get_inaccuracy_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 55 56 57 48 81 EC ? ? ? ? 44 0F 29 84 24" ) );
+		static fn_get_inaccuracy_t fn = reinterpret_cast<fn_get_inaccuracy_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 55 56 57 48 81 EC ? ? ? ? 44 0F 29 84 24"  ) );
 
 		return fn( this );
 	}
@@ -368,7 +370,7 @@ public:
 
 	void update_accuracy_penality( ) {
 		using fn_update_accuracy_penality_t = void( __fastcall* )( void* );
-		static fn_update_accuracy_penality_t fn = reinterpret_cast<fn_update_accuracy_penality_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 57 48 83 EC ? 48 8B F9 E8 ? ? ? ? 48 8B D8 48 85 C0 0F 84 ? ? ? ? 44 0F 29 44 24" ) );
+		static fn_update_accuracy_penality_t fn = reinterpret_cast<fn_update_accuracy_penality_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 53 57 48 83 EC ? 48 8B F9 E8" ) );
 
 		fn( this );
 	}
@@ -409,7 +411,7 @@ public:
 
 	vec3_t get_eye_pos( ) {
 		vec3_t view_;
-		vmt::call_virtual<void>( this, 169, &view_ );
+		vmt::call_virtual<void>( this, 172, &view_ );
 		return view_;
 	}
 
@@ -457,14 +459,22 @@ public:
 	}
 
 	c_base_player_weapon* get_active_weapon( ) {
-		c_player_weapon_service* weapon_services = this->m_weapon_services( );
-		if ( weapon_services ) {
-			c_base_player_weapon* active_weapon = reinterpret_cast<c_base_player_weapon*>( g_interfaces->m_entity_system->get_base_entity( weapon_services->m_active_weapon( ).get_entry_index( ) ) );
-			if ( active_weapon && active_weapon->is_weapon( ) )
-				return active_weapon;
-		}
+		c_player_weapon_service* m_weapon_services = this->m_weapon_services( );
 
-		return nullptr;
+		if ( !m_weapon_services )
+			return nullptr;
+
+		if ( !m_weapon_services->m_active_weapon( ).is_valid( ) )
+			return nullptr;
+
+		auto* m_active_weapon = reinterpret_cast< c_base_player_weapon* >(
+			g_interfaces->m_entity_system->get_base_entity( m_weapon_services->m_active_weapon( ).get_entry_index( ) )
+			);
+
+		if ( m_active_weapon == nullptr )
+			return nullptr;
+
+		return m_active_weapon;
 	}
 
 	bool is_throwing( ) {

@@ -131,58 +131,58 @@ void c_menu::draw( ) {
         ImGui::EndChild( );
     }
 
-    if ( m_selected_tab == 5 ) {
-        ImGui::BeginChild( "misc", ImVec2{ 0, 0 }, true );
-        {
-            static constexpr const char* type[]{ "weapons", "knives", "gloves", "agents" };
-            ImGui::Combo( "Types", &g_cfg->skins.m_selected_type, type, IM_ARRAYSIZE( type ) );
+    //if ( m_selected_tab == 5 ) {
+    //    ImGui::BeginChild( "misc", ImVec2{ 0, 0 }, true );
+    //    {
+    //        static constexpr const char* type[]{ "weapons", "knives", "gloves", "agents" };
+    //        ImGui::Combo( "Types", &g_cfg->skins.m_selected_type, type, IM_ARRAYSIZE( type ) );
 
-            if ( g_cfg->skins.m_selected_type == 0 ) {
-                static std::vector<const char*> weapon_names{};
+    //        if ( g_cfg->skins.m_selected_type == 0 ) {
+    //            static std::vector<const char*> weapon_names{};
 
-                if ( weapon_names.size( ) < g_skins->m_dumped_items.size( ) )
-                    for ( auto& item : g_skins->m_dumped_items )
-                        weapon_names.emplace_back( item.m_name );
+    //            if ( weapon_names.size( ) < g_skins->m_dumped_items.size( ) )
+    //                for ( auto& item : g_skins->m_dumped_items )
+    //                    weapon_names.emplace_back( item.m_name );
 
-                ImGui::Combo( "Weapons", &g_cfg->skins.m_selected_weapon, weapon_names.data( ), weapon_names.size( ) );
-                auto& selected_entry = g_cfg->skins.m_skin_settings[ g_cfg->skins.m_selected_weapon ];
+    //            ImGui::Combo( "Weapons", &g_cfg->skins.m_selected_weapon, weapon_names.data( ), weapon_names.size( ) );
+    //            auto& selected_entry = g_cfg->skins.m_skin_settings[ g_cfg->skins.m_selected_weapon ];
 
-                if ( ImGui::BeginListBox( "##skins" ) )
-                {
-                    auto& selected_weapon_entry = g_skins->m_dumped_items[ g_cfg->skins.m_selected_weapon ];
+    //            if ( ImGui::BeginListBox( "##skins" ) )
+    //            {
+    //                auto& selected_weapon_entry = g_skins->m_dumped_items[ g_cfg->skins.m_selected_weapon ];
 
-                    for ( auto& skin : selected_weapon_entry.m_dumped_skins )
-                    {
-                        ImGui::PushID( &skin );
-                        if ( ImGui::Selectable( skin.m_name, selected_entry.m_paint_kit == skin.m_id ) )
-                        {
-                            if ( selected_weapon_entry.m_selected_skin == &skin )
-                                selected_weapon_entry.m_selected_skin = nullptr;
-                            else
-                            {
-                                selected_weapon_entry.m_selected_skin = &skin;
-                                selected_entry.m_paint_kit = skin.m_id;
-                            }
-                        }
-                        ImGui::PopID( );
-                    }
-                    ImGui::EndListBox( );
-                }
-            }
+    //                for ( auto& skin : selected_weapon_entry.m_dumped_skins )
+    //                {
+    //                    ImGui::PushID( &skin );
+    //                    if ( ImGui::Selectable( skin.m_name, selected_entry.m_paint_kit == skin.m_id ) )
+    //                    {
+    //                        if ( selected_weapon_entry.m_selected_skin == &skin )
+    //                            selected_weapon_entry.m_selected_skin = nullptr;
+    //                        else
+    //                        {
+    //                            selected_weapon_entry.m_selected_skin = &skin;
+    //                            selected_entry.m_paint_kit = skin.m_id;
+    //                        }
+    //                    }
+    //                    ImGui::PopID( );
+    //                }
+    //                ImGui::EndListBox( );
+    //            }
+    //        }
 
-            if ( g_cfg->skins.m_selected_type == 1 )
-                ImGui::Combo( "##knifes", &g_cfg->skins.m_knives.m_selected, g_skins->m_knives.m_dumped_knife_name.data( ), g_skins->m_knives.m_dumped_knife_name.size( ) );
+    //        if ( g_cfg->skins.m_selected_type == 1 )
+    //            ImGui::Combo( "##knifes", &g_cfg->skins.m_knives.m_selected, g_skins->m_knives.m_dumped_knife_name.data( ), g_skins->m_knives.m_dumped_knife_name.size( ) );
 
-            if ( g_cfg->skins.m_selected_type == 2 )
-                ImGui::Combo( "##gloves", &g_cfg->skins.m_gloves.m_selected, g_skins->m_gloves.m_dumped_glove_name.data( ), g_skins->m_gloves.m_dumped_glove_name.size( ) );
+    //        if ( g_cfg->skins.m_selected_type == 2 )
+    //            ImGui::Combo( "##gloves", &g_cfg->skins.m_gloves.m_selected, g_skins->m_gloves.m_dumped_glove_name.data( ), g_skins->m_gloves.m_dumped_glove_name.size( ) );
 
-            if ( g_cfg->skins.m_selected_type == 3 ) {
-                ImGui::Combo( "##agents ct", &g_cfg->skins.m_agents.m_selected_ct, g_skins->m_agents.m_dumped_agent_name.data( ), g_skins->m_agents.m_dumped_agent_name.size( ) );
-                ImGui::Combo( "##agents t", &g_cfg->skins.m_agents.m_selected, g_skins->m_agents.m_dumped_agent_name.data( ), g_skins->m_agents.m_dumped_agent_name.size( ) );
-            }
-        }
-        ImGui::EndChild( );
-    }
+    //        if ( g_cfg->skins.m_selected_type == 3 ) {
+    //            ImGui::Combo( "##agents ct", &g_cfg->skins.m_agents.m_selected_ct, g_skins->m_agents.m_dumped_agent_name.data( ), g_skins->m_agents.m_dumped_agent_name.size( ) );
+    //            ImGui::Combo( "##agents t", &g_cfg->skins.m_agents.m_selected, g_skins->m_agents.m_dumped_agent_name.data( ), g_skins->m_agents.m_dumped_agent_name.size( ) );
+    //        }
+    //    }
+    //    ImGui::EndChild( );
+    //}
 
     if ( m_selected_tab == 6 ) {
         g_config_system->menu( );

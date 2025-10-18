@@ -123,33 +123,33 @@ class i_trace
 public:
 	void init_trace( trace_filter_t& filter, c_cs_player_pawn* pawn, uint64_t mask, uint8_t layer, uint16_t unknown ) {
 		using fn_init_trace_t = trace_filter_t * ( __fastcall* )( trace_filter_t&, void*, uint64_t, uint8_t, uint16_t );
-		static fn_init_trace_t fn = reinterpret_cast<fn_init_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 08 48 89 74 24 10 57 48 83 EC 20 0F B6 41 37 33" ) );
+		static fn_init_trace_t fn = reinterpret_cast<fn_init_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 0F B6 41 ?? 33 FF 24" ) );
 
 		fn( filter, pawn, mask, layer, unknown );
 	}
 
 	void clip_trace_to_player( vec3_t& start, vec3_t& end, trace_filter_t* filter, game_trace_t* trace, float min, int length, float max ) {
 		using fn_clip_trace_to_player_t = void( __fastcall* )( vec3_t&, vec3_t&, trace_filter_t*, game_trace_t*, float, int, float );
-		static fn_clip_trace_to_player_t fn = reinterpret_cast<fn_clip_trace_to_player_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 55 56 48 8D A8 58" ) );
+		static fn_clip_trace_to_player_t fn = reinterpret_cast<fn_clip_trace_to_player_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 55 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 58 ? 49 8B F8" ) );
 
 		fn( start, end, filter, trace, min, length, max );
 	}
 
 	void create_trace( trace_data_t* const trace, vec3_t start, vec3_t end, const trace_filter_t& filter, int penetration_count ) {
 		using fn_create_trace_t = void( __fastcall* ) ( trace_data_t*, vec3_t, vec3_t, trace_filter_t, void*, void*, void*, void*, int );
-		static fn_create_trace_t fn = reinterpret_cast<fn_create_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 41 56 41 57 48 83 EC 40 F2" ) );
+		static fn_create_trace_t fn = reinterpret_cast<fn_create_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? F2 0F 10 02" ) );
 
 		fn( trace, start, end, filter, nullptr, nullptr, nullptr, nullptr, penetration_count );
 	}
 
 	void init_trace_info( game_trace_t* const hit ) {
-		static fn_init_trace_info fn = reinterpret_cast<fn_init_trace_info>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 57 48 83 EC ? 48 8B D9 33 FF 48 8B 0D ? ? ? ? 48 85 C9" ) );
+		static fn_init_trace_info fn = reinterpret_cast<fn_init_trace_info>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 55 41 55 41 57 48 83 EC" ) );
 
 		fn( hit );
 	}
 
 	void get_trace_info( trace_data_t* const trace, game_trace_t* const hit, const float unknown_float, void* unknown ) {
-		static fn_get_trace_info fn = reinterpret_cast<fn_get_trace_info>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 57 48 83 EC 60 48 8B E9 0F" ) );
+		static fn_get_trace_info fn = reinterpret_cast<fn_get_trace_info>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B E9 0F 29 74 24 ? 48 8B CA" ) );
 
 		fn( trace, hit, unknown_float, unknown );
 	}
@@ -157,7 +157,7 @@ public:
 	bool trace_shape( ray_t* ray, vec3_t start, vec3_t end, trace_filter_t* filter, game_trace_t* game_trace )
 	{
 		using fn_trace_shape = bool( __fastcall* )( i_trace*, ray_t*, vec3_t*, vec3_t*, trace_filter_t*, game_trace_t* );
-		static fn_trace_shape o_trace_shape = reinterpret_cast<fn_trace_shape>( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 80 7D ? ? 75 ? F3 0F 10 05", 0x1 ) );
+		static fn_trace_shape o_trace_shape = reinterpret_cast<fn_trace_shape>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name(), "48 89 5C 24 ? 48 89 4C 24 ? 55 57" ) );
 
 		return o_trace_shape( this, ray, &start, &end, filter, game_trace );
 	}
@@ -165,7 +165,7 @@ public:
 	bool clip_ray_entity( ray_t* ray, vec3_t start, vec3_t end, c_cs_player_pawn* pawn, trace_filter_t* filter, game_trace_t* game_trace )
 	{
 		using fn_clip_ray_entity = bool( __fastcall* )( i_trace*, ray_t*, vec3_t*, vec3_t*, c_cs_player_pawn*, trace_filter_t*, game_trace_t* );
-		static fn_clip_ray_entity o_clip_ray_entity = reinterpret_cast<fn_clip_ray_entity>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 54 41 56 41 57 48 81 EC C0 00 00 00 48 8B 9C" ) );
+		static fn_clip_ray_entity o_clip_ray_entity = reinterpret_cast<fn_clip_ray_entity>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 48 89 58 ? 55 56 57 41 54 41 56 48 8D 68 ? 48 81 EC ? ? ? ? 48 8B 5D" ) );
 
 		return o_clip_ray_entity( this, ray, &start, &end, pawn, filter, game_trace );
 	}

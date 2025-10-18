@@ -23,7 +23,7 @@ void c_interfaces::initialize( ) {
 	m_global_vars = *reinterpret_cast<i_global_vars**>( g_opcodes->scan_absolute( client_dll, xorstr_( "48 89 15 ? ? ? ? 48 89 42" ), 0x3 ) );
 	CHECK( xorstr_( "Global Vars" ), m_global_vars );
 
-	m_trace = *reinterpret_cast<i_trace**>( g_opcodes->scan_absolute( client_dll, xorstr_( "4C 8B 35 ? ? ? ? 24" ), 0x3 ) );
+	m_trace = *reinterpret_cast<i_trace**>( g_opcodes->scan_absolute( client_dll, xorstr_( "4C 8B 35 ? ? ? ? 24 ? 0C ? 66 0F 7F 45 ? 88 45 ? 48 8B CB 48 8D 05 ? ? ? ? 89 7D ? 48 89 45 ? 89 7D ? C7 45 ? ? ? ? ? 44 88 7D" ), 0x3 ) );
 	CHECK( xorstr_( "Traces" ), m_global_vars );
 
 	m_entity_system = *reinterpret_cast<i_entity_system**>( g_opcodes->scan_absolute( client_dll, xorstr_( "48 8B 0D ? ? ? ? 48 89 7C 24 ? 8B FA C1 EB" ), 0x3 ) );

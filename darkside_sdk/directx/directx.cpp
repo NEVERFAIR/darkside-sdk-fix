@@ -1,4 +1,6 @@
 #include "directx.hpp"
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "dxgi.lib")
 
 IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam );
 
@@ -13,19 +15,40 @@ LRESULT hk_wnd_proc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam ) {
 
 	return CallWindowProc( g_directx->m_window_proc_original, hWnd, uMsg, wParam, lParam );
 }
+inline IDXGISwapChain* CreateDummySwapChain()
+{
+	DXGI_SWAP_CHAIN_DESC sd = {};
+	sd.BufferCount = 1;
+	sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	sd.BufferDesc.Width = 1;
+	sd.BufferDesc.Height = 1;
+	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	sd.OutputWindow = GetForegroundWindow();
+	sd.SampleDesc.Count = 1;
+	sd.SampleDesc.Quality = 0;
+	sd.Windowed = TRUE;
+	sd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+	sd.Flags = 0;
 
+	ID3D11Device* device = nullptr;
+	ID3D11DeviceContext* context = nullptr;
+	IDXGISwapChain* swapChain = nullptr;
+
+	HRESULT hr = D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, 0, nullptr, 0, D3D11_SDK_VERSION, &sd, &swapChain, &device, nullptr, &context);
+
+	if (FAILED(hr))
+	{
+		return nullptr;
+	}
+
+	if (device) device->Release();
+	if (context) context->Release();
+
+	return swapChain;
+}
 void c_directx::initialize( ) {
-	uint8_t* ptr = g_opcodes->scan_relative( g_modules->m_modules.rendersystem_dll.get_name( ), "66 0F 7F 0D ? ? ? ? 48 8B F7 66 0F 7F 05", 0x0, 0x4, 0x8 );
-
-	if ( !ptr )
-		return;
-
-	uint8_t* next_ptr = **reinterpret_cast<uint8_t***>( ptr );
-	if ( !next_ptr )
-		return;
-
-	m_swap_chain = *reinterpret_cast<IDXGISwapChain**>( next_ptr + 0x170 );
-	if ( !m_swap_chain )
+	m_swap_chain = CreateDummySwapChain();
+	if (!m_swap_chain)
 		return;
 
 	m_present_address = vmt::get_v_method( m_swap_chain, 8 );

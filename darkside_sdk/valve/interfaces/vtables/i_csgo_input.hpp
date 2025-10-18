@@ -60,8 +60,82 @@ public:
     uint64_t m_button_state; //0x0008
     uint64_t m_button_state2; //0x0010
     uint64_t m_button_state3; //0x0018
+    enum e_button_state_t : int8_t
+    {
+        in_button_up = 0,
+        in_button_down = 1,
+        in_button_down_up = 2,
+        in_button_up_down = 3,
+        in_button_up_down_up = 4,
+        in_button_down_up_down = 5,
+        in_button_down_up_down_up = 6,
+        in_button_up_down_up_down = 7
+    };
+
+    void set_button_state(const uint64_t& u_value, int e_button_state)
+    {
+        switch (e_button_state)
+        {
+        case in_button_up:
+        {
+            m_button_state &= ~u_value;
+            m_button_state2 &= ~u_value;
+            m_button_state3 &= ~u_value;
+            break;
+        }
+        case in_button_down:
+        {
+            m_button_state |= u_value;
+            m_button_state2 &= ~u_value;
+            m_button_state3 &= ~u_value;
+            break;
+        }
+        case in_button_down_up:
+        {
+            m_button_state &= ~u_value;
+            m_button_state2 |= u_value;
+            m_button_state3 &= ~u_value;
+            break;
+        }
+        case in_button_up_down:
+        {
+            m_button_state |= u_value;
+            m_button_state2 |= u_value;
+            m_button_state3 &= ~u_value;
+            break;
+        }
+        case in_button_up_down_up:
+        {
+            m_button_state &= ~u_value;
+            m_button_state2 &= ~u_value;
+            m_button_state3 |= u_value;
+            break;
+        }
+        case in_button_down_up_down:
+        {
+            m_button_state |= u_value;
+            m_button_state2 &= ~u_value;
+            m_button_state3 |= u_value;
+            break;
+        }
+        case in_button_down_up_down_up:
+        {
+            m_button_state &= ~u_value;
+            m_button_state2 |= u_value;
+            m_button_state3 |= u_value;
+            break;
+        }
+        case in_button_up_down_up_down:
+        {
+            m_button_state |= u_value;
+            m_button_state2 |= u_value;
+            m_button_state3 |= u_value;
+            break;
+        }
+        }
+    }
 }; //Size: 0x0020
-static_assert(sizeof(c_in_button_state) == 0x20);
+//static_assert(sizeof(c_in_button_state) == 0x20);
 
 class c_user_cmd
 {
@@ -134,15 +208,43 @@ public:
 
     vec3_t get_view_angles( ) {
         using get_view_angles_t = void* ( __fastcall* )( i_csgo_input*, int );
-        static get_view_angles_t get_view_angles = reinterpret_cast<get_view_angles_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "4C 8B C1 85 D2 74 08 48 8D 05 ? ? ? ? C3" ) ); 
+        static get_view_angles_t get_view_angles = reinterpret_cast<get_view_angles_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "4C 8B C1 85 D2 74 ? 48 8D 05" ) ); 
 
         return *reinterpret_cast<vec3_t*>( get_view_angles( this, 0 ) );
     }
 
     void set_view_angles( vec3_t& view_angles ) {
         using set_view_angles_t = void ( __fastcall* )( i_csgo_input*, int, vec3_t& );
-        static set_view_angles_t set_view_angles = reinterpret_cast<set_view_angles_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "85 D2 75 3F 48" ) );
+        static set_view_angles_t set_view_angles = reinterpret_cast<set_view_angles_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "85 D2 75 ? 48 63 81" ) );
 
         set_view_angles( this, 0, view_angles );
+    }
+
+    c_user_cmd* get_user_cmd(void* local_controller)
+    {
+        if (!local_controller)
+            return nullptr;
+
+        int player_idx = 0;
+
+        using get_entity_index_t = void* (__fastcall*)(void*, int*);
+        static get_entity_index_t get_entity_index = reinterpret_cast<get_entity_index_t>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 8B 8D ? ? ? ? 8D 51", 0x1));
+
+        get_entity_index(local_controller, &player_idx);
+
+        int entity_index = player_idx - 1;
+        if (player_idx == -1)
+            entity_index = -1;
+
+        static auto construct_input_data = reinterpret_cast<void* (__fastcall*)(void*, int)>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 48 8B CF 4C 8B F8", 0x1));
+        static auto sig_poo = *reinterpret_cast<void**>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B CF 4C 8B F8", 0x3));
+
+        void* array_inputs = construct_input_data(sig_poo, entity_index);
+        int sequence_number = *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(array_inputs) + 0x59A8);
+
+        static auto automake_user_cmd = reinterpret_cast<void*>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 48 8B 0D ? ? ? ? 45 33 E4 48 89 45", 0x1));
+        static auto poo = reinterpret_cast<c_user_cmd * (__fastcall*)(void*, int)>(automake_user_cmd);
+
+        return poo(local_controller, sequence_number);
     }
 };

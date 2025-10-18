@@ -21,7 +21,13 @@ short schema_get_offset( const char* className, const char* keyName );
 																														\
 		return reinterpret_cast<type*>(reinterpret_cast<unsigned __int64>(this) + offset);								\
 	}
-
+#define schema_add_with_offset( varName, type, className, keyName, offset2 ) \
+	type& varName( ) \
+	{ \
+		static const short offset = schema_get_offset( className, keyName ); \
+		 \
+		return *reinterpret_cast< type* >( reinterpret_cast< unsigned __int64 >( this ) + ( offset + offset2 ) ); \
+	}
 #define OFFSET( type, name, offset )                                                              \
     __forceinline std::add_lvalue_reference_t< type > name( ) const {                             \
         return *reinterpret_cast< type* >( reinterpret_cast< std::uintptr_t >( this ) + offset ); \

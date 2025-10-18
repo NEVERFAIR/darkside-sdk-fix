@@ -19,25 +19,20 @@ var_iterator_t i_cvar::get_next_var( var_iterator_t previous ) {
     return it;
 }
 
-convar_t* i_cvar::get_by_index( var_iterator_t idx ) {
-    return VFUNC( this, convar_t*, 37, idx );
+convar_t* i_cvar::get_by_index(var_iterator_t idx)
+{
+    return VFUNC(this, convar_t*, 41, idx);
 }
 
-convar_t* i_cvar::get_by_name( const char* name ) {
-    auto hash = fnv1a::hash_64( name );
+convar_t* i_cvar::get_by_name(const char* name)
+{
+    for (std::uint16_t nCurrent = 0; nCurrent != static_cast<std::uint16_t>(-1); nCurrent = pConVars[nCurrent].nNext) {
+        convar_t* pConVar = pConVars[nCurrent].pData;
+        if (pConVar == nullptr)
+            continue;
 
-    var_iterator_t it = get_first_var_iterator( );
-
-    while ( true ) {
-        convar_t* var = get_by_index( it );
-
-        if ( !var )
-            break;
-
-        if ( fnv1a::hash_64( var->m_name ) == hash )
-            return var;
-
-        it = get_next_var( it );
+        if (fnv1a::hash_64(pConVar->m_name) == fnv1a::hash_64(name))
+            return pConVar;
     }
 
     return nullptr;

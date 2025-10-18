@@ -41,24 +41,24 @@ public:
 class i_engine_client {
 public:
 	bool is_in_game( ) {
-		return vmt::call_virtual<bool>( this, 35 );
+		return vmt::call_virtual<bool>( this, 38 );
 	}
 
 	bool is_connected( ) {
-		return vmt::call_virtual<bool>( this, 36 );
+		return vmt::call_virtual<bool>( this, 39 );
 	}
 
 	int get_local_player_index( ) {
 		int idx = -1;
 
-		vmt::call_virtual<void>( this, 49, &idx, 0 );
+		vmt::call_virtual<void>( this, 53, &idx, 0 );
 		return idx + 1;
 	}
 
 	c_networked_client_info* get_networked_client_info( ) {
 		c_networked_client_info client_info;
 
-		vmt::call_virtual<void*>( this, 178, &client_info );
+		vmt::call_virtual<void*>( this, 182, &client_info );
 		return &client_info;
 	}
 };

@@ -96,8 +96,7 @@ void __fastcall hooks::create_move::hk_create_move( i_csgo_input* rcx, int slot,
 	if ( !g_ctx->m_local_controller )
 		return;
 
-	auto cmd_manager = g_ctx->m_local_controller->get_user_cmd_manager( );
-	auto user_cmd = g_ctx->m_user_cmd = cmd_manager->get_user_cmd( );
+	auto user_cmd = g_ctx->m_user_cmd = rcx->get_user_cmd(g_ctx->m_local_controller);
 	if ( !user_cmd )
 		return;
 
@@ -118,11 +117,11 @@ void __fastcall hooks::create_move::hk_create_move( i_csgo_input* rcx, int slot,
 
 	g_anti_hit->on_create_move( user_cmd );
 
-	g_prediction->run( );
+	//g_prediction->run( );
 
-	g_rage_bot->on_create_move( );
+	//g_rage_bot->on_create_move( );
 
-	g_prediction->end( );
+	//g_prediction->end( );
 
 	g_movement->movement_fix( user_cmd, old_view_angles );
 }
@@ -191,16 +190,16 @@ void hooks::frame_stage_notify::hk_frame_stage_notify( void* source_to_client, i
 	g_ctx->m_local_pawn = g_interfaces->m_entity_system->get_local_pawn( );
 	g_ctx->m_local_controller = g_interfaces->m_entity_system->get_base_entity<c_cs_player_controller>( g_interfaces->m_engine->get_local_player_index( ) );
 
-	g_skins->agent_changer( stage );
+	//g_skins->agent_changer( stage );
 
 	original( source_to_client, stage );
 
 	switch ( stage ) {
 	case FRAME_RENDER_START:
-		g_skins->knife_changer( stage );
+		//g_skins->knife_changer( stage );
 		break;
 	case FRAME_RENDER_END:
-		g_skins->knife_changer( stage );
+		//g_skins->knife_changer( stage );
 		break;
 	case FRAME_NET_UPDATE_END:
 		g_rage_bot->store_records( );

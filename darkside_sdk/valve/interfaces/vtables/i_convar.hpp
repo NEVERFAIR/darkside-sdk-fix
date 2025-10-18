@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../../../sdk/vfunc/vfunc.hpp"
+#include <cstddef>
+#include <cstdint>
 
 enum e_cvar_flags : int
 {
@@ -72,9 +74,17 @@ public:
 };
 
 using var_iterator_t = unsigned long long;
-
+template<typename T>
+class CUtlLeanVector {
+public:
+	T* pData;
+	std::uint16_t nPrev;
+	std::uint16_t nNext;
+};
 class i_cvar {
 public:
+	std::byte pad_0001[0x48];
+	CUtlLeanVector<convar_t>* pConVars;
 	var_iterator_t get_first_var_iterator( );
 	var_iterator_t get_next_var( var_iterator_t previous );
 
