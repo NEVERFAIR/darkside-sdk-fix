@@ -39,7 +39,7 @@ void c_render::update_background_drawlist( ImDrawList* draw_list ) {
 
 bool c_render::world_to_screen( vec3_t& in, vec3_t& out ) {
 
-	static auto screen_transofrm = reinterpret_cast<bool( __fastcall* )( vec3_t&, vec3_t& )>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "4C 8B DC 55 57 48 83 EC" ) );
+	static auto screen_transofrm = reinterpret_cast<bool( __fastcall* )( vec3_t&, vec3_t& )>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 74 24 ? 57 48 83 EC ? 48 8B 05 ? ? ? ? 48 8B FA" ) );
 
 	if ( !screen_transofrm )
 		return false;

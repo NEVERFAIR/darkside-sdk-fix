@@ -57,7 +57,7 @@ uint8_t* c_opcodes::scan( const char* module_name, const char* pattern ) {
         if ( found )
             return &scan_bytes[ i ];
     }
-
+	LOG_ERROR("failed to find pattern: %s", pattern);
     return nullptr;
 }
 

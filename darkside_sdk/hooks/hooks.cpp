@@ -48,9 +48,7 @@ bool c_hooks::initialize( ) {
 	should_update_sequences::m_should_update_sequences.hook( g_opcodes->scan( g_modules->m_modules.animation_system.get_name( ), "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC 20 49 8B 40 48" ), should_update_sequences::hk_should_update_sequences );
 
 	//xref: FirstpersonLegsPrepass
-	should_draw_legs::m_should_draw_legs.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 01" ), should_draw_legs::hk_should_draw_legs );
-
-	mark_interp_latch_flags_dirty::m_mark_interp_latch_flags_dirty.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "85 D2 0F 84 ? ? ? ? 55 57 48 83 EC" ), mark_interp_latch_flags_dirty::hk_mark_interp_latch_flags_dirty );
+	should_draw_legs::m_should_draw_legs.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 55 53 56 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? F2 0F 10 42" ), should_draw_legs::hk_should_draw_legs );
 
 	draw_scope_overlay::m_draw_scope_overlay.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 53 57 48 83 EC ? 48 8B FA" ), draw_scope_overlay::hk_draw_scope_overlay );
 
@@ -202,7 +200,7 @@ void hooks::frame_stage_notify::hk_frame_stage_notify( void* source_to_client, i
 		//g_skins->knife_changer( stage );
 		break;
 	case FRAME_NET_UPDATE_END:
-		g_rage_bot->store_records( );
+		//g_rage_bot->store_records( );
 		//g_anim_sync->on_frame_stage( );
 		break;
 	case FRAME_SIMULATE_END:
