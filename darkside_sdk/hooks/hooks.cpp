@@ -17,7 +17,7 @@ using namespace hooks;
 bool c_hooks::initialize( ) {
 	MH_Initialize( );
 
-	g_skins->dump_items( );
+	//g_skins->dump_items( );
 
 	create_move::m_create_move.hook( vmt::get_v_method( g_interfaces->m_csgo_input, 5 ), create_move::hk_create_move );
 	enable_cursor::m_enable_cursor.hook( vmt::get_v_method( g_interfaces->m_input_system, 76 ), enable_cursor::hk_enable_cursor );
@@ -27,18 +27,18 @@ bool c_hooks::initialize( ) {
 	present::m_present.hook( g_directx->m_present_address, present::hk_present );
 
 	update_global_vars::m_update_global_vars.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B 0D ? ? ? ? 4C 8D 05 ? ? ? ? 48 85 D2" ), update_global_vars::hk_update_global_vars );
-	frame_stage_notify::m_frame_stage_notify.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 56 48 83 EC ? 8B 05 ? ? ? ? 8D 5A" ), frame_stage_notify::hk_frame_stage_notify );
+	frame_stage_notify::m_frame_stage_notify.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 57 48 81 EC ? ? ? ? 48 8B F9 8B DA" ), frame_stage_notify::hk_frame_stage_notify ); // x-ref to "FramePostDataUpdate(%.3f %d)", first mov in function
 	override_view::m_override_view.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? 48 8B FA E8" ), override_view::hk_override_view );
 
-	on_add_entity::m_on_add_entity.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 74 24 ? 57 48 83 EC ? 48 8B F9 41 8B C0 B9" ), on_add_entity::hk_on_add_entity );
-	on_remove_entity::m_on_remove_entity.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 74 24 ? 57 48 83 EC ? 48 8B F9 41 8B C0 25" ), on_remove_entity::hk_on_remove_entity );
+	on_add_entity::m_on_add_entity.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 74 24 ? 57 48 83 EC ? 41 B9 ? ? ? ? 41 8B C0 41 23 C1 48 8B F2 41 83 F8 ? 48 8B F9 44 0F 45 C8 41 81 F9 ? ? ? ? 73 ? FF 81" ), on_add_entity::hk_on_add_entity );
+	on_remove_entity::m_on_remove_entity.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 74 24 ? 57 48 83 EC ? 41 B9 ? ? ? ? 41 8B C0 41 23 C1 48 8B F2 41 83 F8 ? 48 8B F9 44 0F 45 C8 41 81 F9 ? ? ? ? 73 ? FF 89" ), on_remove_entity::hk_on_remove_entity );
 
-	on_level_init::m_on_level_init.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 18 56 48 83 EC 30 48" ), on_level_init::hk_on_level_init );
+	on_level_init::m_on_level_init.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 55 56 41 56 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 0D" ), on_level_init::hk_on_level_init );
 	on_level_shutdown::m_on_level_shutdown.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 83 EC ? 48 8B 0D ? ? ? ? 48 8D 15 ? ? ? ? 45 33 C9 45 33 C0 48 8B 01 FF 50 ? 48 85 C0 74 ? 48 8B 0D ? ? ? ? 48 8B D0 4C 8B 01 41 FF 50 ? 48 83 C4" ), on_level_shutdown::hk_on_level_shutdown );
 
 	update_sky_box::m_update_sky_box.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 48 89 58 18 48 89 70 20 55 57 41 54 41 55" ), update_sky_box::hk_update_sky_box );
 
-	draw_light_scene::m_draw_light_scene.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 89 54 24 ? 53 41 56 41 57" ), draw_light_scene::hk_draw_light_scene );
+	draw_light_scene::m_draw_light_scene.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "8B 02 89 01 F2 0F 10 42 ? F2 0F 11 41 ? 8B 42 ? 89 41 ? F2 0F 10 42" ), draw_light_scene::hk_draw_light_scene );
 
 	update_aggregate_scene_object::m_update_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 4C 8B F95" ), update_aggregate_scene_object::hk_update_aggregate_scene_object );
 	draw_aggregate_scene_object::m_draw_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 89 54 24 ? 55 57 41 55 48 8D AC 24 ? ? ? ? B8 ? ? ? ? E8 ? ? ? ? 48 2B E0 49 63 F9" ), draw_aggregate_scene_object::hk_draw_aggregate_scene_object );
@@ -52,9 +52,9 @@ bool c_hooks::initialize( ) {
 
 	mark_interp_latch_flags_dirty::m_mark_interp_latch_flags_dirty.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "85 D2 0F 84 ? ? ? ? 55 57 48 83 EC" ), mark_interp_latch_flags_dirty::hk_mark_interp_latch_flags_dirty );
 
-	draw_scope_overlay::m_draw_scope_overlay.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "4C 8B DC 53 56 57 48 83 EC" ), draw_scope_overlay::hk_draw_scope_overlay );
+	draw_scope_overlay::m_draw_scope_overlay.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 53 57 48 83 EC ? 48 8B FA" ), draw_scope_overlay::hk_draw_scope_overlay );
 
-	get_field_of_view::m_get_field_of_view.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 53 48 83 EC ? 48 8B D9 E8 ? ? ? ? 48 85 C0 74 ? 48 8B C8 48 83 C4" ), get_field_of_view::hk_get_field_of_view );
+	get_field_of_view::m_get_field_of_view.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 57 48 83 EC ? 48 8B F9 E8 ? ? ? ? 48 85 C0 74" ), get_field_of_view::hk_get_field_of_view );
 	
 	LOG_INFO( xorstr_( "[+] Hooks initialization completed!" ) );
 	return true;

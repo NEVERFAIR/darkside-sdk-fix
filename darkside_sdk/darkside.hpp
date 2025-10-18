@@ -1,5 +1,15 @@
 #pragma once
+/*
+	--credits:
+		shialex
+		lostedd
+		opai
+		(вроде все кого знаю)
 
+	--fixed by:
+		neverfair team
+	
+*/
 #include <Windows.h>
 #include <cstdint>
 #include <cstdio>

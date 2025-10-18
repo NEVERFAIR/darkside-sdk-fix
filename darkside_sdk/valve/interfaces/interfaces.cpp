@@ -29,9 +29,15 @@ void c_interfaces::initialize( ) {
 	m_entity_system = *reinterpret_cast<i_entity_system**>( g_opcodes->scan_absolute( client_dll, xorstr_( "48 8B 0D ? ? ? ? 48 89 7C 24 ? 8B FA C1 EB" ), 0x3 ) );
 	CHECK( xorstr_( "Entity" ), m_entity_system );
 
-	using get_input_t = i_csgo_input * ( __fastcall* )( );
-	get_input_t get_input = reinterpret_cast<get_input_t>( g_opcodes->scan_absolute( client_dll, xorstr_( "E8 ? ? ? ? 48 8B 56 60" ), 0x1 ) );
+	//using get_input_t = i_csgo_input * ( __fastcall* )( ); // old
+	//get_input_t get_input = reinterpret_cast<get_input_t>( g_opcodes->scan_absolute( client_dll, xorstr_( "E8 ? ? ? ? 48 8B 56 60" ), 0x1 ) ); // old
+	typedef i_csgo_input* (*csgo_input_t)();
 
+	csgo_input_t get_input = reinterpret_cast<csgo_input_t>(
+		g_opcodes->scan(
+			client_dll,
+			"48 8D 05 ? ? ? ? C3 CC CC CC CC CC CC CC CC 48 8D 05 ? ? ? ? C3 CC CC CC CC CC CC CC CC 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 33 C0"
+		));
 	CHECK( xorstr_( "Input" ), get_input )
 
 	m_csgo_input = get_input( );

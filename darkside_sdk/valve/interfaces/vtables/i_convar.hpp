@@ -57,7 +57,7 @@ public:
 	unsigned int m_type;
 	unsigned int m_registered;
 	unsigned int m_flags;
-	char padding_2[ 0x8 ];
+	char padding_2[ 0x1c ];
 	convar_value_t m_value;
 
 	bool get_bool( ) const {
