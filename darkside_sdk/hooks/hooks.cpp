@@ -36,12 +36,12 @@ bool c_hooks::initialize( ) {
 	on_level_init::m_on_level_init.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 55 56 41 56 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 0D" ), on_level_init::hk_on_level_init );
 	on_level_shutdown::m_on_level_shutdown.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 83 EC ? 48 8B 0D ? ? ? ? 48 8D 15 ? ? ? ? 45 33 C9 45 33 C0 48 8B 01 FF 50 ? 48 85 C0 74 ? 48 8B 0D ? ? ? ? 48 8B D0 4C 8B 01 41 FF 50 ? 48 83 C4" ), on_level_shutdown::hk_on_level_shutdown );
 
-	update_sky_box::m_update_sky_box.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 48 89 58 18 48 89 70 20 55 57 41 54 41 55" ), update_sky_box::hk_update_sky_box );
+	update_sky_box::m_update_sky_box.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8B EC 48 83 EC ? 48 83 B9" ), update_sky_box::hk_update_sky_box );
 
 	draw_light_scene::m_draw_light_scene.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "8B 02 89 01 F2 0F 10 42 ? F2 0F 11 41 ? 8B 42 ? 89 41 ? F2 0F 10 42" ), draw_light_scene::hk_draw_light_scene );
 
 	update_aggregate_scene_object::m_update_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 4C 8B F95" ), update_aggregate_scene_object::hk_update_aggregate_scene_object );
-	draw_aggregate_scene_object::m_draw_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 89 54 24 ? 55 57 41 55 48 8D AC 24 ? ? ? ? B8 ? ? ? ? E8 ? ? ? ? 48 2B E0 49 63 F9" ), draw_aggregate_scene_object::hk_draw_aggregate_scene_object );
+	draw_aggregate_scene_object::m_draw_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 8B C4 4C 89 40 ? 48 89 50 ? 55 53 41 57" ), draw_aggregate_scene_object::hk_draw_aggregate_scene_object );
 
 	update_post_processing::m_update_post_processing.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 08 57 48 83 EC 60 80" ), update_post_processing::hk_update_post_processing );
 
@@ -49,6 +49,8 @@ bool c_hooks::initialize( ) {
 
 	//xref: FirstpersonLegsPrepass
 	should_draw_legs::m_should_draw_legs.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 55 53 56 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? F2 0F 10 42" ), should_draw_legs::hk_should_draw_legs );
+
+	mark_interp_latch_flags_dirty::m_mark_interp_latch_flags_dirty.hook(g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "40 53 56 57 48 83 EC ? 80 3D"), mark_interp_latch_flags_dirty::hk_mark_interp_latch_flags_dirty);
 
 	draw_scope_overlay::m_draw_scope_overlay.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 53 57 48 83 EC ? 48 8B FA" ), draw_scope_overlay::hk_draw_scope_overlay );
 
@@ -115,11 +117,11 @@ void __fastcall hooks::create_move::hk_create_move( i_csgo_input* rcx, int slot,
 
 	g_anti_hit->on_create_move( user_cmd );
 
-	//g_prediction->run( );
+	g_prediction->run( );
 
-	//g_rage_bot->on_create_move( );
+	g_rage_bot->on_create_move( );
 
-	//g_prediction->end( );
+	g_prediction->end( );
 
 	g_movement->movement_fix( user_cmd, old_view_angles );
 }
@@ -200,7 +202,7 @@ void hooks::frame_stage_notify::hk_frame_stage_notify( void* source_to_client, i
 		//g_skins->knife_changer( stage );
 		break;
 	case FRAME_NET_UPDATE_END:
-		//g_rage_bot->store_records( );
+		g_rage_bot->store_records( );
 		//g_anim_sync->on_frame_stage( );
 		break;
 	case FRAME_SIMULATE_END:
@@ -359,7 +361,7 @@ int get_model_type( const std::string_view& name ) {
 	return MODEL_OTHER;
 }
 
-void hooks::draw_aggregate_scene_object::hk_draw_aggregate_scene_object( void* a1, void* a2, c_base_scene_data* a3, int a4, int a5, void* a6, void* a7, void* a8 ) {
+void hooks::draw_aggregate_scene_object::hk_draw_aggregate_scene_object( void* a1, void* a2, c_base_scene_data* a3, int a4, int a5, void* a6, void* a7 ) {
 	static auto original = m_draw_aggregate_scene_object.get_original< decltype( &hk_draw_aggregate_scene_object ) >( );
 
 	int type = get_model_type( a3->m_material->get_name( ) );
@@ -388,7 +390,7 @@ void hooks::draw_aggregate_scene_object::hk_draw_aggregate_scene_object( void* a
 		}
 	}
 
-	original( a1, a2, a3, a4, a5, a6, a7, a8 );
+	original( a1, a2, a3, a4, a5, a6, a7 );
 }
 
 void hooks::update_post_processing::hk_update_post_processing( c_post_processing_volume* a1, int a2 ) {

@@ -101,15 +101,16 @@ static_assert( sizeof( game_trace_t ) == 0x108 );
 struct trace_filter_t
 {
 public:
-	std::byte pad_001[ 0x8 ];
-	std::int64_t m_mask{};
-	std::array<std::int64_t, 2> m_ptr{};
-	std::array<std::int32_t, 4> m_skip_handles{};
-	std::array<std::int16_t, 2> m_arr_collisions{};
-	std::int16_t m_ptr2{};
-	std::uint8_t m_ptr3{};
-	std::uint8_t m_ptr4{};
-	std::uint8_t m_ptr5{};
+	char pad_0000[8];
+	int64_t m_mask;
+	std::array<int64_t, 2> m_ptr{};
+	std::array<int32_t, 4> m_skip_handles{};
+	std::array<int16_t, 2> m_arr_collisions{};
+	uint8_t m_ptr2{};
+	uint8_t m_ptr3{};
+	uint8_t m_ptr4{};
+	uint8_t m_ptr5{};
+	uint8_t m_collision{};
 
 	trace_filter_t( ) = default;
 	trace_filter_t( std::uint64_t mask, c_cs_player_pawn* entity, c_cs_player_pawn* player, int layer );
@@ -123,23 +124,16 @@ class i_trace
 public:
 	void init_trace( trace_filter_t& filter, c_cs_player_pawn* pawn, uint64_t mask, uint8_t layer, uint16_t unknown ) {
 		using fn_init_trace_t = trace_filter_t * ( __fastcall* )( trace_filter_t&, void*, uint64_t, uint8_t, uint16_t );
-		static fn_init_trace_t fn = reinterpret_cast<fn_init_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC ?? 0F B6 41 ?? 33 FF 24" ) );
+		static fn_init_trace_t fn = reinterpret_cast<fn_init_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 0F B6 41 ? 33 FF 24" ) );
 
 		fn( filter, pawn, mask, layer, unknown );
 	}
 
-	void clip_trace_to_player( vec3_t& start, vec3_t& end, trace_filter_t* filter, game_trace_t* trace, float min, int length, float max ) {
-		using fn_clip_trace_to_player_t = void( __fastcall* )( vec3_t&, vec3_t&, trace_filter_t*, game_trace_t*, float, int, float );
-		static fn_clip_trace_to_player_t fn = reinterpret_cast<fn_clip_trace_to_player_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 8B C4 55 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 58 ? 49 8B F8" ) );
-
-		fn( start, end, filter, trace, min, length, max );
-	}
-
 	void create_trace( trace_data_t* const trace, vec3_t start, vec3_t end, const trace_filter_t& filter, int penetration_count ) {
-		using fn_create_trace_t = void( __fastcall* ) ( trace_data_t*, vec3_t, vec3_t, trace_filter_t, void*, void*, void*, void*, int );
+		using fn_create_trace_t = void( __fastcall* ) ( trace_data_t*, vec3_t, vec3_t, trace_filter_t, int );
 		static fn_create_trace_t fn = reinterpret_cast<fn_create_trace_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? F2 0F 10 02" ) );
 
-		fn( trace, start, end, filter, nullptr, nullptr, nullptr, nullptr, penetration_count );
+		fn( trace, start, end, filter, penetration_count );
 	}
 
 	void init_trace_info( game_trace_t* const hit ) {

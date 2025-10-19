@@ -26,13 +26,13 @@ convar_t* i_cvar::get_by_index(var_iterator_t idx)
 
 convar_t* i_cvar::get_by_name(const char* name)
 {
-    for (std::uint16_t nCurrent = 0; nCurrent != static_cast<std::uint16_t>(-1); nCurrent = pConVars[nCurrent].nNext) {
-        convar_t* pConVar = pConVars[nCurrent].pData;
-        if (pConVar == nullptr)
+    for (std::uint16_t current = 0; current != static_cast<std::uint16_t>(-1); current = m_convars[current].next) {
+        convar_t* convar = m_convars[current].data;
+        if (convar == nullptr)
             continue;
 
-        if (fnv1a::hash_64(pConVar->m_name) == fnv1a::hash_64(name))
-            return pConVar;
+        if (fnv1a::hash_64(convar->m_name) == fnv1a::hash_64(name))
+            return convar;
     }
 
     return nullptr;

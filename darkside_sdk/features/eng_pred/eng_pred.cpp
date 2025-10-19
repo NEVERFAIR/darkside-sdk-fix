@@ -74,8 +74,6 @@ void c_eng_pred::end( ) {
 	if ( !client_info->m_local_data )
 		return;
 
-	static auto interpolate_shoot_position = reinterpret_cast<void* ( __fastcall* )( void*, vec3_t*, int, float )>( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 41 8B 86 ? ? ? ? C1 E8 ? A8 ? 0F 85", 0x1 ) );
-
 	g_ctx->m_local_pawn->m_movement_services( )->reset_prediction_command( );
 
 	/* restore all predicted info there */
@@ -84,7 +82,6 @@ void c_eng_pred::end( ) {
 	g_interfaces->m_global_vars->m_current_time = m_pred_data.m_current_time;
 
 	m_pred_data.m_shoot_tick = g_ctx->m_local_controller->m_tick_base( ) - 1;
-	interpolate_shoot_position( g_ctx->m_local_pawn->m_weapon_services( ), &m_pred_data.m_eye_pos, m_pred_data.m_shoot_tick, 0.0099999998f );
 
 	g_ctx->m_local_controller->m_tick_base( ) = m_pred_data.m_tick_base;
 }

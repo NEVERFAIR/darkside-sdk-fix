@@ -13,13 +13,7 @@ public:
 	SCHEMA( m_pawn_is_alive, bool, "CCSPlayerController", "m_bPawnIsAlive" );
 
 	void physics_run_think( ) {
-		static auto physics_run_think_ = reinterpret_cast<void* ( __fastcall* )( void* )>( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 49 8B D6 48 8B CE E8 ? ? ? ? 48 8B 06", 0x1 ) );
+		static auto physics_run_think_ = reinterpret_cast<void* ( __fastcall* )( void* )>( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 48 8B D5 48 8B CE E8 ? ? ? ? 48 8B 06", 0x1 ) );
 		physics_run_think_( this );
-	}
-
-	c_user_cmd_manager* get_user_cmd_manager( )
-	{
-		static auto fn = reinterpret_cast<c_user_cmd_manager* ( __fastcall* )( void* )>(g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "41 54 41 57 48 83 EC ? 48 8D 54 24") );
-		return fn( this );
 	}
 };

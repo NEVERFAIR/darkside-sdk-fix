@@ -26,10 +26,11 @@ int game_trace_t::get_hit_group( ) {
 trace_filter_t::trace_filter_t( std::uint64_t mask, c_cs_player_pawn* entity, c_cs_player_pawn* player, int layer ) {
 	m_mask = mask;
 	m_ptr[ 0 ] = m_ptr[ 1 ] = 0;
-	m_ptr2 = 7;
+	m_ptr2 = 15;
 	m_ptr3 = layer;
 	m_ptr4 = 0x49;
-	m_ptr5 = 0;
+
+	m_collision = 0;
 
 	if ( entity != nullptr )
 	{

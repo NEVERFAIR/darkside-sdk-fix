@@ -3,10 +3,10 @@
 #include "../../../sdk/vfunc/vfunc.hpp"
 #include "../../../utils/utils.hpp"
 
-#include "usercmd.pb.hpp"
-#include "cs_usercmd.pb.hpp"
-#include "network_connection.pb.hpp"
-#include "networkbasetypes.pb.hpp"
+#include "usercmd.pb.h"
+#include "cs_usercmd.pb.h"
+#include "network_connection.pb.h"
+#include "networkbasetypes.pb.h"
 
 #define	FL_ONGROUND				(1 << 0)
 #define FL_DUCKING				(1 << 1)
@@ -181,21 +181,6 @@ public:
     vec3_t m_view_angles; //0x0158
     std::byte pad_0164[48]; //0x0164
 }; //Size: 0x0194
-
-class c_user_cmd_manager
-{
-public:
-    c_user_cmd usercmds[150];
-    char pad_0251[0x260];
-    int prev_sequence_number;
-    char pad_0253[0x8C];
-    int sequence_number;
-
-    c_user_cmd* get_user_cmd( )
-    {
-        return &usercmds[ sequence_number % 150 ];
-    }
-};
 
 class i_csgo_input
 {

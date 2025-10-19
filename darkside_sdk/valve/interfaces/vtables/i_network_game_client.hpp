@@ -14,7 +14,7 @@ public:
 	}
 
 	const char* get_map_name( ) {
-		return *reinterpret_cast<const char**>( reinterpret_cast<std::uintptr_t>( this ) + 0x240 );
+		return *reinterpret_cast<const char**>( reinterpret_cast<std::uintptr_t>( this ) + 0x200);
 	}
 
 	bool is_connected( ) {
@@ -22,15 +22,15 @@ public:
 	}
 
 	void set_prediction( bool value ) {
-		*(bool*)( std::uintptr_t( this ) + 0xF8 ) = value;
+		*(bool*)( std::uintptr_t( this ) + 0xF0) = value;
 	}
 
 	void set_delta_tick( int tick ) {
-		*(int*)( std::uintptr_t( this ) + 0x25C ) = tick;
+		*(int*)( std::uintptr_t( this ) + 0x23C) = tick;
 	}
 
-	OFFSET( m_predicted, bool, 0xF8 );
-	OFFSET( m_delta_tick, int, 0x25C );
+	OFFSET( m_predicted, bool, 0xF0);
+	OFFSET( m_delta_tick, int, 0x23C);
 };
 
 class i_network_client_service

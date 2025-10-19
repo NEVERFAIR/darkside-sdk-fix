@@ -621,7 +621,6 @@ void c_rage_bot::process_attack( c_user_cmd* user_cmd, vec3_t angle ) {
 		}
 	}
 
-	user_cmd->pb.set_attack3_start_history_index( 0 );
 	user_cmd->pb.set_attack1_start_history_index( 0 );
 	process_backtrack( m_best_target->m_lag_record );
 

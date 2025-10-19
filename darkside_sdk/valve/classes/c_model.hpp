@@ -459,26 +459,9 @@ public:
 class c_rendermesh
 {
 public:
-	char pad_0000[24]; //0x0000
-	vec3_t m_vMinBounds; //0x0018
-	vec3_t m_vMaxBounds; //0x0024
-	int32_t m_drawCallsCount; //0x0030
-	char pad_0034[4]; //0x0034
-	c_drawcalls* m_drawCalls; //0x0038
-	char pad_0040[72]; //0x0040
-	int32_t m_skeletoncount; //0x0088
-	char pad_008C[4]; //0x008C
-	c_bones* m_skeleton; //0x0090
-	char pad_0098[8]; //0x0098
-	int32_t m_hashescount; //0x00A0
-	char pad_00A4[4]; //0x00A4
-	void* hashes; //0x00A8
-	char pad_00B0[48]; //0x00B0
-	c_attachments* m_attachments; //0x00E0
-	int32_t m_attachments_count; //0x00E8
-	char pad_00EC[28]; //0x00EC
-	c_hitboxsets* m_hitboxsets; //0x0108
-	int32_t m_nHitboxSets; //0x0110
+	char pad_0000[320]; //0x0000
+	c_hitboxsets* m_hitboxsets; //0x0118
+	int32_t m_nHitboxSets; //0x0120
 };
 
 class c_rendermeshes {

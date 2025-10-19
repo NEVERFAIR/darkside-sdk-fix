@@ -44,12 +44,12 @@ enum e_hitgroups
 };
 
 class c_auto_wall {
-	using fn_handle_bullet_penetration = bool( __fastcall* ) ( trace_data_t*, handle_bulllet_penetration_data_t*, update_value_t*, void*, void*, void*, void*, void*, bool );
+	using fn_handle_bullet_penetration = bool( __fastcall* ) ( trace_data_t*, handle_bulllet_penetration_data_t*, update_value_t*, int, void* );
 
-	inline bool handle_bullet_penetration( trace_data_t* const trace, handle_bulllet_penetration_data_t* stats, update_value_t* const mod_value, const bool draw_showimpacts ) {
-		static fn_handle_bullet_penetration fn = reinterpret_cast<fn_handle_bullet_penetration>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name(), xorstr_( "48 8B C4 44 89 48 ? 48 89 50 ? 48 89 48" ) ) );
+	inline bool handle_bullet_penetration( trace_data_t* const trace, handle_bulllet_penetration_data_t* stats, update_value_t* const mod_value, const int team_num ) {
+		static fn_handle_bullet_penetration fn = reinterpret_cast<fn_handle_bullet_penetration>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name(), xorstr_( "48 8B C4 44 89 48 ? 48 89 50 ? 48 89 48 ? 55 57" ) ) );
 
-		return fn( trace, stats, mod_value, nullptr, nullptr, nullptr, nullptr, nullptr, draw_showimpacts );
+		return fn( trace, stats, mod_value, team_num, nullptr );
 	}
 public:
 	void scale_damage( int hitgroup, c_cs_player_pawn* entity, c_cs_weapon_base_v_data* weapon_data, float& damage );

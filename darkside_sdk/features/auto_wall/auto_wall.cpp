@@ -116,7 +116,7 @@ bool c_auto_wall::fire_bullet( vec3_t start, vec3_t end, c_cs_player_pawn* targe
 			return true;
 		}
 
-		if ( handle_bullet_penetration( &trace_data, &handle_bullet_data, modulate_values, false ) )
+		if ( handle_bullet_penetration( &trace_data, &handle_bullet_data, modulate_values, g_ctx->m_local_pawn->m_team_num() ) )
 			return false;
 
 		pen_data.m_damage = handle_bullet_data.m_damage;

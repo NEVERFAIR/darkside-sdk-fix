@@ -61,17 +61,13 @@ public:
 };
 
 class c_skeleton_instace : public c_game_scene_node {
-	std::byte pad_003[ 0x1CC ]; //0x0000
 public:
-	int m_bone_count; //0x01CC
-private:
-	std::byte pad_002[ 0x18 ]; //0x01D0
-public:
-	int m_mask; //0x01E8
-private:
-	std::byte pad_001[ 0x4 ]; //0x01EC
-public:
-	matrix2x4_t* m_bone_cache; //0x01F0
+	char pad_003[492];
+	int m_bone_count;
+	char pad_002[24];
+	int m_mask;
+	char pad_001[4];
+	matrix2x4_t* m_bone_cache;
 
 	SCHEMA( m_model_state, c_model_state, "CSkeletonInstance", "m_modelState" );
 	SCHEMA( m_hitbox_set, uint8_t, "CSkeletonInstance", "m_nHitboxSet" );
@@ -298,11 +294,11 @@ public:
 
 	void set_prediction_command( c_user_cmd* user_cmd ) {
 
-		vmt::call_virtual<void>( this, 34, user_cmd );
+		vmt::call_virtual<void>( this, 38, user_cmd );
 	}
 
 	void reset_prediction_command( ) {
-		vmt::call_virtual<void>( this, 35 );
+		vmt::call_virtual<void>( this, 39 );
 	}
 };
 
@@ -496,7 +492,7 @@ public:
 	}
 
 	int get_bone_index( const char* name ) {
-		static const auto fn = reinterpret_cast< int( __fastcall* )( void*, const char* ) >( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 85 C0 78 ? 4C 8D 4D", 0x1 ) );
+		static const auto fn = reinterpret_cast< int( __fastcall* )( void*, const char* ) >( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 85 C0 78 ? 4C 8D 4C 24 ? 4C 8B C7", 0x1 ) );
 		return fn( this, name );
 	}
 };

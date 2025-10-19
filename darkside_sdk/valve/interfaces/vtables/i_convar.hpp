@@ -74,17 +74,19 @@ public:
 };
 
 using var_iterator_t = unsigned long long;
+
 template<typename T>
-class CUtlLeanVector {
+class c_utl_lean_vector {
 public:
-	T* pData;
-	std::uint16_t nPrev;
-	std::uint16_t nNext;
+	T* data;
+	std::uint16_t prev;
+	std::uint16_t next;
 };
+
 class i_cvar {
 public:
-	std::byte pad_0001[0x48];
-	CUtlLeanVector<convar_t>* pConVars;
+	char pad_0000[0x48];
+	c_utl_lean_vector<convar_t>* m_convars;
 	var_iterator_t get_first_var_iterator( );
 	var_iterator_t get_next_var( var_iterator_t previous );
 

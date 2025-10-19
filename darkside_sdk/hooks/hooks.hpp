@@ -144,7 +144,7 @@ namespace hooks
 	{
 		inline c_hook m_draw_aggregate_scene_object;
 
-		void hk_draw_aggregate_scene_object( void* a1, void* a2, c_base_scene_data* a3, int a4, int a5, void* a6, void* a7, void* a8 );
+		void hk_draw_aggregate_scene_object( void* a1, void* a2, c_base_scene_data* a3, int a4, int a5, void* a6, void* a7 );
 	}
 
 	namespace update_post_processing
