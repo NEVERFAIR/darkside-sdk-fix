@@ -79,7 +79,6 @@ bool c_auto_wall::fire_bullet( vec3_t start, vec3_t end, c_cs_player_pawn* targe
 	);
 
 	float max_range = weapon_data->m_range( );
-	float trace_length = 0.0f;
 	pen_data.m_damage = static_cast<float>( weapon_data->m_damage( ) );
 
 	for ( int i = 0; i < trace_data.num_update; i++ ) {
@@ -88,17 +87,6 @@ bool c_auto_wall::fire_bullet( vec3_t start, vec3_t end, c_cs_player_pawn* targe
 		game_trace_t game_trace;
 		g_interfaces->m_trace->init_trace_info( &game_trace );
 		g_interfaces->m_trace->get_trace_info( &trace_data, &game_trace, 0.0f, reinterpret_cast<void*>( reinterpret_cast<std::uintptr_t>( trace_data.arr.data( ) ) + sizeof( trace_array_element_t ) * ( modulate_values->m_handle_index & ENT_ENTRY_MASK ) ) );
-
-		max_range -= trace_length;
-
-		if ( game_trace.m_fraction == 1.0f )
-			break;
-
-		trace_length += game_trace.m_fraction * max_range;
-		pen_data.m_damage *= std::powf( weapon_data->m_range_modifier( ), trace_length / 500.f );
-
-		if ( trace_length > 3000.f )
-			break;
 
 		if ( game_trace.m_hit_entity && game_trace.m_hit_entity->is_player_pawn( ) ) {
 
