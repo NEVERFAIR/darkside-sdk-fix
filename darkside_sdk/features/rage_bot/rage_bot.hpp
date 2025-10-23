@@ -39,7 +39,7 @@ struct lag_record_t {
 		if ( !collision )
 			return;
 
-		static auto setup_bones = reinterpret_cast<void( __fastcall* )( void*, int )>( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 49 8B 95 ? ? ? ? 48 8B CF", 0x1 ) );
+		static auto setup_bones = reinterpret_cast<void( __fastcall* )( void*, int )>( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 49 8B 94 24 ? ? ? ? 48 8B CF", 0x1 ) );
 
 		m_pawn = pawn;
 
