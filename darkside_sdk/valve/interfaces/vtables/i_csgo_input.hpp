@@ -20,8 +20,6 @@
 #define	FL_INWATER				(1 << 10)
 #define FL_HIDEHUD_SCOPE		(1 << 11)
 
-class c_cs_player_controller;
-
 enum e_button : std::uint32_t
 {
     IN_ATTACK = (1 << 0),
@@ -56,153 +54,49 @@ enum e_button : std::uint32_t
 class c_in_button_state
 {
 public:
-    std::byte pad_0000[8]; //0x0000
+    void* __vfptr; //0x0000
     uint64_t m_button_state; //0x0008
     uint64_t m_button_state2; //0x0010
     uint64_t m_button_state3; //0x0018
-    enum e_button_state_t : int8_t
-    {
-        in_button_up = 0,
-        in_button_down = 1,
-        in_button_down_up = 2,
-        in_button_up_down = 3,
-        in_button_up_down_up = 4,
-        in_button_down_up_down = 5,
-        in_button_down_up_down_up = 6,
-        in_button_up_down_up_down = 7
-    };
-
-    void set_button_state(const uint64_t& u_value, int e_button_state)
-    {
-        switch (e_button_state)
-        {
-        case in_button_up:
-        {
-            m_button_state &= ~u_value;
-            m_button_state2 &= ~u_value;
-            m_button_state3 &= ~u_value;
-            break;
-        }
-        case in_button_down:
-        {
-            m_button_state |= u_value;
-            m_button_state2 &= ~u_value;
-            m_button_state3 &= ~u_value;
-            break;
-        }
-        case in_button_down_up:
-        {
-            m_button_state &= ~u_value;
-            m_button_state2 |= u_value;
-            m_button_state3 &= ~u_value;
-            break;
-        }
-        case in_button_up_down:
-        {
-            m_button_state |= u_value;
-            m_button_state2 |= u_value;
-            m_button_state3 &= ~u_value;
-            break;
-        }
-        case in_button_up_down_up:
-        {
-            m_button_state &= ~u_value;
-            m_button_state2 &= ~u_value;
-            m_button_state3 |= u_value;
-            break;
-        }
-        case in_button_down_up_down:
-        {
-            m_button_state |= u_value;
-            m_button_state2 &= ~u_value;
-            m_button_state3 |= u_value;
-            break;
-        }
-        case in_button_down_up_down_up:
-        {
-            m_button_state &= ~u_value;
-            m_button_state2 |= u_value;
-            m_button_state3 |= u_value;
-            break;
-        }
-        case in_button_up_down_up_down:
-        {
-            m_button_state |= u_value;
-            m_button_state2 |= u_value;
-            m_button_state3 |= u_value;
-            break;
-        }
-        }
-    }
 }; //Size: 0x0020
-//static_assert(sizeof(c_in_button_state) == 0x20);
+static_assert(sizeof(c_in_button_state) == 0x20);
 
 class c_user_cmd
 {
 public:
-    void* __vfptr; //0x00
-    unsigned int m_command_number; //0x004
+    void* __vfptr;
+    int m_command_number;
     CSGOUserCmdPB pb;
-    c_in_button_state m_button_state; //0x0040
-private:
-    std::byte pad_0068[0x8]; //0x0068
-public:
-    uint32_t random_seed; //0x0070
-    float current_time;//0x0074
-private:
-    std::byte pad_78[16];//0x0078
-public:
+    c_in_button_state m_button_state;
+    char pad_0068[16];
+    int m_has_been_predicted;
+    int m_prediction_cmd_type;
+    int m_cmd_type;
+    int m_cmd_flag;
 };
-
-class c_subitck_moves
-{
-public:
-    float m_when; //0x0000
-    float m_delta; //0x0004
-    uint64_t m_button; //0x0008
-    bool m_pressed; //0x0010
-    std::byte pad_0011[7]; //0x0011
-}; //Size: 0x0018
-
-class c_cs_input_moves
-{
-public:
-    uint64_t m_current_bits; //0x0000
-    std::byte pad_0008[24]; //0x0008
-    float m_forward_move; //0x0020
-    float m_side_move; //0x0024
-    std::byte pad_0028[16]; //0x0028
-    float m_fraction; //0x0038
-    std::byte pad_003C[4]; //0x003C
-    int32_t m_last_buttons; //0x0040
-    std::byte pad_0044[4]; //0x0044
-    bool m_in_move; //0x0048
-    std::byte pad_0074[255]; //0x0074
-    vec3_t m_view_angles; //0x0158
-    std::byte pad_0164[48]; //0x0164
-}; //Size: 0x0194
 
 class i_csgo_input
 {
 public:
-    char pad_0000[592]; //0x0000
-    bool m_block_shot; //0x0250
+    char pad_0000[593]; //0x0000
     bool m_in_third_person; //0x0251
     char pad_0252[6]; //0x0252
-    vec3_t m_third_person_angles;
+    vec3_t m_third_person_angles; //0x0258
 
-    vec3_t get_view_angles( ) {
-        using get_view_angles_t = void* ( __fastcall* )( i_csgo_input*, int );
-        static get_view_angles_t get_view_angles = reinterpret_cast<get_view_angles_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "4C 8B C1 85 D2 74 ? 48 8D 05" ) ); 
+    vec3_t get_view_angles()
+    {
+        using get_view_angles_t = void* (__fastcall*)(i_csgo_input*, int);
+        static get_view_angles_t get_view_angles = reinterpret_cast<get_view_angles_t>(g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "4C 8B C1 85 D2 74 ? 48 8D 05"));
 
-        return *reinterpret_cast<vec3_t*>( get_view_angles( this, 0 ) );
+        return *reinterpret_cast<vec3_t*>(get_view_angles(this, 0));
     }
 
-    void set_view_angles( vec3_t& view_angles ) {
-        using set_view_angles_t = void ( __fastcall* )( i_csgo_input*, int, vec3_t& );
-        static set_view_angles_t set_view_angles = reinterpret_cast<set_view_angles_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "85 D2 75 ? 48 63 81" ) );
+    void set_view_angles(vec3_t& view_angles) 
+    {
+        using set_view_angles_t = void(__fastcall*)(i_csgo_input*, int, vec3_t&);
+        static set_view_angles_t set_view_angles = reinterpret_cast<set_view_angles_t>(g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "85 D2 75 ? 48 63 81"));
 
-        set_view_angles( this, 0, view_angles );
+        set_view_angles(this, 0, view_angles);
     }
 
     c_user_cmd* get_user_cmd(void* local_controller)

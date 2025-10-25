@@ -2,7 +2,7 @@
 
 class c_env_sky;
 class c_scene_light_object;
-class c_aggregate_scene_object;
+class c_aggregate_object_array;
 class c_base_scene_data;
 class c_post_processing_volume;
 class c_base_entiy;
@@ -137,7 +137,7 @@ namespace hooks
 	{
 		inline c_hook m_update_aggregate_scene_object;
 
-		void* hk_update_aggregate_scene_object( c_aggregate_scene_object* a1, void* a2 );
+		void* hk_update_aggregate_scene_object(void* a1, void* a2, c_aggregate_object_array* a3);
 	}
 
 	namespace draw_aggregate_scene_object

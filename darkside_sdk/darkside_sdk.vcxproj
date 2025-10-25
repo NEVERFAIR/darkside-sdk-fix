@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -163,7 +163,6 @@
     <ClCompile Include="directx\directx.cpp" />
     <ClCompile Include="entity_system\entity.cpp" />
     <ClCompile Include="entry.cpp" />
-    <ClCompile Include="features\anim_sync\anim_sync.cpp" />
     <ClCompile Include="features\anti_hit\anti_hit.cpp" />
     <ClCompile Include="features\auto_wall\auto_wall.cpp" />
     <ClCompile Include="features\eng_pred\eng_pred.cpp" />
@@ -211,7 +210,6 @@
     <ClInclude Include="darkside.hpp" />
     <ClInclude Include="directx\directx.hpp" />
     <ClInclude Include="entity_system\entity.hpp" />
-    <ClInclude Include="features\anim_sync\anim_sync.hpp" />
     <ClInclude Include="features\anti_hit\anti_hit.hpp" />
     <ClInclude Include="features\auto_wall\auto_wall.hpp" />
     <ClInclude Include="features\eng_pred\eng_pred.hpp" />
@@ -366,6 +364,7 @@
     <ClInclude Include="valve\interfaces\vtables\i_mem_alloc.hpp" />
     <ClInclude Include="valve\interfaces\vtables\i_network_game_client.hpp" />
     <ClInclude Include="valve\interfaces\vtables\i_resource_game_system.h" />
+    <ClInclude Include="valve\interfaces\vtables\i_scene_system.hpp" />
     <ClInclude Include="valve\interfaces\vtables\i_trace.hpp" />
     <ClInclude Include="valve\interfaces\vtables\netmessages.pb.h" />
     <ClInclude Include="valve\interfaces\vtables\networkbasetypes.pb.h" />

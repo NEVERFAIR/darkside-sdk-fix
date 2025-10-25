@@ -10,7 +10,6 @@
 #include "../valve/classes/c_envy_sky.hpp"
 #include "../features/visuals/visuals.hpp"
 #include "../features/rage_bot/rage_bot.hpp"
-#include "../features/anim_sync/anim_sync.hpp"
 
 using namespace hooks;
 
@@ -40,7 +39,7 @@ bool c_hooks::initialize( ) {
 
 	draw_light_scene::m_draw_light_scene.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "8B 02 89 01 F2 0F 10 42 ? F2 0F 11 41 ? 8B 42 ? 89 41 ? F2 0F 10 42" ), draw_light_scene::hk_draw_light_scene );
 
-	update_aggregate_scene_object::m_update_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 54 41 56 41 57 48 83 EC ? 4C 8B F95" ), update_aggregate_scene_object::hk_update_aggregate_scene_object );
+	update_aggregate_scene_object::m_update_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 8B C4 48 89 50 ? 48 89 48 ? 55 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 48 89 58 ? 48 89 70" ), update_aggregate_scene_object::hk_update_aggregate_scene_object );
 	draw_aggregate_scene_object::m_draw_aggregate_scene_object.hook( g_opcodes->scan( g_modules->m_modules.scenesystem_dll.get_name( ), "48 8B C4 4C 89 40 ? 48 89 50 ? 55 53 41 57" ), draw_aggregate_scene_object::hk_draw_aggregate_scene_object );
 
 	update_post_processing::m_update_post_processing.hook( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 08 57 48 83 EC 60 80" ), update_post_processing::hk_update_post_processing );
@@ -89,41 +88,51 @@ void c_hooks::destroy( ) {
 	MH_Uninitialize( );
 }
 
-void __fastcall hooks::create_move::hk_create_move( i_csgo_input* rcx, int slot, bool active ) {
-	static auto original = m_create_move.get_original< decltype( &hk_create_move ) >( );
-	original( rcx, slot, active );
+void __fastcall hooks::create_move::hk_create_move(i_csgo_input* rcx, int slot, bool active) {
+	static auto original = m_create_move.get_original< decltype(&hk_create_move) >();
+	original(rcx, slot, active);
 
-	if ( !g_ctx->m_local_controller )
+	if (!g_ctx->m_local_controller)
 		return;
 
 	auto user_cmd = g_ctx->m_user_cmd = rcx->get_user_cmd(g_ctx->m_local_controller);
-	if ( !user_cmd )
+	if (!user_cmd)
 		return;
 
-	if ( !g_ctx->m_local_pawn )
+	if (!g_ctx->m_local_pawn)
 		return;
 
-	user_cmd->pb.mutable_base( )->clear_subtick_moves( );
+	user_cmd->pb.mutable_base()->clear_subtick_moves();
 
 	const vec3_t old_view_angles = {
-		user_cmd->pb.mutable_base( )->viewangles( ).x( ),
-		user_cmd->pb.mutable_base( )->viewangles( ).y( ),
-		user_cmd->pb.mutable_base( )->viewangles( ).z( )
+		user_cmd->pb.mutable_base()->viewangles().x(),
+		user_cmd->pb.mutable_base()->viewangles().y(),
+		user_cmd->pb.mutable_base()->viewangles().z()
 	};
 
-	g_menu->on_create_move( );
+	g_menu->on_create_move();
 
-	g_movement->on_create_move( user_cmd, old_view_angles.y );
+	g_movement->on_create_move(user_cmd, old_view_angles.y);
 
-	g_anti_hit->on_create_move( user_cmd );
+	g_anti_hit->on_create_move(user_cmd);
 
-	g_prediction->run( );
+	g_prediction->run();
 
-	g_rage_bot->on_create_move( );
+	g_rage_bot->on_create_move();
 
-	g_prediction->end( );
+	g_prediction->end();
 
-	g_movement->movement_fix( user_cmd, old_view_angles );
+	g_movement->movement_fix(user_cmd, old_view_angles);
+
+	if (user_cmd->pb.mutable_base()->forwardmove() > 0.f)
+		user_cmd->m_button_state.m_button_state |= IN_FORWARD;
+	else if (user_cmd->pb.mutable_base()->forwardmove() < 0.f)
+		user_cmd->m_button_state.m_button_state |= IN_BACK;
+
+	if (user_cmd->pb.mutable_base()->leftmove() > 0.f)
+		user_cmd->m_button_state.m_button_state |= IN_MOVELEFT;
+	else if (user_cmd->pb.mutable_base()->leftmove() < 0.f)
+		user_cmd->m_button_state.m_button_state |= IN_MOVERIGHT;
 }
 
 bool hooks::mouse_input_enabled::hk_mouse_input_enabled( void* ptr ) {
@@ -203,7 +212,6 @@ void hooks::frame_stage_notify::hk_frame_stage_notify( void* source_to_client, i
 		break;
 	case FRAME_NET_UPDATE_END:
 		g_rage_bot->store_records( );
-		//g_anim_sync->on_frame_stage( );
 		break;
 	case FRAME_SIMULATE_END:
 		g_visuals->store_players( );
@@ -315,6 +323,7 @@ void* hooks::update_sky_box::hk_update_sky_box( c_env_sky* sky ) {
 	return original( sky );
 }
 
+// todo: fix lighting
 void* hooks::draw_light_scene::hk_draw_light_scene( void* a1, c_scene_light_object* a2, __int64 a3 ) {
 	static auto original = m_draw_light_scene.get_original< decltype( &hk_draw_light_scene ) >( );
 
@@ -323,21 +332,18 @@ void* hooks::draw_light_scene::hk_draw_light_scene( void* a1, c_scene_light_obje
 	return original( a1, a2, a3 );
 }
 
-void* hooks::update_aggregate_scene_object::hk_update_aggregate_scene_object( c_aggregate_scene_object* a1, void* a2 ) {
+void* hooks::update_aggregate_scene_object::hk_update_aggregate_scene_object(void* a1, void* a2, c_aggregate_object_array* a3)
+{
 	static auto original = m_update_aggregate_scene_object.get_original< decltype( &hk_update_aggregate_scene_object ) >( );
 
-	void* result = original( a1, a2 );
+	void* result = original(a1, a2, a3);
 
 	c_byte_color color = ( g_cfg->world.m_wall * 255 ).to_byte( );
 
-	int count = a1->m_count;
-
-	for ( int i = 0; i < count; i++ ) {
-		c_aggregate_scene_object_data* scene_object = &a1->m_array[ i ];
-		if ( !scene_object )
-			continue;
-
-		scene_object->m_color = color;
+	for (int i = 0; i < a3->data->count; i++)
+	{
+		int index = (a3->data->index + i) << 5;
+		*reinterpret_cast<c_byte_color*>(reinterpret_cast<uintptr_t>(g_interfaces->m_scene_system->light_data_queue->light_data) + index) = color;
 	}
 
 	return result;

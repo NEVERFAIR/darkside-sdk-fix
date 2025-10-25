@@ -81,18 +81,6 @@
     <ClCompile Include="features\protobufs\protobufs.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="valve\interfaces\vtables\cs_usercmd.pb.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="valve\interfaces\vtables\networkbasetypes.pb.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="valve\interfaces\vtables\network_connection.pb.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="valve\interfaces\vtables\usercmd.pb.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="math\math.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -144,7 +132,22 @@
     <ClCompile Include="sdk\typedefs\vec3_t.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="features\anim_sync\anim_sync.cpp">
+    <ClCompile Include="valve\interfaces\vtables\cs_usercmd.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="valve\interfaces\vtables\netmessages.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="valve\interfaces\vtables\networkbasetypes.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="valve\interfaces\vtables\network_connection.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="valve\interfaces\vtables\usercmd.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="valve\interfaces\vtables\usermessages.pb.cc">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -434,18 +437,6 @@
     <ClInclude Include="features\protobufs\protobufs.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="valve\interfaces\vtables\cs_usercmd.pb.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="valve\interfaces\vtables\networkbasetypes.pb.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="valve\interfaces\vtables\network_connection.pb.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="valve\interfaces\vtables\usercmd.pb.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="sdk\includes\fnv1a.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -680,9 +671,6 @@
     <ClInclude Include="sdk\typedefs\c_strong_handle.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="features\anim_sync\anim_sync.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="valve\classes\c_model.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -690,6 +678,27 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="valve\interfaces\vtables\i_file_system.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\cs_usercmd.pb.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\netmessages.pb.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\networkbasetypes.pb.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\network_connection.pb.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\usercmd.pb.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\usermessages.pb.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\i_scene_system.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

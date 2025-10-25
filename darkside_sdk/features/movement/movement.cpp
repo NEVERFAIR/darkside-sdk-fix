@@ -167,16 +167,6 @@ void c_movement::auto_stop( c_user_cmd* user_cmd, c_cs_player_pawn* local_player
 
 void c_movement::movement_fix( c_user_cmd* user_cmd, vec3_t angle )
 {
-	if (user_cmd->pb.mutable_base()->forwardmove() > 0.f)
-		user_cmd->m_button_state.set_button_state(IN_FORWARD, c_in_button_state::e_button_state_t::in_button_down);
-	else if (user_cmd->pb.mutable_base()->forwardmove() < 0.f)
-		user_cmd->m_button_state.set_button_state(IN_BACK, c_in_button_state::e_button_state_t::in_button_down);
-
-	if (user_cmd->pb.mutable_base()->leftmove() > 0.f)
-		user_cmd->m_button_state.set_button_state(IN_MOVELEFT, c_in_button_state::e_button_state_t::in_button_down);
-	else if (user_cmd->pb.mutable_base()->leftmove() < 0.f)
-		user_cmd->m_button_state.set_button_state(IN_MOVERIGHT, c_in_button_state::e_button_state_t::in_button_down);
-
 	vec3_t wish_angle{ user_cmd->pb.mutable_base( )->viewangles( ).x( ), user_cmd->pb.mutable_base( )->viewangles( ).y( ), user_cmd->pb.mutable_base( )->viewangles( ).z( ) };
 	int sign = wish_angle.x > 89.f ? -1.f : 1.f;
 	wish_angle.clamp( );

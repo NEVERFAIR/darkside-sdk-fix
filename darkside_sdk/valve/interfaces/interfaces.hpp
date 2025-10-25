@@ -14,6 +14,7 @@
 #include "vtables/i_global_vars.hpp"
 #include "vtables/i_mem_alloc.hpp"
 #include "vtables/i_file_system.hpp"
+#include "vtables/i_scene_system.hpp"
 
 #define INTERVAL_PER_TICK 0.015625f
 #define TICK_INTERVAL (INTERVAL_PER_TICK)
@@ -70,6 +71,7 @@ public:
 	i_global_vars* m_global_vars;
 	i_network_client_service* m_network_client_service;
 	i_file_system* m_file_system;
+	i_scene_system* m_scene_system;
 
 	float( __cdecl* m_random_float )( float min, float max ) = nullptr;
 	int( __cdecl* m_random_seed )( int seed ) = nullptr;
