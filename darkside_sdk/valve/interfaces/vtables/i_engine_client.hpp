@@ -55,7 +55,7 @@ public:
 	c_networked_client_info* get_networked_client_info( ) {
 		c_networked_client_info client_info;
 
-		vmt::call_virtual<void*>( this, 179, &client_info );
+		vmt::call_virtual<void*>( this, 178, &client_info );
 		return &client_info;
 	}
 };
