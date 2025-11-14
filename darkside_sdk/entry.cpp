@@ -1,54 +1,56 @@
-﻿#include "darkside.hpp"
+#include "darkside.hpp"
 #include "directx/directx.hpp"
 #include "entity_system/entity.hpp"
 
-void destroy( HMODULE h_module ) {
-    g_hooks->destroy( );
-    logger::shutdown( );
-    g_entity_system->level_shutdown( );
-    FreeConsole( );
-
-    FreeLibraryAndExitThread( h_module, 0 );
+void destroy(HMODULE h_module) {
+    g_hooks->destroy();
+    logger::shutdown();
+    g_entity_system->level_shutdown();
+    FreeConsole();
+    // Don't call FreeLibraryAndExitThread in manual-map!
+    // Just return.
 }
 
-uintptr_t __stdcall start_address( const HMODULE h_module ) {
-    logger::initialize( );
+void cheat_main(HMODULE h_module) {
+    logger::initialize();
+    std::filesystem::create_directory("c:\\airflow\\");
+    std::filesystem::create_directory("c:\\airflow\\configs\\");
 
-    std::filesystem::create_directory( "c:\\airflow\\" );
-    std::filesystem::create_directory( "c:\\airflow\\configs\\" );
+    g_modules->m_modules.initialize();
+    g_interfaces->initialize();
+    g_directx->initialize();
+    g_hooks->initialize();
+    g_config_system->setup_values();
+    g_entity_system->initialize();
 
-    g_modules->m_modules.initialize( );
-    g_interfaces->initialize( );
-    g_directx->initialize( );
-    g_hooks->initialize( );
-    g_config_system->setup_values( );
-    g_entity_system->initialize( );
+    LOG_SUCCESS(xorstr_("[*] DarkSide successfully injected!\n"));
 
-    LOG_SUCCESS( xorstr_( "[*] DarkSide successfully injected!\n" ) );
+    while (!GetAsyncKeyState(VK_END))
+        Sleep(100);
 
-    while ( !GetAsyncKeyState( VK_END ) )
-    {
-        Sleep( 100 );
-    }
-
-    destroy( h_module );
-
-    return 0;
+    destroy(h_module);
 }
 
-BOOL APIENTRY DllMain( HMODULE h_module, DWORD  ul_reason_for_call, LPVOID lp_reserved ) {
-    if ( ul_reason_for_call == DLL_PROCESS_ATTACH ) {
-        auto current_process = WINCALL( GetCurrentProcess )( );
-        auto priority_class = WINCALL( GetPriorityClass )( current_process );
+// Exported entry point — works with ANY injection
+extern "C" __declspec(dllexport)
+void __stdcall CheatEntry(HMODULE hModule) {
+    // Optional: boost priority
+    auto proc = GetCurrentProcess();
+    if (GetPriorityClass(proc) < HIGH_PRIORITY_CLASS)
+        SetPriorityClass(proc, HIGH_PRIORITY_CLASS);
 
-        if ( priority_class != HIGH_PRIORITY_CLASS
-            && priority_class != REALTIME_PRIORITY_CLASS )
-            WINCALL( SetPriorityClass )( current_process, HIGH_PRIORITY_CLASS );
+    CreateThread(nullptr, 0,
+        [](LPVOID param) -> DWORD {
+            cheat_main((HMODULE)param);
+            return 0;
+        }, hModule, 0, nullptr);
+}
 
-        WINCALL( CreateThread )( NULL, NULL, reinterpret_cast<LPTHREAD_START_ROUTINE>( start_address ), h_module, NULL, NULL );
-
-        return true;
+// Optional: keep DllMain for LoadLibrary compatibility
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID) {
+    if (reason == DLL_PROCESS_ATTACH) {
+        DisableThreadLibraryCalls(hModule);
+        CheatEntry(hModule);  // Reuse same path
     }
-
-    return false;
+    return TRUE;
 }
