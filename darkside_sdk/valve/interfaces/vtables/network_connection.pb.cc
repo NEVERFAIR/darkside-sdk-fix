@@ -8,10 +8,6 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
@@ -20,291 +16,6 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_network_5fconnection_2eproto[1];
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_network_5fconnection_2eproto = nullptr;
-const uint32_t TableStruct_network_5fconnection_2eproto::offsets[1] = {};
-static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
-static constexpr ::_pb::Message* const* file_default_instances = nullptr;
-
-const char descriptor_table_protodef_network_5fconnection_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\030network_connection.proto\032 google/proto"
-  "buf/descriptor.proto*\260M\n\033ENetworkDisconn"
-  "ectionReason\022\036\n\032NETWORK_DISCONNECT_INVAL"
-  "ID\020\000\022\037\n\033NETWORK_DISCONNECT_SHUTDOWN\020\001\022F\n"
-  "%NETWORK_DISCONNECT_DISCONNECT_BY_USER\020\002"
-  "\032\033\242\324\030\027#GameUI_Disconnect_User\022J\n\'NETWORK"
-  "_DISCONNECT_DISCONNECT_BY_SERVER\020\003\032\035\242\324\030\031"
-  "#GameUI_Disconnect_Server\022B\n\027NETWORK_DIS"
-  "CONNECT_LOST\020\004\032%\242\324\030!#GameUI_Disconnect_C"
-  "onnectionLost\022J\n\033NETWORK_DISCONNECT_OVER"
-  "FLOW\020\005\032)\242\324\030%#GameUI_Disconnect_Connectio"
-  "nOverflow\022I\n\037NETWORK_DISCONNECT_STEAM_BA"
-  "NNED\020\006\032$\242\324\030 #GameUI_Disconnect_SteamIDBa"
-  "nned\022G\n\036NETWORK_DISCONNECT_STEAM_INUSE\020\007"
-  "\032#\242\324\030\037#GameUI_Disconnect_SteamIDInUse\022G\n"
-  "\037NETWORK_DISCONNECT_STEAM_TICKET\020\010\032\"\242\324\030\036"
-  "#GameUI_Disconnect_SteamTicket\022E\n\036NETWOR"
-  "K_DISCONNECT_STEAM_LOGON\020\t\032!\242\324\030\035#GameUI_"
-  "Disconnect_SteamLogon\022M\n&NETWORK_DISCONN"
-  "ECT_STEAM_AUTHCANCELLED\020\n\032!\242\324\030\035#GameUI_D"
-  "isconnect_SteamLogon\022O\n(NETWORK_DISCONNE"
-  "CT_STEAM_AUTHALREADYUSED\020\013\032!\242\324\030\035#GameUI_"
-  "Disconnect_SteamLogon\022K\n$NETWORK_DISCONN"
-  "ECT_STEAM_AUTHINVALID\020\014\032!\242\324\030\035#GameUI_Dis"
-  "connect_SteamLogon\022M\n$NETWORK_DISCONNECT"
-  "_STEAM_VACBANSTATE\020\r\032#\242\324\030\033#GameUI_Discon"
-  "nect_SteamVAC\260\324\030\000\022S\n,NETWORK_DISCONNECT_"
-  "STEAM_LOGGED_IN_ELSEWHERE\020\016\032!\242\324\030\035#GameUI"
-  "_Disconnect_SteamInUse\022T\n+NETWORK_DISCON"
-  "NECT_STEAM_VAC_CHECK_TIMEDOUT\020\017\032#\242\324\030\037#Ga"
-  "meUI_Disconnect_SteamTimeOut\022I\n NETWORK_"
-  "DISCONNECT_STEAM_DROPPED\020\020\032#\242\324\030\037#GameUI_"
-  "Disconnect_SteamDropped\022M\n\"NETWORK_DISCO"
-  "NNECT_STEAM_OWNERSHIP\020\021\032%\242\324\030!#GameUI_Dis"
-  "connect_SteamOwnership\022U\n&NETWORK_DISCON"
-  "NECT_SERVERINFO_OVERFLOW\020\022\032)\242\324\030%#GameUI_"
-  "Disconnect_ServerInfoOverflow\022K\n#NETWORK"
-  "_DISCONNECT_TICKMSG_OVERFLOW\020\023\032\"\242\324\030\036#Gam"
-  "eUI_Disconnect_TickMessage\022Y\n*NETWORK_DI"
-  "SCONNECT_STRINGTABLEMSG_OVERFLOW\020\024\032)\242\324\030%"
-  "#GameUI_Disconnect_StringTableMessage\022S\n"
-  "\'NETWORK_DISCONNECT_DELTAENTMSG_OVERFLOW"
-  "\020\025\032&\242\324\030\"#GameUI_Disconnect_DeltaEntMessa"
-  "ge\022Q\n&NETWORK_DISCONNECT_TEMPENTMSG_OVER"
-  "FLOW\020\026\032%\242\324\030!#GameUI_Disconnect_TempEntMe"
-  "ssage\022O\n%NETWORK_DISCONNECT_SOUNDSMSG_OV"
-  "ERFLOW\020\027\032$\242\324\030 #GameUI_Disconnect_SoundsM"
-  "essage\022P\n#NETWORK_DISCONNECT_SNAPSHOTOVE"
-  "RFLOW\020\030\032\'\242\324\030##GameUI_Disconnect_Snapshot"
-  "Overflow\022J\n NETWORK_DISCONNECT_SNAPSHOTE"
-  "RROR\020\031\032$\242\324\030 #GameUI_Disconnect_SnapshotE"
-  "rror\022P\n#NETWORK_DISCONNECT_RELIABLEOVERF"
-  "LOW\020\032\032\'\242\324\030##GameUI_Disconnect_ReliableOv"
-  "erflow\022N\n\037NETWORK_DISCONNECT_BADDELTATIC"
-  "K\020\033\032)\242\324\030%#GameUI_Disconnect_BadClientDel"
-  "taTick\022H\n\037NETWORK_DISCONNECT_NOMORESPLIT"
-  "S\020\034\032#\242\324\030\037#GameUI_Disconnect_NoMoreSplits"
-  "\022@\n\033NETWORK_DISCONNECT_TIMEDOUT\020\035\032\037\242\324\030\033#"
-  "GameUI_Disconnect_TimedOut\022H\n\037NETWORK_DI"
-  "SCONNECT_DISCONNECTED\020\036\032#\242\324\030\037#GameUI_Dis"
-  "connect_Disconnected\022H\n\037NETWORK_DISCONNE"
-  "CT_LEAVINGSPLIT\020\037\032#\242\324\030\037#GameUI_Disconnec"
-  "t_LeavingSplit\022X\n\'NETWORK_DISCONNECT_DIF"
-  "FERENTCLASSTABLES\020 \032+\242\324\030\'#GameUI_Disconn"
-  "ect_DifferentClassTables\022P\n#NETWORK_DISC"
-  "ONNECT_BADRELAYPASSWORD\020!\032\'\242\324\030##GameUI_D"
-  "isconnect_BadRelayPassword\022X\n\'NETWORK_DI"
-  "SCONNECT_BADSPECTATORPASSWORD\020\"\032+\242\324\030\'#Ga"
-  "meUI_Disconnect_BadSpectatorPassword\022L\n!"
-  "NETWORK_DISCONNECT_HLTVRESTRICTED\020#\032%\242\324\030"
-  "!#GameUI_Disconnect_HLTVRestricted\022H\n\037NE"
-  "TWORK_DISCONNECT_NOSPECTATORS\020$\032#\242\324\030\037#Ga"
-  "meUI_Disconnect_NoSpectators\022N\n\"NETWORK_"
-  "DISCONNECT_HLTVUNAVAILABLE\020%\032&\242\324\030\"#GameU"
-  "I_Disconnect_HLTVUnavailable\022@\n\033NETWORK_"
-  "DISCONNECT_HLTVSTOP\020&\032\037\242\324\030\033#GameUI_Disco"
-  "nnect_HLTVStop\022<\n\031NETWORK_DISCONNECT_KIC"
-  "KED\020\'\032\035\242\324\030\031#GameUI_Disconnect_Kicked\022@\n\033"
-  "NETWORK_DISCONNECT_BANADDED\020(\032\037\242\324\030\033#Game"
-  "UI_Disconnect_BanAdded\022H\n\037NETWORK_DISCON"
-  "NECT_KICKBANADDED\020)\032#\242\324\030\037#GameUI_Disconn"
-  "ect_KickBanAdded\022D\n\035NETWORK_DISCONNECT_H"
-  "LTVDIRECT\020*\032!\242\324\030\035#GameUI_Disconnect_HLTV"
-  "Direct\022\\\n)NETWORK_DISCONNECT_PURESERVER_"
-  "CLIENTEXTRA\020+\032-\242\324\030)#GameUI_Disconnect_Pu"
-  "reServer_ClientExtra\022V\n&NETWORK_DISCONNE"
-  "CT_PURESERVER_MISMATCH\020,\032*\242\324\030&#GameUI_Di"
-  "sconnect_PureServer_Mismatch\022>\n\032NETWORK_"
-  "DISCONNECT_USERCMD\020-\032\036\242\324\030\032#GameUI_Discon"
-  "nect_UserCmd\022N\n#NETWORK_DISCONNECT_REJEC"
-  "TED_BY_GAME\020.\032%\242\324\030!#GameUI_Disconnect_Re"
-  "jectedByGame\022T\n&NETWORK_DISCONNECT_MESSA"
-  "GE_PARSE_ERROR\020/\032(\242\324\030$#GameUI_Disconnect"
-  "_MessageParseError\022X\n(NETWORK_DISCONNECT"
-  "_INVALID_MESSAGE_ERROR\0200\032*\242\324\030&#GameUI_Di"
-  "sconnect_InvalidMessageError\022T\n&NETWORK_"
-  "DISCONNECT_BAD_SERVER_PASSWORD\0201\032(\242\324\030$#G"
-  "ameUI_Disconnect_BadServerPassword\0221\n-NE"
-  "TWORK_DISCONNECT_DIRECT_CONNECT_RESERVAT"
-  "ION\0202\022S\n%NETWORK_DISCONNECT_CONNECTION_F"
-  "AILURE\0203\032(\242\324\030$#GameUI_Disconnect_Connect"
-  "ionFailure\022Y\n)NETWORK_DISCONNECT_NO_PEER"
-  "_GROUP_HANDLERS\0204\032*\242\324\030&#GameUI_Disconnec"
-  "t_NoPeerGroupHandlers\022#\n\037NETWORK_DISCONN"
-  "ECT_RECONNECTION\0205\022H\n\037NETWORK_DISCONNECT"
-  "_LOOPSHUTDOWN\0206\032#\242\324\030\037#GameUI_Disconnect_"
-  "LoopShutdown\022L\n!NETWORK_DISCONNECT_LOOPD"
-  "EACTIVATE\0207\032%\242\324\030!#GameUI_Disconnect_Loop"
-  "Deactivate\022H\n\037NETWORK_DISCONNECT_HOST_EN"
-  "DGAME\0208\032#\242\324\030\037#GameUI_Disconnect_Host_End"
-  "Game\022\\\n*NETWORK_DISCONNECT_LOOP_LEVELLOA"
-  "D_ACTIVATE\0209\032,\242\324\030(#GameUI_Disconnect_Loo"
-  "pLevelLoadActivate\022V\n\'NETWORK_DISCONNECT"
-  "_CREATE_SERVER_FAILED\020:\032)\242\324\030%#GameUI_Dis"
-  "connect_CreateServerFailed\022D\n\032NETWORK_DI"
-  "SCONNECT_EXITING\020;\032$\242\324\030 #GameUI_Disconne"
-  "ct_ExitingEngine\022T\n)NETWORK_DISCONNECT_R"
-  "EQUEST_HOSTSTATE_IDLE\020<\032%\242\324\030!#GameUI_Dis"
-  "connect_Request_HSIdle\022\\\n.NETWORK_DISCON"
-  "NECT_REQUEST_HOSTSTATE_HLTVRELAY\020=\032(\242\324\030$"
-  "#GameUI_Disconnect_Request_HLTVRelay\022Q\n*"
-  "NETWORK_DISCONNECT_CLIENT_CONSISTENCY_FA"
-  "IL\020>\032!\242\324\030\035#GameUI_ClientConsistencyFail\022"
-  "Q\n+NETWORK_DISCONNECT_CLIENT_UNABLE_TO_C"
-  "RC_MAP\020\?\032 \242\324\030\034#GameUI_ClientUnableToCRCM"
-  "ap\022=\n NETWORK_DISCONNECT_CLIENT_NO_MAP\020@"
-  "\032\027\242\324\030\023#GameUI_ClientNoMap\022K\n\'NETWORK_DIS"
-  "CONNECT_CLIENT_DIFFERENT_MAP\020A\032\036\242\324\030\032#Gam"
-  "eUI_ClientDifferentMap\022M\n(NETWORK_DISCON"
-  "NECT_SERVER_REQUIRES_STEAM\020B\032\037\242\324\030\033#GameU"
-  "I_ServerRequireSteams\022M\n\"NETWORK_DISCONN"
-  "ECT_STEAM_DENY_MISC\020C\032%\242\324\030!#GameUI_Disco"
-  "nnect_SteamDeny_Misc\022_\n,NETWORK_DISCONNE"
-  "CT_STEAM_DENY_BAD_ANTI_CHEAT\020D\032-\242\324\030)#Gam"
-  "eUI_Disconnect_SteamDeny_BadAntiCheat\022M\n"
-  "\"NETWORK_DISCONNECT_SERVER_SHUTDOWN\020E\032%\242"
-  "\324\030!#GameUI_Disconnect_ServerShutdown\022U\n&"
-  "NETWORK_DISCONNECT_REPLAY_INCOMPATIBLE\020G"
-  "\032)\242\324\030%#GameUI_Disconnect_ReplayIncompati"
-  "ble\022Z\n+NETWORK_DISCONNECT_CONNECT_REQUES"
-  "T_TIMEDOUT\020H\032)\242\324\030%#GameUI_Disconnect_Con"
-  "nectionTimedout\022U\n&NETWORK_DISCONNECT_SE"
-  "RVER_INCOMPATIBLE\020I\032)\242\324\030%#GameUI_Disconn"
-  "ect_ServerIncompatible\022^\n*NETWORK_DISCON"
-  "NECT_LOCALPROBLEM_MANYRELAYS\020J\032.\242\324\030*#Gam"
-  "eUI_Disconnect_LocalProblem_ManyRelays\022z"
-  "\n8NETWORK_DISCONNECT_LOCALPROBLEM_HOSTED"
-  "SERVERPRIMARYRELAY\020K\032<\242\324\0308#GameUI_Discon"
-  "nect_LocalProblem_HostedServerPrimaryRel"
-  "ay\022d\n-NETWORK_DISCONNECT_LOCALPROBLEM_NE"
-  "TWORKCONFIG\020L\0321\242\324\030-#GameUI_Disconnect_Lo"
-  "calProblem_NetworkConfig\022T\n%NETWORK_DISC"
-  "ONNECT_LOCALPROBLEM_OTHER\020M\032)\242\324\030%#GameUI"
-  "_Disconnect_LocalProblem_Other\022S\n!NETWOR"
-  "K_DISCONNECT_REMOTE_TIMEOUT\020O\032,\242\324\030(#Game"
-  "UI_Disconnect_RemoteProblem_Timeout\022h\n,N"
-  "ETWORK_DISCONNECT_REMOTE_TIMEOUT_CONNECT"
-  "ING\020P\0326\242\324\0302#GameUI_Disconnect_RemoteProb"
-  "lem_TimeoutConnecting\022O\n\037NETWORK_DISCONN"
-  "ECT_REMOTE_OTHER\020Q\032*\242\324\030&#GameUI_Disconne"
-  "ct_RemoteProblem_Other\022U\n\"NETWORK_DISCON"
-  "NECT_REMOTE_BADCRYPT\020R\032-\242\324\030)#GameUI_Disc"
-  "onnect_RemoteProblem_BadCrypt\022Z\n(NETWORK"
-  "_DISCONNECT_REMOTE_CERTNOTTRUSTED\020S\032,\242\324\030"
-  "(#GameUI_Disconnect_RemoteProblem_BadCer"
-  "t\022>\n\032NETWORK_DISCONNECT_UNUSUAL\020T\032\036\242\324\030\032#"
-  "GameUI_Disconnect_Unusual\022K\n!NETWORK_DIS"
-  "CONNECT_INTERNAL_ERROR\020U\032$\242\324\030 #GameUI_Di"
-  "sconnect_InternalError\022Q\n&NETWORK_DISCON"
-  "NECT_REJECT_BADCHALLENGE\020\200\001\032$\242\324\030 #GameUI"
-  "_ServerRejectBadChallenge\022A\n!NETWORK_DIS"
-  "CONNECT_REJECT_NOLOBBY\020\201\001\032\031\242\324\030\025#GameUI_S"
-  "erverNoLobby\022O\n(NETWORK_DISCONNECT_REJEC"
-  "T_BACKGROUND_MAP\020\202\001\032 \242\324\030\034#Valve_Reject_B"
-  "ackground_Map\022M\n\'NETWORK_DISCONNECT_REJE"
-  "CT_SINGLE_PLAYER\020\203\001\032\037\242\324\030\033#Valve_Reject_S"
-  "ingle_Player\022I\n%NETWORK_DISCONNECT_REJEC"
-  "T_HIDDEN_GAME\020\204\001\032\035\242\324\030\031#Valve_Reject_Hidd"
-  "en_Game\022O\n%NETWORK_DISCONNECT_REJECT_LAN"
-  "RESTRICT\020\205\001\032#\242\324\030\037#GameUI_ServerRejectLAN"
-  "Restrict\022O\n%NETWORK_DISCONNECT_REJECT_BA"
-  "DPASSWORD\020\206\001\032#\242\324\030\037#GameUI_ServerRejectBa"
-  "dPassword\022M\n$NETWORK_DISCONNECT_REJECT_S"
-  "ERVERFULL\020\207\001\032\"\242\324\030\036#GameUI_ServerRejectSe"
-  "rverFull\022]\n,NETWORK_DISCONNECT_REJECT_IN"
-  "VALIDRESERVATION\020\210\001\032*\242\324\030&#GameUI_ServerR"
-  "ejectInvalidReservation\022S\n\'NETWORK_DISCO"
-  "NNECT_REJECT_FAILEDCHANNEL\020\211\001\032%\242\324\030!#Game"
-  "UI_ServerRejectFailedChannel\022W\n,NETWORK_"
-  "DISCONNECT_REJECT_CONNECT_FROM_LOBBY\020\212\001\032"
-  "$\242\324\030 #Valve_Reject_Connect_From_Lobby\022W\n"
-  ",NETWORK_DISCONNECT_REJECT_RESERVED_FOR_"
-  "LOBBY\020\213\001\032$\242\324\030 #Valve_Reject_Reserved_For"
-  "_Lobby\022Z\n*NETWORK_DISCONNECT_REJECT_INVA"
-  "LIDKEYLENGTH\020\214\001\032)\242\324\030%#GameUI_ServerRejec"
-  "t_InvalidKeyLength\022O\n%NETWORK_DISCONNECT"
-  "_REJECT_OLDPROTOCOL\020\215\001\032#\242\324\030\037#GameUI_Serv"
-  "erRejectOldProtocol\022O\n%NETWORK_DISCONNEC"
-  "T_REJECT_NEWPROTOCOL\020\216\001\032#\242\324\030\037#GameUI_Ser"
-  "verRejectNewProtocol\022[\n+NETWORK_DISCONNE"
-  "CT_REJECT_INVALIDCONNECTION\020\217\001\032)\242\324\030%#Gam"
-  "eUI_ServerRejectInvalidConnection\022U\n(NET"
-  "WORK_DISCONNECT_REJECT_INVALIDCERTLEN\020\220\001"
-  "\032&\242\324\030\"#GameUI_ServerRejectInvalidCertLen"
-  "\022_\n-NETWORK_DISCONNECT_REJECT_INVALIDSTE"
-  "AMCERTLEN\020\221\001\032+\242\324\030\'#GameUI_ServerRejectIn"
-  "validSteamCertLen\022C\n\037NETWORK_DISCONNECT_"
-  "REJECT_STEAM\020\222\001\032\035\242\324\030\031#GameUI_ServerRejec"
-  "tSteam\022Q\n,NETWORK_DISCONNECT_REJECT_SERV"
-  "ERAUTHDISABLED\020\223\001\032\036\242\324\030\032#GameUI_ServerAut"
-  "hDisabled\022Y\n0NETWORK_DISCONNECT_REJECT_S"
-  "ERVERCDKEYAUTHINVALID\020\224\001\032\"\242\324\030\036#GameUI_Se"
-  "rverCDKeyAuthInvalid\022E\n NETWORK_DISCONNE"
-  "CT_REJECT_BANNED\020\225\001\032\036\242\324\030\032#GameUI_ServerR"
-  "ejectBanned\022T\n%NETWORK_DISCONNECT_KICKED"
-  "_TEAMKILLING\020\226\001\032(\242\324\030$#Player_DisconnectR"
-  "eason_TeamKilling\022N\n\"NETWORK_DISCONNECT_"
-  "KICKED_TK_START\020\227\001\032%\242\324\030!#Player_Disconne"
-  "ctReason_TK_Start\022^\n*NETWORK_DISCONNECT_"
-  "KICKED_UNTRUSTEDACCOUNT\020\230\001\032-\242\324\030)#Player_"
-  "DisconnectReason_UntrustedAccount\022^\n*NET"
-  "WORK_DISCONNECT_KICKED_CONVICTEDACCOUNT\020"
-  "\231\001\032-\242\324\030)#Player_DisconnectReason_Convict"
-  "edAccount\022d\n-NETWORK_DISCONNECT_KICKED_C"
-  "OMPETITIVECOOLDOWN\020\232\001\0320\242\324\030,#Player_Disco"
-  "nnectReason_CompetitiveCooldown\022T\n%NETWO"
-  "RK_DISCONNECT_KICKED_TEAMHURTING\020\233\001\032(\242\324\030"
-  "$#Player_DisconnectReason_TeamHurting\022Z\n"
-  "(NETWORK_DISCONNECT_KICKED_HOSTAGEKILLIN"
-  "G\020\234\001\032+\242\324\030\'#Player_DisconnectReason_Hosta"
-  "geKilling\022N\n\"NETWORK_DISCONNECT_KICKED_V"
-  "OTEDOFF\020\235\001\032%\242\324\030!#Player_DisconnectReason"
-  "_VotedOff\022F\n\036NETWORK_DISCONNECT_KICKED_I"
-  "DLE\020\236\001\032!\242\324\030\035#Player_DisconnectReason_Idl"
-  "e\022L\n!NETWORK_DISCONNECT_KICKED_SUICIDE\020\237"
-  "\001\032$\242\324\030 #Player_DisconnectReason_Suicide\022"
-  "V\n&NETWORK_DISCONNECT_KICKED_NOSTEAMLOGI"
-  "N\020\240\001\032)\242\324\030%#Player_DisconnectReason_NoSte"
-  "amLogin\022X\n\'NETWORK_DISCONNECT_KICKED_NOS"
-  "TEAMTICKET\020\241\001\032*\242\324\030&#Player_DisconnectRea"
-  "son_NoSteamTicket\022\217\001\n)NETWORK_DISCONNECT"
-  "_KICKED_INPUTAUTOMATION\020\242\001\032_\242\324\030(#Player_"
-  "DisconnectReason_InputAutomation\252\324\030/#Pla"
-  "yer_DisconnectReason_InputAutomation_Det"
-  "ail\022n\n0NETWORK_DISCONNECT_KICKED_VACNETA"
-  "BNORMALBEHAVIOR\020\243\001\0327\242\324\030/#Player_Disconne"
-  "ctReason_VacNetAbnormalBehavior\260\324\030\000\022Z\n(N"
-  "ETWORK_DISCONNECT_KICKED_INSECURECLIENT\020"
-  "\244\001\032+\242\324\030\'#Player_DisconnectReason_Insecur"
-  "eClient:E\n\030network_connection_token\022!.go"
-  "ogle.protobuf.EnumValueOptions\030\304\212\003 \001(\t:L"
-  "\n\037network_connection_detail_token\022!.goog"
-  "le.protobuf.EnumValueOptions\030\305\212\003 \001(\t:F\n\023"
-  "allowed_from_client\022!.google.protobuf.En"
-  "umValueOptions\030\306\212\003 \001(\010:\004true"
-  ;
-static const ::_pbi::DescriptorTable* const descriptor_table_network_5fconnection_2eproto_deps[1] = {
-  &::descriptor_table_google_2fprotobuf_2fdescriptor_2eproto,
-};
-static ::_pbi::once_flag descriptor_table_network_5fconnection_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_network_5fconnection_2eproto = {
-    false, false, 10188, descriptor_table_protodef_network_5fconnection_2eproto,
-    "network_connection.proto",
-    &descriptor_table_network_5fconnection_2eproto_once, descriptor_table_network_5fconnection_2eproto_deps, 1, 0,
-    schemas, file_default_instances, TableStruct_network_5fconnection_2eproto::offsets,
-    nullptr, file_level_enum_descriptors_network_5fconnection_2eproto,
-    file_level_service_descriptors_network_5fconnection_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_network_5fconnection_2eproto_getter() {
-  return &descriptor_table_network_5fconnection_2eproto;
-}
-
-// Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_network_5fconnection_2eproto(&descriptor_table_network_5fconnection_2eproto);
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ENetworkDisconnectionReason_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_network_5fconnection_2eproto);
-  return file_level_enum_descriptors_network_5fconnection_2eproto[0];
-}
 bool ENetworkDisconnectionReason_IsValid(int value) {
   switch (value) {
     case 0:
@@ -434,6 +145,404 @@ bool ENetworkDisconnectionReason_IsValid(int value) {
   }
 }
 
+static ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<std::string> ENetworkDisconnectionReason_strings[121] = {};
+
+static const char ENetworkDisconnectionReason_names[] =
+  "NETWORK_DISCONNECT_BADDELTATICK"
+  "NETWORK_DISCONNECT_BADRELAYPASSWORD"
+  "NETWORK_DISCONNECT_BADSPECTATORPASSWORD"
+  "NETWORK_DISCONNECT_BAD_SERVER_PASSWORD"
+  "NETWORK_DISCONNECT_BANADDED"
+  "NETWORK_DISCONNECT_CLIENT_CONSISTENCY_FAIL"
+  "NETWORK_DISCONNECT_CLIENT_DIFFERENT_MAP"
+  "NETWORK_DISCONNECT_CLIENT_NO_MAP"
+  "NETWORK_DISCONNECT_CLIENT_UNABLE_TO_CRC_MAP"
+  "NETWORK_DISCONNECT_CONNECTION_FAILURE"
+  "NETWORK_DISCONNECT_CONNECT_REQUEST_TIMEDOUT"
+  "NETWORK_DISCONNECT_CREATE_SERVER_FAILED"
+  "NETWORK_DISCONNECT_DELTAENTMSG_OVERFLOW"
+  "NETWORK_DISCONNECT_DIFFERENTCLASSTABLES"
+  "NETWORK_DISCONNECT_DIRECT_CONNECT_RESERVATION"
+  "NETWORK_DISCONNECT_DISCONNECTED"
+  "NETWORK_DISCONNECT_DISCONNECT_BY_SERVER"
+  "NETWORK_DISCONNECT_DISCONNECT_BY_USER"
+  "NETWORK_DISCONNECT_EXITING"
+  "NETWORK_DISCONNECT_HLTVDIRECT"
+  "NETWORK_DISCONNECT_HLTVRESTRICTED"
+  "NETWORK_DISCONNECT_HLTVSTOP"
+  "NETWORK_DISCONNECT_HLTVUNAVAILABLE"
+  "NETWORK_DISCONNECT_HOST_ENDGAME"
+  "NETWORK_DISCONNECT_INTERNAL_ERROR"
+  "NETWORK_DISCONNECT_INVALID"
+  "NETWORK_DISCONNECT_INVALID_MESSAGE_ERROR"
+  "NETWORK_DISCONNECT_KICKBANADDED"
+  "NETWORK_DISCONNECT_KICKED"
+  "NETWORK_DISCONNECT_KICKED_COMPETITIVECOOLDOWN"
+  "NETWORK_DISCONNECT_KICKED_CONVICTEDACCOUNT"
+  "NETWORK_DISCONNECT_KICKED_HOSTAGEKILLING"
+  "NETWORK_DISCONNECT_KICKED_IDLE"
+  "NETWORK_DISCONNECT_KICKED_INPUTAUTOMATION"
+  "NETWORK_DISCONNECT_KICKED_INSECURECLIENT"
+  "NETWORK_DISCONNECT_KICKED_NOSTEAMLOGIN"
+  "NETWORK_DISCONNECT_KICKED_NOSTEAMTICKET"
+  "NETWORK_DISCONNECT_KICKED_SUICIDE"
+  "NETWORK_DISCONNECT_KICKED_TEAMHURTING"
+  "NETWORK_DISCONNECT_KICKED_TEAMKILLING"
+  "NETWORK_DISCONNECT_KICKED_TK_START"
+  "NETWORK_DISCONNECT_KICKED_UNTRUSTEDACCOUNT"
+  "NETWORK_DISCONNECT_KICKED_VACNETABNORMALBEHAVIOR"
+  "NETWORK_DISCONNECT_KICKED_VOTEDOFF"
+  "NETWORK_DISCONNECT_LEAVINGSPLIT"
+  "NETWORK_DISCONNECT_LOCALPROBLEM_HOSTEDSERVERPRIMARYRELAY"
+  "NETWORK_DISCONNECT_LOCALPROBLEM_MANYRELAYS"
+  "NETWORK_DISCONNECT_LOCALPROBLEM_NETWORKCONFIG"
+  "NETWORK_DISCONNECT_LOCALPROBLEM_OTHER"
+  "NETWORK_DISCONNECT_LOOPDEACTIVATE"
+  "NETWORK_DISCONNECT_LOOPSHUTDOWN"
+  "NETWORK_DISCONNECT_LOOP_LEVELLOAD_ACTIVATE"
+  "NETWORK_DISCONNECT_LOST"
+  "NETWORK_DISCONNECT_MESSAGE_PARSE_ERROR"
+  "NETWORK_DISCONNECT_NOMORESPLITS"
+  "NETWORK_DISCONNECT_NOSPECTATORS"
+  "NETWORK_DISCONNECT_NO_PEER_GROUP_HANDLERS"
+  "NETWORK_DISCONNECT_OVERFLOW"
+  "NETWORK_DISCONNECT_PURESERVER_CLIENTEXTRA"
+  "NETWORK_DISCONNECT_PURESERVER_MISMATCH"
+  "NETWORK_DISCONNECT_RECONNECTION"
+  "NETWORK_DISCONNECT_REJECTED_BY_GAME"
+  "NETWORK_DISCONNECT_REJECT_BACKGROUND_MAP"
+  "NETWORK_DISCONNECT_REJECT_BADCHALLENGE"
+  "NETWORK_DISCONNECT_REJECT_BADPASSWORD"
+  "NETWORK_DISCONNECT_REJECT_BANNED"
+  "NETWORK_DISCONNECT_REJECT_CONNECT_FROM_LOBBY"
+  "NETWORK_DISCONNECT_REJECT_FAILEDCHANNEL"
+  "NETWORK_DISCONNECT_REJECT_HIDDEN_GAME"
+  "NETWORK_DISCONNECT_REJECT_INVALIDCERTLEN"
+  "NETWORK_DISCONNECT_REJECT_INVALIDCONNECTION"
+  "NETWORK_DISCONNECT_REJECT_INVALIDKEYLENGTH"
+  "NETWORK_DISCONNECT_REJECT_INVALIDRESERVATION"
+  "NETWORK_DISCONNECT_REJECT_INVALIDSTEAMCERTLEN"
+  "NETWORK_DISCONNECT_REJECT_LANRESTRICT"
+  "NETWORK_DISCONNECT_REJECT_NEWPROTOCOL"
+  "NETWORK_DISCONNECT_REJECT_NOLOBBY"
+  "NETWORK_DISCONNECT_REJECT_OLDPROTOCOL"
+  "NETWORK_DISCONNECT_REJECT_RESERVED_FOR_LOBBY"
+  "NETWORK_DISCONNECT_REJECT_SERVERAUTHDISABLED"
+  "NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID"
+  "NETWORK_DISCONNECT_REJECT_SERVERFULL"
+  "NETWORK_DISCONNECT_REJECT_SINGLE_PLAYER"
+  "NETWORK_DISCONNECT_REJECT_STEAM"
+  "NETWORK_DISCONNECT_RELIABLEOVERFLOW"
+  "NETWORK_DISCONNECT_REMOTE_BADCRYPT"
+  "NETWORK_DISCONNECT_REMOTE_CERTNOTTRUSTED"
+  "NETWORK_DISCONNECT_REMOTE_OTHER"
+  "NETWORK_DISCONNECT_REMOTE_TIMEOUT"
+  "NETWORK_DISCONNECT_REMOTE_TIMEOUT_CONNECTING"
+  "NETWORK_DISCONNECT_REPLAY_INCOMPATIBLE"
+  "NETWORK_DISCONNECT_REQUEST_HOSTSTATE_HLTVRELAY"
+  "NETWORK_DISCONNECT_REQUEST_HOSTSTATE_IDLE"
+  "NETWORK_DISCONNECT_SERVERINFO_OVERFLOW"
+  "NETWORK_DISCONNECT_SERVER_INCOMPATIBLE"
+  "NETWORK_DISCONNECT_SERVER_REQUIRES_STEAM"
+  "NETWORK_DISCONNECT_SERVER_SHUTDOWN"
+  "NETWORK_DISCONNECT_SHUTDOWN"
+  "NETWORK_DISCONNECT_SNAPSHOTERROR"
+  "NETWORK_DISCONNECT_SNAPSHOTOVERFLOW"
+  "NETWORK_DISCONNECT_SOUNDSMSG_OVERFLOW"
+  "NETWORK_DISCONNECT_STEAM_AUTHALREADYUSED"
+  "NETWORK_DISCONNECT_STEAM_AUTHCANCELLED"
+  "NETWORK_DISCONNECT_STEAM_AUTHINVALID"
+  "NETWORK_DISCONNECT_STEAM_BANNED"
+  "NETWORK_DISCONNECT_STEAM_DENY_BAD_ANTI_CHEAT"
+  "NETWORK_DISCONNECT_STEAM_DENY_MISC"
+  "NETWORK_DISCONNECT_STEAM_DROPPED"
+  "NETWORK_DISCONNECT_STEAM_INUSE"
+  "NETWORK_DISCONNECT_STEAM_LOGGED_IN_ELSEWHERE"
+  "NETWORK_DISCONNECT_STEAM_LOGON"
+  "NETWORK_DISCONNECT_STEAM_OWNERSHIP"
+  "NETWORK_DISCONNECT_STEAM_TICKET"
+  "NETWORK_DISCONNECT_STEAM_VACBANSTATE"
+  "NETWORK_DISCONNECT_STEAM_VAC_CHECK_TIMEDOUT"
+  "NETWORK_DISCONNECT_STRINGTABLEMSG_OVERFLOW"
+  "NETWORK_DISCONNECT_TEMPENTMSG_OVERFLOW"
+  "NETWORK_DISCONNECT_TICKMSG_OVERFLOW"
+  "NETWORK_DISCONNECT_TIMEDOUT"
+  "NETWORK_DISCONNECT_UNUSUAL"
+  "NETWORK_DISCONNECT_USERCMD";
+
+static const ::PROTOBUF_NAMESPACE_ID::internal::EnumEntry ENetworkDisconnectionReason_entries[] = {
+  { {ENetworkDisconnectionReason_names + 0, 31}, 27 },
+  { {ENetworkDisconnectionReason_names + 31, 35}, 33 },
+  { {ENetworkDisconnectionReason_names + 66, 39}, 34 },
+  { {ENetworkDisconnectionReason_names + 105, 38}, 49 },
+  { {ENetworkDisconnectionReason_names + 143, 27}, 40 },
+  { {ENetworkDisconnectionReason_names + 170, 42}, 62 },
+  { {ENetworkDisconnectionReason_names + 212, 39}, 65 },
+  { {ENetworkDisconnectionReason_names + 251, 32}, 64 },
+  { {ENetworkDisconnectionReason_names + 283, 43}, 63 },
+  { {ENetworkDisconnectionReason_names + 326, 37}, 51 },
+  { {ENetworkDisconnectionReason_names + 363, 43}, 72 },
+  { {ENetworkDisconnectionReason_names + 406, 39}, 58 },
+  { {ENetworkDisconnectionReason_names + 445, 39}, 21 },
+  { {ENetworkDisconnectionReason_names + 484, 39}, 32 },
+  { {ENetworkDisconnectionReason_names + 523, 45}, 50 },
+  { {ENetworkDisconnectionReason_names + 568, 31}, 30 },
+  { {ENetworkDisconnectionReason_names + 599, 39}, 3 },
+  { {ENetworkDisconnectionReason_names + 638, 37}, 2 },
+  { {ENetworkDisconnectionReason_names + 675, 26}, 59 },
+  { {ENetworkDisconnectionReason_names + 701, 29}, 42 },
+  { {ENetworkDisconnectionReason_names + 730, 33}, 35 },
+  { {ENetworkDisconnectionReason_names + 763, 27}, 38 },
+  { {ENetworkDisconnectionReason_names + 790, 34}, 37 },
+  { {ENetworkDisconnectionReason_names + 824, 31}, 56 },
+  { {ENetworkDisconnectionReason_names + 855, 33}, 85 },
+  { {ENetworkDisconnectionReason_names + 888, 26}, 0 },
+  { {ENetworkDisconnectionReason_names + 914, 40}, 48 },
+  { {ENetworkDisconnectionReason_names + 954, 31}, 41 },
+  { {ENetworkDisconnectionReason_names + 985, 25}, 39 },
+  { {ENetworkDisconnectionReason_names + 1010, 45}, 154 },
+  { {ENetworkDisconnectionReason_names + 1055, 42}, 153 },
+  { {ENetworkDisconnectionReason_names + 1097, 40}, 156 },
+  { {ENetworkDisconnectionReason_names + 1137, 30}, 158 },
+  { {ENetworkDisconnectionReason_names + 1167, 41}, 162 },
+  { {ENetworkDisconnectionReason_names + 1208, 40}, 164 },
+  { {ENetworkDisconnectionReason_names + 1248, 38}, 160 },
+  { {ENetworkDisconnectionReason_names + 1286, 39}, 161 },
+  { {ENetworkDisconnectionReason_names + 1325, 33}, 159 },
+  { {ENetworkDisconnectionReason_names + 1358, 37}, 155 },
+  { {ENetworkDisconnectionReason_names + 1395, 37}, 150 },
+  { {ENetworkDisconnectionReason_names + 1432, 34}, 151 },
+  { {ENetworkDisconnectionReason_names + 1466, 42}, 152 },
+  { {ENetworkDisconnectionReason_names + 1508, 48}, 163 },
+  { {ENetworkDisconnectionReason_names + 1556, 34}, 157 },
+  { {ENetworkDisconnectionReason_names + 1590, 31}, 31 },
+  { {ENetworkDisconnectionReason_names + 1621, 56}, 75 },
+  { {ENetworkDisconnectionReason_names + 1677, 42}, 74 },
+  { {ENetworkDisconnectionReason_names + 1719, 45}, 76 },
+  { {ENetworkDisconnectionReason_names + 1764, 37}, 77 },
+  { {ENetworkDisconnectionReason_names + 1801, 33}, 55 },
+  { {ENetworkDisconnectionReason_names + 1834, 31}, 54 },
+  { {ENetworkDisconnectionReason_names + 1865, 42}, 57 },
+  { {ENetworkDisconnectionReason_names + 1907, 23}, 4 },
+  { {ENetworkDisconnectionReason_names + 1930, 38}, 47 },
+  { {ENetworkDisconnectionReason_names + 1968, 31}, 28 },
+  { {ENetworkDisconnectionReason_names + 1999, 31}, 36 },
+  { {ENetworkDisconnectionReason_names + 2030, 41}, 52 },
+  { {ENetworkDisconnectionReason_names + 2071, 27}, 5 },
+  { {ENetworkDisconnectionReason_names + 2098, 41}, 43 },
+  { {ENetworkDisconnectionReason_names + 2139, 38}, 44 },
+  { {ENetworkDisconnectionReason_names + 2177, 31}, 53 },
+  { {ENetworkDisconnectionReason_names + 2208, 35}, 46 },
+  { {ENetworkDisconnectionReason_names + 2243, 40}, 130 },
+  { {ENetworkDisconnectionReason_names + 2283, 38}, 128 },
+  { {ENetworkDisconnectionReason_names + 2321, 37}, 134 },
+  { {ENetworkDisconnectionReason_names + 2358, 32}, 149 },
+  { {ENetworkDisconnectionReason_names + 2390, 44}, 138 },
+  { {ENetworkDisconnectionReason_names + 2434, 39}, 137 },
+  { {ENetworkDisconnectionReason_names + 2473, 37}, 132 },
+  { {ENetworkDisconnectionReason_names + 2510, 40}, 144 },
+  { {ENetworkDisconnectionReason_names + 2550, 43}, 143 },
+  { {ENetworkDisconnectionReason_names + 2593, 42}, 140 },
+  { {ENetworkDisconnectionReason_names + 2635, 44}, 136 },
+  { {ENetworkDisconnectionReason_names + 2679, 45}, 145 },
+  { {ENetworkDisconnectionReason_names + 2724, 37}, 133 },
+  { {ENetworkDisconnectionReason_names + 2761, 37}, 142 },
+  { {ENetworkDisconnectionReason_names + 2798, 33}, 129 },
+  { {ENetworkDisconnectionReason_names + 2831, 37}, 141 },
+  { {ENetworkDisconnectionReason_names + 2868, 44}, 139 },
+  { {ENetworkDisconnectionReason_names + 2912, 44}, 147 },
+  { {ENetworkDisconnectionReason_names + 2956, 48}, 148 },
+  { {ENetworkDisconnectionReason_names + 3004, 36}, 135 },
+  { {ENetworkDisconnectionReason_names + 3040, 39}, 131 },
+  { {ENetworkDisconnectionReason_names + 3079, 31}, 146 },
+  { {ENetworkDisconnectionReason_names + 3110, 35}, 26 },
+  { {ENetworkDisconnectionReason_names + 3145, 34}, 82 },
+  { {ENetworkDisconnectionReason_names + 3179, 40}, 83 },
+  { {ENetworkDisconnectionReason_names + 3219, 31}, 81 },
+  { {ENetworkDisconnectionReason_names + 3250, 33}, 79 },
+  { {ENetworkDisconnectionReason_names + 3283, 44}, 80 },
+  { {ENetworkDisconnectionReason_names + 3327, 38}, 71 },
+  { {ENetworkDisconnectionReason_names + 3365, 46}, 61 },
+  { {ENetworkDisconnectionReason_names + 3411, 41}, 60 },
+  { {ENetworkDisconnectionReason_names + 3452, 38}, 18 },
+  { {ENetworkDisconnectionReason_names + 3490, 38}, 73 },
+  { {ENetworkDisconnectionReason_names + 3528, 40}, 66 },
+  { {ENetworkDisconnectionReason_names + 3568, 34}, 69 },
+  { {ENetworkDisconnectionReason_names + 3602, 27}, 1 },
+  { {ENetworkDisconnectionReason_names + 3629, 32}, 25 },
+  { {ENetworkDisconnectionReason_names + 3661, 35}, 24 },
+  { {ENetworkDisconnectionReason_names + 3696, 37}, 23 },
+  { {ENetworkDisconnectionReason_names + 3733, 40}, 11 },
+  { {ENetworkDisconnectionReason_names + 3773, 38}, 10 },
+  { {ENetworkDisconnectionReason_names + 3811, 36}, 12 },
+  { {ENetworkDisconnectionReason_names + 3847, 31}, 6 },
+  { {ENetworkDisconnectionReason_names + 3878, 44}, 68 },
+  { {ENetworkDisconnectionReason_names + 3922, 34}, 67 },
+  { {ENetworkDisconnectionReason_names + 3956, 32}, 16 },
+  { {ENetworkDisconnectionReason_names + 3988, 30}, 7 },
+  { {ENetworkDisconnectionReason_names + 4018, 44}, 14 },
+  { {ENetworkDisconnectionReason_names + 4062, 30}, 9 },
+  { {ENetworkDisconnectionReason_names + 4092, 34}, 17 },
+  { {ENetworkDisconnectionReason_names + 4126, 31}, 8 },
+  { {ENetworkDisconnectionReason_names + 4157, 36}, 13 },
+  { {ENetworkDisconnectionReason_names + 4193, 43}, 15 },
+  { {ENetworkDisconnectionReason_names + 4236, 42}, 20 },
+  { {ENetworkDisconnectionReason_names + 4278, 38}, 22 },
+  { {ENetworkDisconnectionReason_names + 4316, 35}, 19 },
+  { {ENetworkDisconnectionReason_names + 4351, 27}, 29 },
+  { {ENetworkDisconnectionReason_names + 4378, 26}, 84 },
+  { {ENetworkDisconnectionReason_names + 4404, 26}, 45 },
+};
+
+static const int ENetworkDisconnectionReason_entries_by_number[] = {
+  25, // 0 -> NETWORK_DISCONNECT_INVALID
+  97, // 1 -> NETWORK_DISCONNECT_SHUTDOWN
+  17, // 2 -> NETWORK_DISCONNECT_DISCONNECT_BY_USER
+  16, // 3 -> NETWORK_DISCONNECT_DISCONNECT_BY_SERVER
+  52, // 4 -> NETWORK_DISCONNECT_LOST
+  57, // 5 -> NETWORK_DISCONNECT_OVERFLOW
+  104, // 6 -> NETWORK_DISCONNECT_STEAM_BANNED
+  108, // 7 -> NETWORK_DISCONNECT_STEAM_INUSE
+  112, // 8 -> NETWORK_DISCONNECT_STEAM_TICKET
+  110, // 9 -> NETWORK_DISCONNECT_STEAM_LOGON
+  102, // 10 -> NETWORK_DISCONNECT_STEAM_AUTHCANCELLED
+  101, // 11 -> NETWORK_DISCONNECT_STEAM_AUTHALREADYUSED
+  103, // 12 -> NETWORK_DISCONNECT_STEAM_AUTHINVALID
+  113, // 13 -> NETWORK_DISCONNECT_STEAM_VACBANSTATE
+  109, // 14 -> NETWORK_DISCONNECT_STEAM_LOGGED_IN_ELSEWHERE
+  114, // 15 -> NETWORK_DISCONNECT_STEAM_VAC_CHECK_TIMEDOUT
+  107, // 16 -> NETWORK_DISCONNECT_STEAM_DROPPED
+  111, // 17 -> NETWORK_DISCONNECT_STEAM_OWNERSHIP
+  93, // 18 -> NETWORK_DISCONNECT_SERVERINFO_OVERFLOW
+  117, // 19 -> NETWORK_DISCONNECT_TICKMSG_OVERFLOW
+  115, // 20 -> NETWORK_DISCONNECT_STRINGTABLEMSG_OVERFLOW
+  12, // 21 -> NETWORK_DISCONNECT_DELTAENTMSG_OVERFLOW
+  116, // 22 -> NETWORK_DISCONNECT_TEMPENTMSG_OVERFLOW
+  100, // 23 -> NETWORK_DISCONNECT_SOUNDSMSG_OVERFLOW
+  99, // 24 -> NETWORK_DISCONNECT_SNAPSHOTOVERFLOW
+  98, // 25 -> NETWORK_DISCONNECT_SNAPSHOTERROR
+  84, // 26 -> NETWORK_DISCONNECT_RELIABLEOVERFLOW
+  0, // 27 -> NETWORK_DISCONNECT_BADDELTATICK
+  54, // 28 -> NETWORK_DISCONNECT_NOMORESPLITS
+  118, // 29 -> NETWORK_DISCONNECT_TIMEDOUT
+  15, // 30 -> NETWORK_DISCONNECT_DISCONNECTED
+  44, // 31 -> NETWORK_DISCONNECT_LEAVINGSPLIT
+  13, // 32 -> NETWORK_DISCONNECT_DIFFERENTCLASSTABLES
+  1, // 33 -> NETWORK_DISCONNECT_BADRELAYPASSWORD
+  2, // 34 -> NETWORK_DISCONNECT_BADSPECTATORPASSWORD
+  20, // 35 -> NETWORK_DISCONNECT_HLTVRESTRICTED
+  55, // 36 -> NETWORK_DISCONNECT_NOSPECTATORS
+  22, // 37 -> NETWORK_DISCONNECT_HLTVUNAVAILABLE
+  21, // 38 -> NETWORK_DISCONNECT_HLTVSTOP
+  28, // 39 -> NETWORK_DISCONNECT_KICKED
+  4, // 40 -> NETWORK_DISCONNECT_BANADDED
+  27, // 41 -> NETWORK_DISCONNECT_KICKBANADDED
+  19, // 42 -> NETWORK_DISCONNECT_HLTVDIRECT
+  58, // 43 -> NETWORK_DISCONNECT_PURESERVER_CLIENTEXTRA
+  59, // 44 -> NETWORK_DISCONNECT_PURESERVER_MISMATCH
+  120, // 45 -> NETWORK_DISCONNECT_USERCMD
+  61, // 46 -> NETWORK_DISCONNECT_REJECTED_BY_GAME
+  53, // 47 -> NETWORK_DISCONNECT_MESSAGE_PARSE_ERROR
+  26, // 48 -> NETWORK_DISCONNECT_INVALID_MESSAGE_ERROR
+  3, // 49 -> NETWORK_DISCONNECT_BAD_SERVER_PASSWORD
+  14, // 50 -> NETWORK_DISCONNECT_DIRECT_CONNECT_RESERVATION
+  9, // 51 -> NETWORK_DISCONNECT_CONNECTION_FAILURE
+  56, // 52 -> NETWORK_DISCONNECT_NO_PEER_GROUP_HANDLERS
+  60, // 53 -> NETWORK_DISCONNECT_RECONNECTION
+  50, // 54 -> NETWORK_DISCONNECT_LOOPSHUTDOWN
+  49, // 55 -> NETWORK_DISCONNECT_LOOPDEACTIVATE
+  23, // 56 -> NETWORK_DISCONNECT_HOST_ENDGAME
+  51, // 57 -> NETWORK_DISCONNECT_LOOP_LEVELLOAD_ACTIVATE
+  11, // 58 -> NETWORK_DISCONNECT_CREATE_SERVER_FAILED
+  18, // 59 -> NETWORK_DISCONNECT_EXITING
+  92, // 60 -> NETWORK_DISCONNECT_REQUEST_HOSTSTATE_IDLE
+  91, // 61 -> NETWORK_DISCONNECT_REQUEST_HOSTSTATE_HLTVRELAY
+  5, // 62 -> NETWORK_DISCONNECT_CLIENT_CONSISTENCY_FAIL
+  8, // 63 -> NETWORK_DISCONNECT_CLIENT_UNABLE_TO_CRC_MAP
+  7, // 64 -> NETWORK_DISCONNECT_CLIENT_NO_MAP
+  6, // 65 -> NETWORK_DISCONNECT_CLIENT_DIFFERENT_MAP
+  95, // 66 -> NETWORK_DISCONNECT_SERVER_REQUIRES_STEAM
+  106, // 67 -> NETWORK_DISCONNECT_STEAM_DENY_MISC
+  105, // 68 -> NETWORK_DISCONNECT_STEAM_DENY_BAD_ANTI_CHEAT
+  96, // 69 -> NETWORK_DISCONNECT_SERVER_SHUTDOWN
+  90, // 71 -> NETWORK_DISCONNECT_REPLAY_INCOMPATIBLE
+  10, // 72 -> NETWORK_DISCONNECT_CONNECT_REQUEST_TIMEDOUT
+  94, // 73 -> NETWORK_DISCONNECT_SERVER_INCOMPATIBLE
+  46, // 74 -> NETWORK_DISCONNECT_LOCALPROBLEM_MANYRELAYS
+  45, // 75 -> NETWORK_DISCONNECT_LOCALPROBLEM_HOSTEDSERVERPRIMARYRELAY
+  47, // 76 -> NETWORK_DISCONNECT_LOCALPROBLEM_NETWORKCONFIG
+  48, // 77 -> NETWORK_DISCONNECT_LOCALPROBLEM_OTHER
+  88, // 79 -> NETWORK_DISCONNECT_REMOTE_TIMEOUT
+  89, // 80 -> NETWORK_DISCONNECT_REMOTE_TIMEOUT_CONNECTING
+  87, // 81 -> NETWORK_DISCONNECT_REMOTE_OTHER
+  85, // 82 -> NETWORK_DISCONNECT_REMOTE_BADCRYPT
+  86, // 83 -> NETWORK_DISCONNECT_REMOTE_CERTNOTTRUSTED
+  119, // 84 -> NETWORK_DISCONNECT_UNUSUAL
+  24, // 85 -> NETWORK_DISCONNECT_INTERNAL_ERROR
+  63, // 128 -> NETWORK_DISCONNECT_REJECT_BADCHALLENGE
+  76, // 129 -> NETWORK_DISCONNECT_REJECT_NOLOBBY
+  62, // 130 -> NETWORK_DISCONNECT_REJECT_BACKGROUND_MAP
+  82, // 131 -> NETWORK_DISCONNECT_REJECT_SINGLE_PLAYER
+  68, // 132 -> NETWORK_DISCONNECT_REJECT_HIDDEN_GAME
+  74, // 133 -> NETWORK_DISCONNECT_REJECT_LANRESTRICT
+  64, // 134 -> NETWORK_DISCONNECT_REJECT_BADPASSWORD
+  81, // 135 -> NETWORK_DISCONNECT_REJECT_SERVERFULL
+  72, // 136 -> NETWORK_DISCONNECT_REJECT_INVALIDRESERVATION
+  67, // 137 -> NETWORK_DISCONNECT_REJECT_FAILEDCHANNEL
+  66, // 138 -> NETWORK_DISCONNECT_REJECT_CONNECT_FROM_LOBBY
+  78, // 139 -> NETWORK_DISCONNECT_REJECT_RESERVED_FOR_LOBBY
+  71, // 140 -> NETWORK_DISCONNECT_REJECT_INVALIDKEYLENGTH
+  77, // 141 -> NETWORK_DISCONNECT_REJECT_OLDPROTOCOL
+  75, // 142 -> NETWORK_DISCONNECT_REJECT_NEWPROTOCOL
+  70, // 143 -> NETWORK_DISCONNECT_REJECT_INVALIDCONNECTION
+  69, // 144 -> NETWORK_DISCONNECT_REJECT_INVALIDCERTLEN
+  73, // 145 -> NETWORK_DISCONNECT_REJECT_INVALIDSTEAMCERTLEN
+  83, // 146 -> NETWORK_DISCONNECT_REJECT_STEAM
+  79, // 147 -> NETWORK_DISCONNECT_REJECT_SERVERAUTHDISABLED
+  80, // 148 -> NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
+  65, // 149 -> NETWORK_DISCONNECT_REJECT_BANNED
+  39, // 150 -> NETWORK_DISCONNECT_KICKED_TEAMKILLING
+  40, // 151 -> NETWORK_DISCONNECT_KICKED_TK_START
+  41, // 152 -> NETWORK_DISCONNECT_KICKED_UNTRUSTEDACCOUNT
+  30, // 153 -> NETWORK_DISCONNECT_KICKED_CONVICTEDACCOUNT
+  29, // 154 -> NETWORK_DISCONNECT_KICKED_COMPETITIVECOOLDOWN
+  38, // 155 -> NETWORK_DISCONNECT_KICKED_TEAMHURTING
+  31, // 156 -> NETWORK_DISCONNECT_KICKED_HOSTAGEKILLING
+  43, // 157 -> NETWORK_DISCONNECT_KICKED_VOTEDOFF
+  32, // 158 -> NETWORK_DISCONNECT_KICKED_IDLE
+  37, // 159 -> NETWORK_DISCONNECT_KICKED_SUICIDE
+  35, // 160 -> NETWORK_DISCONNECT_KICKED_NOSTEAMLOGIN
+  36, // 161 -> NETWORK_DISCONNECT_KICKED_NOSTEAMTICKET
+  33, // 162 -> NETWORK_DISCONNECT_KICKED_INPUTAUTOMATION
+  42, // 163 -> NETWORK_DISCONNECT_KICKED_VACNETABNORMALBEHAVIOR
+  34, // 164 -> NETWORK_DISCONNECT_KICKED_INSECURECLIENT
+};
+
+const std::string& ENetworkDisconnectionReason_Name(
+    ENetworkDisconnectionReason value) {
+  static const bool dummy =
+      ::PROTOBUF_NAMESPACE_ID::internal::InitializeEnumStrings(
+          ENetworkDisconnectionReason_entries,
+          ENetworkDisconnectionReason_entries_by_number,
+          121, ENetworkDisconnectionReason_strings);
+  (void) dummy;
+  int idx = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumName(
+      ENetworkDisconnectionReason_entries,
+      ENetworkDisconnectionReason_entries_by_number,
+      121, value);
+  return idx == -1 ? ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString() :
+                     ENetworkDisconnectionReason_strings[idx].get();
+}
+bool ENetworkDisconnectionReason_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ENetworkDisconnectionReason* value) {
+  int int_value;
+  bool success = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumValue(
+      ENetworkDisconnectionReason_entries, 121, name, &int_value);
+  if (success) {
+    *value = static_cast<ENetworkDisconnectionReason>(int_value);
+  }
+  return success;
+}
 const std::string network_connection_token_default("");
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::PROTOBUF_NAMESPACE_ID::EnumValueOptions,
     ::PROTOBUF_NAMESPACE_ID::internal::StringTypeTraits, 9, false>

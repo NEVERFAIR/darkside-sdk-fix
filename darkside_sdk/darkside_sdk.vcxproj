@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
@@ -195,6 +195,7 @@
     <ClCompile Include="valve\interfaces\vtables\netmessages.pb.cc" />
     <ClCompile Include="valve\interfaces\vtables\networkbasetypes.pb.cc" />
     <ClCompile Include="valve\interfaces\vtables\network_connection.pb.cc" />
+    <ClCompile Include="valve\interfaces\vtables\source2_steam_stats.pb.cc" />
     <ClCompile Include="valve\interfaces\vtables\usercmd.pb.cc" />
     <ClCompile Include="valve\interfaces\vtables\usermessages.pb.cc" />
     <ClCompile Include="valve\schema\schema.cpp" />
@@ -369,6 +370,7 @@
     <ClInclude Include="valve\interfaces\vtables\netmessages.pb.h" />
     <ClInclude Include="valve\interfaces\vtables\networkbasetypes.pb.h" />
     <ClInclude Include="valve\interfaces\vtables\network_connection.pb.h" />
+    <ClInclude Include="valve\interfaces\vtables\source2_steam_stats.pb.h" />
     <ClInclude Include="valve\interfaces\vtables\usercmd.pb.h" />
     <ClInclude Include="valve\interfaces\vtables\usermessages.pb.h" />
     <ClInclude Include="valve\schema\schema.hpp" />

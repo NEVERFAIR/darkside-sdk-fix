@@ -38,7 +38,7 @@ public:
 	SCHEMA( m_abs_origin, vec3_t, "CGameSceneNode", "m_vecAbsOrigin" );
 
 	c_skeleton_instace* get_skeleton_instance( ) {
-		return vmt::call_virtual<c_skeleton_instace*>( this, 8 );
+		return vmt::call_virtual<c_skeleton_instace*>( this, 10 );
 	}
 
 	void set_mesh_group_mask( uint64_t mask ) {
@@ -62,11 +62,11 @@ public:
 
 class c_skeleton_instace : public c_game_scene_node {
 public:
-	char pad_003[492];
+	char pad_003[0x1AC];
 	int m_bone_count;
-	char pad_002[24];
+	char pad_002[0x18];
 	int m_mask;
-	char pad_001[4];
+	char pad_001[0x4];
 	matrix2x4_t* m_bone_cache;
 
 	SCHEMA( m_model_state, c_model_state, "CSkeletonInstance", "m_modelState" );
@@ -119,7 +119,7 @@ public:
 	c_schema_class_info* get_schema_class_info( ) {
 		c_schema_class_info* class_info = nullptr;
 
-		vmt::call_virtual<void>( this, 42, &class_info );
+		vmt::call_virtual<void>( this, 46, &class_info );
 
 		return class_info;
 	}
@@ -211,7 +211,7 @@ public:
 	}
 
 	bool is_weapon( ) {
-		return vmt::call_virtual<bool>( this, 158 );
+		return vmt::call_virtual<bool>( this, 160 );
 	}
 
 	bool is_view_model( ) {
@@ -294,11 +294,17 @@ public:
 
 	void set_prediction_command( c_user_cmd* user_cmd ) {
 
-		vmt::call_virtual<void>( this, 39, user_cmd );
+		using fn_set_prediction_command = void(__fastcall*)(c_player_movement_service*, c_user_cmd*);
+		static auto set_prediction_command = reinterpret_cast<fn_set_prediction_command>(g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "48 89 5C 24 ? 57 48 83 EC ? 48 8B DA E8 ? ? ? ? 48 8B F8 48 85 C0 74"));
+
+		set_prediction_command(this, user_cmd);
 	}
 
 	void reset_prediction_command( ) {
-		vmt::call_virtual<void>( this, 40 );
+		using fn_reset_prediction_command = void(__fastcall*)(c_player_movement_service*);
+		static auto reset_prediction_command = reinterpret_cast<fn_reset_prediction_command>(g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "48 83 EC ? B9 ? ? ? ? E8 ? ? ? ? 48 C7 05"));
+
+		reset_prediction_command(this);
 	}
 };
 
@@ -351,9 +357,8 @@ public:
 	}
 
 	float get_inaccuracy( ) {
-        float x = .0f, y = .0f;
-
-        using fn_get_inaccuracy_t = float(__fastcall)(void*, float*, float*);
+		using fn_get_inaccuracy_t = float(__fastcall*)(void*, float*, float*);
+		float x = 0.f, y = 0.f;
 
         static fn_get_inaccuracy_t fn = reinterpret_cast<fn_get_inaccuracy_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 55 56 57 48 81 EC ? ? ? ? 44 0F 29 84 24"   ) );
 
@@ -411,13 +416,13 @@ public:
 
 	vec3_t get_eye_pos( ) {
 		vec3_t view_;
-		vmt::call_virtual<void>( this, 172, &view_ );
+		vmt::call_virtual<void>( this, 168, &view_ );
 		return view_;
 	}
 
 	vec3_t get_bone_position( int index ) {
 		using GetBonePosition_t = int( __fastcall* )( void*, int, vec3_t&, vec3_t& );
-		static GetBonePosition_t fn = reinterpret_cast<GetBonePosition_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC ? 4D 8B F1 49 8B E8" ) );
+		static GetBonePosition_t fn = reinterpret_cast<GetBonePosition_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 41 56 48 83 EC ? 4D 8B F1 49 8B E8" ) );
 
 		vec3_t position;
 		vec3_t rotation;
@@ -429,7 +434,7 @@ public:
 
 	vec3_t get_bone_rotation( int index ) {
 		using GetBonePosition_t = int( __fastcall* )( void*, int, vec3_t&, vec3_t& );
-		static GetBonePosition_t fn = reinterpret_cast<GetBonePosition_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC ? 4D 8B F1 49 8B E8" ) );
+		static GetBonePosition_t fn = reinterpret_cast<GetBonePosition_t>( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 41 56 48 83 EC ? 4D 8B F1 49 8B E8" ) );
 
 		vec3_t position;
 		vec3_t rotation;
@@ -496,7 +501,7 @@ public:
 	}
 
 	int get_bone_index( const char* name ) {
-		static const auto fn = reinterpret_cast< int( __fastcall* )( void*, const char* ) >( g_opcodes->scan_absolute( g_modules->m_modules.client_dll.get_name( ), "E8 ? ? ? ? 85 C0 78 ? 4C 8D 4C 24 ? 4C 8B C7", 0x1 ) );
+		static const auto fn = reinterpret_cast< int( __fastcall* )( void*, const char* ) >( g_opcodes->scan( g_modules->m_modules.client_dll.get_name( ), "40 53 48 83 EC ? 48 8B 89 ? ? ? ? 48 8B DA 48 8B 01 FF 50 ? 48 8B C8" ) );
 		return fn( this, name );
 	}
 };

@@ -150,6 +150,9 @@
     <ClCompile Include="valve\interfaces\vtables\usermessages.pb.cc">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="valve\interfaces\vtables\source2_steam_stats.pb.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="darkside.hpp">
@@ -699,6 +702,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="valve\interfaces\vtables\i_scene_system.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="valve\interfaces\vtables\source2_steam_stats.pb.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

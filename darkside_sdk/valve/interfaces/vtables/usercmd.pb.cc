@@ -8,10 +8,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include <google/protobuf/io/zero_copy_stream_impl_lite.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
@@ -56,6 +53,20 @@ struct CSubtickMoveStepDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CSubtickMoveStepDefaultTypeInternal _CSubtickMoveStep_default_instance_;
+PROTOBUF_CONSTEXPR CBaseUserCmdExecutionNotes::CBaseUserCmdExecutionNotes(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.ignored_reason_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}} {}
+struct CBaseUserCmdExecutionNotesDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CBaseUserCmdExecutionNotesDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CBaseUserCmdExecutionNotesDefaultTypeInternal() {}
+  union {
+    CBaseUserCmdExecutionNotes _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CBaseUserCmdExecutionNotesDefaultTypeInternal _CBaseUserCmdExecutionNotes_default_instance_;
 PROTOBUF_CONSTEXPR CBaseUserCmdPB::CBaseUserCmdPB(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -64,6 +75,7 @@ PROTOBUF_CONSTEXPR CBaseUserCmdPB::CBaseUserCmdPB(
   , /*decltype(_impl_.move_crc_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.buttons_pb_)*/nullptr
   , /*decltype(_impl_.viewangles_)*/nullptr
+  , /*decltype(_impl_.execution_notes_)*/nullptr
   , /*decltype(_impl_.legacy_command_number_)*/0
   , /*decltype(_impl_.client_tick_)*/0
   , /*decltype(_impl_.forwardmove_)*/0
@@ -101,149 +113,6 @@ struct CUserCmdBasePBDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CUserCmdBasePBDefaultTypeInternal _CUserCmdBasePB_default_instance_;
-static ::_pb::Metadata file_level_metadata_usercmd_2eproto[4];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_usercmd_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_usercmd_2eproto = nullptr;
-
-const uint32_t TableStruct_usercmd_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::CInButtonStatePB, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CInButtonStatePB, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CInButtonStatePB, _impl_.buttonstate1_),
-  PROTOBUF_FIELD_OFFSET(::CInButtonStatePB, _impl_.buttonstate2_),
-  PROTOBUF_FIELD_OFFSET(::CInButtonStatePB, _impl_.buttonstate3_),
-  0,
-  1,
-  2,
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.button_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.pressed_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.when_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.analog_forward_delta_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.analog_left_delta_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.pitch_delta_),
-  PROTOBUF_FIELD_OFFSET(::CSubtickMoveStep, _impl_.yaw_delta_),
-  0,
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.legacy_command_number_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.client_tick_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.prediction_offset_ticks_x256_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.buttons_pb_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.viewangles_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.forwardmove_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.leftmove_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.upmove_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.impulse_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.weaponselect_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.random_seed_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.mousedx_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.mousedy_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.pawn_entity_handle_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.subtick_moves_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.move_crc_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.consumed_server_angle_changes_),
-  PROTOBUF_FIELD_OFFSET(::CBaseUserCmdPB, _impl_.cmd_flags_),
-  3,
-  4,
-  13,
-  1,
-  2,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  16,
-  ~0u,
-  0,
-  14,
-  15,
-  PROTOBUF_FIELD_OFFSET(::CUserCmdBasePB, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CUserCmdBasePB, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CUserCmdBasePB, _impl_.base_),
-  0,
-};
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 9, -1, sizeof(::CInButtonStatePB)},
-  { 12, 25, -1, sizeof(::CSubtickMoveStep)},
-  { 32, 56, -1, sizeof(::CBaseUserCmdPB)},
-  { 74, 81, -1, sizeof(::CUserCmdBasePB)},
-};
-
-static const ::_pb::Message* const file_default_instances[] = {
-  &::_CInButtonStatePB_default_instance_._instance,
-  &::_CSubtickMoveStep_default_instance_._instance,
-  &::_CBaseUserCmdPB_default_instance_._instance,
-  &::_CUserCmdBasePB_default_instance_._instance,
-};
-
-const char descriptor_table_protodef_usercmd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rusercmd.proto\032\026networkbasetypes.proto\""
-  "T\n\020CInButtonStatePB\022\024\n\014buttonstate1\030\001 \001("
-  "\004\022\024\n\014buttonstate2\030\002 \001(\004\022\024\n\014buttonstate3\030"
-  "\003 \001(\004\"\242\001\n\020CSubtickMoveStep\022\016\n\006button\030\001 \001"
-  "(\004\022\017\n\007pressed\030\002 \001(\010\022\014\n\004when\030\003 \001(\002\022\034\n\024ana"
-  "log_forward_delta\030\004 \001(\002\022\031\n\021analog_left_d"
-  "elta\030\005 \001(\002\022\023\n\013pitch_delta\030\010 \001(\002\022\021\n\tyaw_d"
-  "elta\030\t \001(\002\"\343\003\n\016CBaseUserCmdPB\022\035\n\025legacy_"
-  "command_number\030\001 \001(\005\022\023\n\013client_tick\030\002 \001("
-  "\005\022$\n\034prediction_offset_ticks_x256\030\021 \001(\r\022"
-  "%\n\nbuttons_pb\030\003 \001(\0132\021.CInButtonStatePB\022\037"
-  "\n\nviewangles\030\004 \001(\0132\013.CMsgQAngle\022\023\n\013forwa"
-  "rdmove\030\005 \001(\002\022\020\n\010leftmove\030\006 \001(\002\022\016\n\006upmove"
-  "\030\007 \001(\002\022\017\n\007impulse\030\010 \001(\005\022\024\n\014weaponselect\030"
-  "\t \001(\005\022\023\n\013random_seed\030\n \001(\005\022\017\n\007mousedx\030\013 "
-  "\001(\005\022\017\n\007mousedy\030\014 \001(\005\022$\n\022pawn_entity_hand"
-  "le\030\016 \001(\r:\01016777215\022(\n\rsubtick_moves\030\022 \003("
-  "\0132\021.CSubtickMoveStep\022\020\n\010move_crc\030\023 \001(\014\022%"
-  "\n\035consumed_server_angle_changes\030\024 \001(\r\022\021\n"
-  "\tcmd_flags\030\025 \001(\005\"/\n\016CUserCmdBasePB\022\035\n\004ba"
-  "se\030\001 \001(\0132\017.CBaseUserCmdPB"
-  ;
-static const ::_pbi::DescriptorTable* const descriptor_table_usercmd_2eproto_deps[1] = {
-  &::descriptor_table_networkbasetypes_2eproto,
-};
-static ::_pbi::once_flag descriptor_table_usercmd_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_usercmd_2eproto = {
-    false, false, 825, descriptor_table_protodef_usercmd_2eproto,
-    "usercmd.proto",
-    &descriptor_table_usercmd_2eproto_once, descriptor_table_usercmd_2eproto_deps, 1, 4,
-    schemas, file_default_instances, TableStruct_usercmd_2eproto::offsets,
-    file_level_metadata_usercmd_2eproto, file_level_enum_descriptors_usercmd_2eproto,
-    file_level_service_descriptors_usercmd_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_usercmd_2eproto_getter() {
-  return &descriptor_table_usercmd_2eproto;
-}
-
-// Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_usercmd_2eproto(&descriptor_table_usercmd_2eproto);
 
 // ===================================================================
 
@@ -263,12 +132,12 @@ class CInButtonStatePB::_Internal {
 
 CInButtonStatePB::CInButtonStatePB(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CInButtonStatePB)
 }
 CInButtonStatePB::CInButtonStatePB(const CInButtonStatePB& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CInButtonStatePB* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
@@ -277,7 +146,7 @@ CInButtonStatePB::CInButtonStatePB(const CInButtonStatePB& from)
     , decltype(_impl_.buttonstate2_){}
     , decltype(_impl_.buttonstate3_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   ::memcpy(&_impl_.buttonstate1_, &from._impl_.buttonstate1_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.buttonstate3_) -
     reinterpret_cast<char*>(&_impl_.buttonstate1_)) + sizeof(_impl_.buttonstate3_));
@@ -299,7 +168,7 @@ inline void CInButtonStatePB::SharedCtor(
 
 CInButtonStatePB::~CInButtonStatePB() {
   // @@protoc_insertion_point(destructor:CInButtonStatePB)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -327,7 +196,7 @@ void CInButtonStatePB::Clear() {
         reinterpret_cast<char*>(&_impl_.buttonstate1_)) + sizeof(_impl_.buttonstate3_));
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CInButtonStatePB::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -375,7 +244,7 @@ const char* CInButtonStatePB::_InternalParse(const char* ptr, ::_pbi::ParseConte
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -414,8 +283,8 @@ uint8_t* CInButtonStatePB::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CInButtonStatePB)
   return target;
@@ -447,19 +316,22 @@ size_t CInButtonStatePB::ByteSizeLong() const {
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CInButtonStatePB::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CInButtonStatePB::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CInButtonStatePB::GetClassData() const { return &_class_data_; }
+void CInButtonStatePB::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CInButtonStatePB*>(
+      &from));
+}
 
-
-void CInButtonStatePB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CInButtonStatePB*>(&to_msg);
-  auto& from = static_cast<const CInButtonStatePB&>(from_msg);
+void CInButtonStatePB::MergeFrom(const CInButtonStatePB& from) {
+  CInButtonStatePB* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CInButtonStatePB)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -478,7 +350,7 @@ void CInButtonStatePB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CInButtonStatePB::CopyFrom(const CInButtonStatePB& from) {
@@ -504,11 +376,10 @@ void CInButtonStatePB::InternalSwap(CInButtonStatePB* other) {
           reinterpret_cast<char*>(&other->_impl_.buttonstate1_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CInButtonStatePB::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_usercmd_2eproto_getter, &descriptor_table_usercmd_2eproto_once,
-      file_level_metadata_usercmd_2eproto[0]);
+std::string CInButtonStatePB::GetTypeName() const {
+  return "CInButtonStatePB";
 }
+
 
 // ===================================================================
 
@@ -540,12 +411,12 @@ class CSubtickMoveStep::_Internal {
 
 CSubtickMoveStep::CSubtickMoveStep(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CSubtickMoveStep)
 }
 CSubtickMoveStep::CSubtickMoveStep(const CSubtickMoveStep& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CSubtickMoveStep* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
@@ -558,7 +429,7 @@ CSubtickMoveStep::CSubtickMoveStep(const CSubtickMoveStep& from)
     , decltype(_impl_.pitch_delta_){}
     , decltype(_impl_.yaw_delta_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   ::memcpy(&_impl_.button_, &from._impl_.button_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.yaw_delta_) -
     reinterpret_cast<char*>(&_impl_.button_)) + sizeof(_impl_.yaw_delta_));
@@ -584,7 +455,7 @@ inline void CSubtickMoveStep::SharedCtor(
 
 CSubtickMoveStep::~CSubtickMoveStep() {
   // @@protoc_insertion_point(destructor:CSubtickMoveStep)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -612,7 +483,7 @@ void CSubtickMoveStep::Clear() {
         reinterpret_cast<char*>(&_impl_.button_)) + sizeof(_impl_.yaw_delta_));
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CSubtickMoveStep::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -696,7 +567,7 @@ const char* CSubtickMoveStep::_InternalParse(const char* ptr, ::_pbi::ParseConte
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -759,8 +630,8 @@ uint8_t* CSubtickMoveStep::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CSubtickMoveStep)
   return target;
@@ -812,19 +683,22 @@ size_t CSubtickMoveStep::ByteSizeLong() const {
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CSubtickMoveStep::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CSubtickMoveStep::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CSubtickMoveStep::GetClassData() const { return &_class_data_; }
+void CSubtickMoveStep::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CSubtickMoveStep*>(
+      &from));
+}
 
-
-void CSubtickMoveStep::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CSubtickMoveStep*>(&to_msg);
-  auto& from = static_cast<const CSubtickMoveStep&>(from_msg);
+void CSubtickMoveStep::MergeFrom(const CSubtickMoveStep& from) {
+  CSubtickMoveStep* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CSubtickMoveStep)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -855,7 +729,7 @@ void CSubtickMoveStep::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CSubtickMoveStep::CopyFrom(const CSubtickMoveStep& from) {
@@ -881,11 +755,225 @@ void CSubtickMoveStep::InternalSwap(CSubtickMoveStep* other) {
           reinterpret_cast<char*>(&other->_impl_.button_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CSubtickMoveStep::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_usercmd_2eproto_getter, &descriptor_table_usercmd_2eproto_once,
-      file_level_metadata_usercmd_2eproto[1]);
+std::string CSubtickMoveStep::GetTypeName() const {
+  return "CSubtickMoveStep";
 }
+
+
+// ===================================================================
+
+class CBaseUserCmdExecutionNotes::_Internal {
+ public:
+  using HasBits = decltype(std::declval<CBaseUserCmdExecutionNotes>()._impl_._has_bits_);
+  static void set_has_ignored_reason(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+CBaseUserCmdExecutionNotes::CBaseUserCmdExecutionNotes(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:CBaseUserCmdExecutionNotes)
+}
+CBaseUserCmdExecutionNotes::CBaseUserCmdExecutionNotes(const CBaseUserCmdExecutionNotes& from)
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
+  CBaseUserCmdExecutionNotes* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ignored_reason_){}};
+
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
+  _impl_.ignored_reason_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ignored_reason_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_ignored_reason()) {
+    _this->_impl_.ignored_reason_.Set(from._internal_ignored_reason(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:CBaseUserCmdExecutionNotes)
+}
+
+inline void CBaseUserCmdExecutionNotes::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.ignored_reason_){}
+  };
+  _impl_.ignored_reason_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ignored_reason_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+CBaseUserCmdExecutionNotes::~CBaseUserCmdExecutionNotes() {
+  // @@protoc_insertion_point(destructor:CBaseUserCmdExecutionNotes)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CBaseUserCmdExecutionNotes::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.ignored_reason_.Destroy();
+}
+
+void CBaseUserCmdExecutionNotes::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CBaseUserCmdExecutionNotes::Clear() {
+// @@protoc_insertion_point(message_clear_start:CBaseUserCmdExecutionNotes)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.ignored_reason_.ClearNonDefaultToEmpty();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<std::string>();
+}
+
+const char* CBaseUserCmdExecutionNotes::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional string ignored_reason = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_ignored_reason();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CBaseUserCmdExecutionNotes::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:CBaseUserCmdExecutionNotes)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // optional string ignored_reason = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_ignored_reason(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CBaseUserCmdExecutionNotes)
+  return target;
+}
+
+size_t CBaseUserCmdExecutionNotes::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CBaseUserCmdExecutionNotes)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional string ignored_reason = 1;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ignored_reason());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CBaseUserCmdExecutionNotes::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CBaseUserCmdExecutionNotes*>(
+      &from));
+}
+
+void CBaseUserCmdExecutionNotes::MergeFrom(const CBaseUserCmdExecutionNotes& from) {
+  CBaseUserCmdExecutionNotes* const _this = this;
+  // @@protoc_insertion_point(class_specific_merge_from_start:CBaseUserCmdExecutionNotes)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_ignored_reason()) {
+    _this->_internal_set_ignored_reason(from._internal_ignored_reason());
+  }
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
+}
+
+void CBaseUserCmdExecutionNotes::CopyFrom(const CBaseUserCmdExecutionNotes& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CBaseUserCmdExecutionNotes)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CBaseUserCmdExecutionNotes::IsInitialized() const {
+  return true;
+}
+
+void CBaseUserCmdExecutionNotes::InternalSwap(CBaseUserCmdExecutionNotes* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ignored_reason_, lhs_arena,
+      &other->_impl_.ignored_reason_, rhs_arena
+  );
+}
+
+std::string CBaseUserCmdExecutionNotes::GetTypeName() const {
+  return "CBaseUserCmdExecutionNotes";
+}
+
 
 // ===================================================================
 
@@ -893,13 +981,13 @@ class CBaseUserCmdPB::_Internal {
  public:
   using HasBits = decltype(std::declval<CBaseUserCmdPB>()._impl_._has_bits_);
   static void set_has_legacy_command_number(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
-  }
-  static void set_has_client_tick(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
+  static void set_has_client_tick(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
   static void set_has_prediction_offset_ticks_x256(HasBits* has_bits) {
-    (*has_bits)[0] |= 8192u;
+    (*has_bits)[0] |= 16384u;
   }
   static const ::CInButtonStatePB& buttons_pb(const CBaseUserCmdPB* msg);
   static void set_has_buttons_pb(HasBits* has_bits) {
@@ -910,40 +998,44 @@ class CBaseUserCmdPB::_Internal {
     (*has_bits)[0] |= 4u;
   }
   static void set_has_forwardmove(HasBits* has_bits) {
-    (*has_bits)[0] |= 32u;
-  }
-  static void set_has_leftmove(HasBits* has_bits) {
     (*has_bits)[0] |= 64u;
   }
-  static void set_has_upmove(HasBits* has_bits) {
+  static void set_has_leftmove(HasBits* has_bits) {
     (*has_bits)[0] |= 128u;
   }
-  static void set_has_impulse(HasBits* has_bits) {
+  static void set_has_upmove(HasBits* has_bits) {
     (*has_bits)[0] |= 256u;
   }
-  static void set_has_weaponselect(HasBits* has_bits) {
+  static void set_has_impulse(HasBits* has_bits) {
     (*has_bits)[0] |= 512u;
   }
-  static void set_has_random_seed(HasBits* has_bits) {
+  static void set_has_weaponselect(HasBits* has_bits) {
     (*has_bits)[0] |= 1024u;
   }
-  static void set_has_mousedx(HasBits* has_bits) {
+  static void set_has_random_seed(HasBits* has_bits) {
     (*has_bits)[0] |= 2048u;
   }
-  static void set_has_mousedy(HasBits* has_bits) {
+  static void set_has_mousedx(HasBits* has_bits) {
     (*has_bits)[0] |= 4096u;
   }
+  static void set_has_mousedy(HasBits* has_bits) {
+    (*has_bits)[0] |= 8192u;
+  }
   static void set_has_pawn_entity_handle(HasBits* has_bits) {
-    (*has_bits)[0] |= 65536u;
+    (*has_bits)[0] |= 131072u;
   }
   static void set_has_move_crc(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
   static void set_has_consumed_server_angle_changes(HasBits* has_bits) {
-    (*has_bits)[0] |= 16384u;
+    (*has_bits)[0] |= 32768u;
   }
   static void set_has_cmd_flags(HasBits* has_bits) {
-    (*has_bits)[0] |= 32768u;
+    (*has_bits)[0] |= 65536u;
+  }
+  static const ::CBaseUserCmdExecutionNotes& execution_notes(const CBaseUserCmdPB* msg);
+  static void set_has_execution_notes(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
   }
 };
 
@@ -955,18 +1047,22 @@ const ::CMsgQAngle&
 CBaseUserCmdPB::_Internal::viewangles(const CBaseUserCmdPB* msg) {
   return *msg->_impl_.viewangles_;
 }
+const ::CBaseUserCmdExecutionNotes&
+CBaseUserCmdPB::_Internal::execution_notes(const CBaseUserCmdPB* msg) {
+  return *msg->_impl_.execution_notes_;
+}
 void CBaseUserCmdPB::clear_viewangles() {
   if (_impl_.viewangles_ != nullptr) _impl_.viewangles_->Clear();
   _impl_._has_bits_[0] &= ~0x00000004u;
 }
 CBaseUserCmdPB::CBaseUserCmdPB(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CBaseUserCmdPB)
 }
 CBaseUserCmdPB::CBaseUserCmdPB(const CBaseUserCmdPB& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CBaseUserCmdPB* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
@@ -975,6 +1071,7 @@ CBaseUserCmdPB::CBaseUserCmdPB(const CBaseUserCmdPB& from)
     , decltype(_impl_.move_crc_){}
     , decltype(_impl_.buttons_pb_){nullptr}
     , decltype(_impl_.viewangles_){nullptr}
+    , decltype(_impl_.execution_notes_){nullptr}
     , decltype(_impl_.legacy_command_number_){}
     , decltype(_impl_.client_tick_){}
     , decltype(_impl_.forwardmove_){}
@@ -990,7 +1087,7 @@ CBaseUserCmdPB::CBaseUserCmdPB(const CBaseUserCmdPB& from)
     , decltype(_impl_.cmd_flags_){}
     , decltype(_impl_.pawn_entity_handle_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   _impl_.move_crc_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.move_crc_.Set("", GetArenaForAllocation());
@@ -1004,6 +1101,9 @@ CBaseUserCmdPB::CBaseUserCmdPB(const CBaseUserCmdPB& from)
   }
   if (from._internal_has_viewangles()) {
     _this->_impl_.viewangles_ = new ::CMsgQAngle(*from._impl_.viewangles_);
+  }
+  if (from._internal_has_execution_notes()) {
+    _this->_impl_.execution_notes_ = new ::CBaseUserCmdExecutionNotes(*from._impl_.execution_notes_);
   }
   ::memcpy(&_impl_.legacy_command_number_, &from._impl_.legacy_command_number_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.pawn_entity_handle_) -
@@ -1022,6 +1122,7 @@ inline void CBaseUserCmdPB::SharedCtor(
     , decltype(_impl_.move_crc_){}
     , decltype(_impl_.buttons_pb_){nullptr}
     , decltype(_impl_.viewangles_){nullptr}
+    , decltype(_impl_.execution_notes_){nullptr}
     , decltype(_impl_.legacy_command_number_){0}
     , decltype(_impl_.client_tick_){0}
     , decltype(_impl_.forwardmove_){0}
@@ -1045,7 +1146,7 @@ inline void CBaseUserCmdPB::SharedCtor(
 
 CBaseUserCmdPB::~CBaseUserCmdPB() {
   // @@protoc_insertion_point(destructor:CBaseUserCmdPB)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -1058,6 +1159,7 @@ inline void CBaseUserCmdPB::SharedDtor() {
   _impl_.move_crc_.Destroy();
   if (this != internal_default_instance()) delete _impl_.buttons_pb_;
   if (this != internal_default_instance()) delete _impl_.viewangles_;
+  if (this != internal_default_instance()) delete _impl_.execution_notes_;
 }
 
 void CBaseUserCmdPB::SetCachedSize(int size) const {
@@ -1072,7 +1174,7 @@ void CBaseUserCmdPB::Clear() {
 
   _impl_.subtick_moves_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _impl_.move_crc_.ClearNonDefaultToEmpty();
     }
@@ -1084,20 +1186,27 @@ void CBaseUserCmdPB::Clear() {
       GOOGLE_DCHECK(_impl_.viewangles_ != nullptr);
       _impl_.viewangles_->Clear();
     }
+    if (cached_has_bits & 0x00000008u) {
+      GOOGLE_DCHECK(_impl_.execution_notes_ != nullptr);
+      _impl_.execution_notes_->Clear();
+    }
   }
-  if (cached_has_bits & 0x000000f8u) {
+  if (cached_has_bits & 0x000000f0u) {
     ::memset(&_impl_.legacy_command_number_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.upmove_) -
-        reinterpret_cast<char*>(&_impl_.legacy_command_number_)) + sizeof(_impl_.upmove_));
+        reinterpret_cast<char*>(&_impl_.leftmove_) -
+        reinterpret_cast<char*>(&_impl_.legacy_command_number_)) + sizeof(_impl_.leftmove_));
   }
   if (cached_has_bits & 0x0000ff00u) {
-    ::memset(&_impl_.impulse_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.cmd_flags_) -
-        reinterpret_cast<char*>(&_impl_.impulse_)) + sizeof(_impl_.cmd_flags_));
+    ::memset(&_impl_.upmove_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.consumed_server_angle_changes_) -
+        reinterpret_cast<char*>(&_impl_.upmove_)) + sizeof(_impl_.consumed_server_angle_changes_));
   }
-  _impl_.pawn_entity_handle_ = 16777215u;
+  if (cached_has_bits & 0x00030000u) {
+    _impl_.cmd_flags_ = 0;
+    _impl_.pawn_entity_handle_ = 16777215u;
+  }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CBaseUserCmdPB::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -1271,6 +1380,14 @@ const char* CBaseUserCmdPB::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
+      // optional .CBaseUserCmdExecutionNotes execution_notes = 22;
+      case 22:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 178)) {
+          ptr = ctx->ParseMessage(_internal_mutable_execution_notes(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -1282,7 +1399,7 @@ const char* CBaseUserCmdPB::_InternalParse(const char* ptr, ::_pbi::ParseContext
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -1303,13 +1420,13 @@ uint8_t* CBaseUserCmdPB::_InternalSerialize(
 
   cached_has_bits = _impl_._has_bits_[0];
   // optional int32 legacy_command_number = 1;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_legacy_command_number(), target);
   }
 
   // optional int32 client_tick = 2;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_client_tick(), target);
   }
@@ -1329,61 +1446,61 @@ uint8_t* CBaseUserCmdPB::_InternalSerialize(
   }
 
   // optional float forwardmove = 5;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000040u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_forwardmove(), target);
   }
 
   // optional float leftmove = 6;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000080u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_leftmove(), target);
   }
 
   // optional float upmove = 7;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_upmove(), target);
   }
 
   // optional int32 impulse = 8;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000200u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(8, this->_internal_impulse(), target);
   }
 
   // optional int32 weaponselect = 9;
-  if (cached_has_bits & 0x00000200u) {
+  if (cached_has_bits & 0x00000400u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(9, this->_internal_weaponselect(), target);
   }
 
   // optional int32 random_seed = 10;
-  if (cached_has_bits & 0x00000400u) {
+  if (cached_has_bits & 0x00000800u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(10, this->_internal_random_seed(), target);
   }
 
   // optional int32 mousedx = 11;
-  if (cached_has_bits & 0x00000800u) {
+  if (cached_has_bits & 0x00001000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(11, this->_internal_mousedx(), target);
   }
 
   // optional int32 mousedy = 12;
-  if (cached_has_bits & 0x00001000u) {
+  if (cached_has_bits & 0x00002000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(12, this->_internal_mousedy(), target);
   }
 
   // optional uint32 pawn_entity_handle = 14 [default = 16777215];
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(14, this->_internal_pawn_entity_handle(), target);
   }
 
   // optional uint32 prediction_offset_ticks_x256 = 17;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00004000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(17, this->_internal_prediction_offset_ticks_x256(), target);
   }
@@ -1403,20 +1520,27 @@ uint8_t* CBaseUserCmdPB::_InternalSerialize(
   }
 
   // optional uint32 consumed_server_angle_changes = 20;
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(20, this->_internal_consumed_server_angle_changes(), target);
   }
 
   // optional int32 cmd_flags = 21;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(21, this->_internal_cmd_flags(), target);
   }
 
+  // optional .CBaseUserCmdExecutionNotes execution_notes = 22;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(22, _Internal::execution_notes(this),
+        _Internal::execution_notes(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CBaseUserCmdPB)
   return target;
@@ -1460,98 +1584,110 @@ size_t CBaseUserCmdPB::ByteSizeLong() const {
           *_impl_.viewangles_);
     }
 
-    // optional int32 legacy_command_number = 1;
+    // optional .CBaseUserCmdExecutionNotes execution_notes = 22;
     if (cached_has_bits & 0x00000008u) {
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.execution_notes_);
+    }
+
+    // optional int32 legacy_command_number = 1;
+    if (cached_has_bits & 0x00000010u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_legacy_command_number());
     }
 
     // optional int32 client_tick = 2;
-    if (cached_has_bits & 0x00000010u) {
+    if (cached_has_bits & 0x00000020u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_client_tick());
     }
 
     // optional float forwardmove = 5;
-    if (cached_has_bits & 0x00000020u) {
-      total_size += 1 + 4;
-    }
-
-    // optional float leftmove = 6;
     if (cached_has_bits & 0x00000040u) {
       total_size += 1 + 4;
     }
 
-    // optional float upmove = 7;
+    // optional float leftmove = 6;
     if (cached_has_bits & 0x00000080u) {
       total_size += 1 + 4;
     }
 
   }
   if (cached_has_bits & 0x0000ff00u) {
-    // optional int32 impulse = 8;
+    // optional float upmove = 7;
     if (cached_has_bits & 0x00000100u) {
+      total_size += 1 + 4;
+    }
+
+    // optional int32 impulse = 8;
+    if (cached_has_bits & 0x00000200u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_impulse());
     }
 
     // optional int32 weaponselect = 9;
-    if (cached_has_bits & 0x00000200u) {
+    if (cached_has_bits & 0x00000400u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_weaponselect());
     }
 
     // optional int32 random_seed = 10;
-    if (cached_has_bits & 0x00000400u) {
+    if (cached_has_bits & 0x00000800u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_random_seed());
     }
 
     // optional int32 mousedx = 11;
-    if (cached_has_bits & 0x00000800u) {
+    if (cached_has_bits & 0x00001000u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_mousedx());
     }
 
     // optional int32 mousedy = 12;
-    if (cached_has_bits & 0x00001000u) {
+    if (cached_has_bits & 0x00002000u) {
       total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_mousedy());
     }
 
     // optional uint32 prediction_offset_ticks_x256 = 17;
-    if (cached_has_bits & 0x00002000u) {
+    if (cached_has_bits & 0x00004000u) {
       total_size += 2 +
         ::_pbi::WireFormatLite::UInt32Size(
           this->_internal_prediction_offset_ticks_x256());
     }
 
     // optional uint32 consumed_server_angle_changes = 20;
-    if (cached_has_bits & 0x00004000u) {
+    if (cached_has_bits & 0x00008000u) {
       total_size += 2 +
         ::_pbi::WireFormatLite::UInt32Size(
           this->_internal_consumed_server_angle_changes());
     }
 
+  }
+  if (cached_has_bits & 0x00030000u) {
     // optional int32 cmd_flags = 21;
-    if (cached_has_bits & 0x00008000u) {
+    if (cached_has_bits & 0x00010000u) {
       total_size += 2 +
         ::_pbi::WireFormatLite::Int32Size(
           this->_internal_cmd_flags());
     }
 
-  }
-  // optional uint32 pawn_entity_handle = 14 [default = 16777215];
-  if (cached_has_bits & 0x00010000u) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_pawn_entity_handle());
-  }
+    // optional uint32 pawn_entity_handle = 14 [default = 16777215];
+    if (cached_has_bits & 0x00020000u) {
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_pawn_entity_handle());
+    }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  }
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CBaseUserCmdPB::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CBaseUserCmdPB::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CBaseUserCmdPB::GetClassData() const { return &_class_data_; }
+void CBaseUserCmdPB::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CBaseUserCmdPB*>(
+      &from));
+}
 
-
-void CBaseUserCmdPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CBaseUserCmdPB*>(&to_msg);
-  auto& from = static_cast<const CBaseUserCmdPB&>(from_msg);
+void CBaseUserCmdPB::MergeFrom(const CBaseUserCmdPB& from) {
+  CBaseUserCmdPB* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CBaseUserCmdPB)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -1572,53 +1708,60 @@ void CBaseUserCmdPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
           from._internal_viewangles());
     }
     if (cached_has_bits & 0x00000008u) {
-      _this->_impl_.legacy_command_number_ = from._impl_.legacy_command_number_;
+      _this->_internal_mutable_execution_notes()->::CBaseUserCmdExecutionNotes::MergeFrom(
+          from._internal_execution_notes());
     }
     if (cached_has_bits & 0x00000010u) {
-      _this->_impl_.client_tick_ = from._impl_.client_tick_;
+      _this->_impl_.legacy_command_number_ = from._impl_.legacy_command_number_;
     }
     if (cached_has_bits & 0x00000020u) {
-      _this->_impl_.forwardmove_ = from._impl_.forwardmove_;
+      _this->_impl_.client_tick_ = from._impl_.client_tick_;
     }
     if (cached_has_bits & 0x00000040u) {
-      _this->_impl_.leftmove_ = from._impl_.leftmove_;
+      _this->_impl_.forwardmove_ = from._impl_.forwardmove_;
     }
     if (cached_has_bits & 0x00000080u) {
-      _this->_impl_.upmove_ = from._impl_.upmove_;
+      _this->_impl_.leftmove_ = from._impl_.leftmove_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
   if (cached_has_bits & 0x0000ff00u) {
     if (cached_has_bits & 0x00000100u) {
-      _this->_impl_.impulse_ = from._impl_.impulse_;
+      _this->_impl_.upmove_ = from._impl_.upmove_;
     }
     if (cached_has_bits & 0x00000200u) {
-      _this->_impl_.weaponselect_ = from._impl_.weaponselect_;
+      _this->_impl_.impulse_ = from._impl_.impulse_;
     }
     if (cached_has_bits & 0x00000400u) {
-      _this->_impl_.random_seed_ = from._impl_.random_seed_;
+      _this->_impl_.weaponselect_ = from._impl_.weaponselect_;
     }
     if (cached_has_bits & 0x00000800u) {
-      _this->_impl_.mousedx_ = from._impl_.mousedx_;
+      _this->_impl_.random_seed_ = from._impl_.random_seed_;
     }
     if (cached_has_bits & 0x00001000u) {
-      _this->_impl_.mousedy_ = from._impl_.mousedy_;
+      _this->_impl_.mousedx_ = from._impl_.mousedx_;
     }
     if (cached_has_bits & 0x00002000u) {
-      _this->_impl_.prediction_offset_ticks_x256_ = from._impl_.prediction_offset_ticks_x256_;
+      _this->_impl_.mousedy_ = from._impl_.mousedy_;
     }
     if (cached_has_bits & 0x00004000u) {
-      _this->_impl_.consumed_server_angle_changes_ = from._impl_.consumed_server_angle_changes_;
+      _this->_impl_.prediction_offset_ticks_x256_ = from._impl_.prediction_offset_ticks_x256_;
     }
     if (cached_has_bits & 0x00008000u) {
-      _this->_impl_.cmd_flags_ = from._impl_.cmd_flags_;
+      _this->_impl_.consumed_server_angle_changes_ = from._impl_.consumed_server_angle_changes_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 0x00010000u) {
-    _this->_internal_set_pawn_entity_handle(from._internal_pawn_entity_handle());
+  if (cached_has_bits & 0x00030000u) {
+    if (cached_has_bits & 0x00010000u) {
+      _this->_impl_.cmd_flags_ = from._impl_.cmd_flags_;
+    }
+    if (cached_has_bits & 0x00020000u) {
+      _this->_impl_.pawn_entity_handle_ = from._impl_.pawn_entity_handle_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CBaseUserCmdPB::CopyFrom(const CBaseUserCmdPB& from) {
@@ -1652,11 +1795,10 @@ void CBaseUserCmdPB::InternalSwap(CBaseUserCmdPB* other) {
   swap(_impl_.pawn_entity_handle_, other->_impl_.pawn_entity_handle_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CBaseUserCmdPB::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_usercmd_2eproto_getter, &descriptor_table_usercmd_2eproto_once,
-      file_level_metadata_usercmd_2eproto[2]);
+std::string CBaseUserCmdPB::GetTypeName() const {
+  return "CBaseUserCmdPB";
 }
+
 
 // ===================================================================
 
@@ -1675,19 +1817,19 @@ CUserCmdBasePB::_Internal::base(const CUserCmdBasePB* msg) {
 }
 CUserCmdBasePB::CUserCmdBasePB(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CUserCmdBasePB)
 }
 CUserCmdBasePB::CUserCmdBasePB(const CUserCmdBasePB& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CUserCmdBasePB* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.base_){nullptr}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   if (from._internal_has_base()) {
     _this->_impl_.base_ = new ::CBaseUserCmdPB(*from._impl_.base_);
   }
@@ -1707,7 +1849,7 @@ inline void CUserCmdBasePB::SharedCtor(
 
 CUserCmdBasePB::~CUserCmdBasePB() {
   // @@protoc_insertion_point(destructor:CUserCmdBasePB)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -1735,7 +1877,7 @@ void CUserCmdBasePB::Clear() {
     _impl_.base_->Clear();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CUserCmdBasePB::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -1764,7 +1906,7 @@ const char* CUserCmdBasePB::_InternalParse(const char* ptr, ::_pbi::ParseContext
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -1792,8 +1934,8 @@ uint8_t* CUserCmdBasePB::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CUserCmdBasePB)
   return target;
@@ -1815,19 +1957,22 @@ size_t CUserCmdBasePB::ByteSizeLong() const {
         *_impl_.base_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CUserCmdBasePB::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CUserCmdBasePB::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CUserCmdBasePB::GetClassData() const { return &_class_data_; }
+void CUserCmdBasePB::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CUserCmdBasePB*>(
+      &from));
+}
 
-
-void CUserCmdBasePB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CUserCmdBasePB*>(&to_msg);
-  auto& from = static_cast<const CUserCmdBasePB&>(from_msg);
+void CUserCmdBasePB::MergeFrom(const CUserCmdBasePB& from) {
+  CUserCmdBasePB* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CUserCmdBasePB)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -1837,7 +1982,7 @@ void CUserCmdBasePB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const :
     _this->_internal_mutable_base()->::CBaseUserCmdPB::MergeFrom(
         from._internal_base());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CUserCmdBasePB::CopyFrom(const CUserCmdBasePB& from) {
@@ -1858,11 +2003,10 @@ void CUserCmdBasePB::InternalSwap(CUserCmdBasePB* other) {
   swap(_impl_.base_, other->_impl_.base_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CUserCmdBasePB::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_usercmd_2eproto_getter, &descriptor_table_usercmd_2eproto_once,
-      file_level_metadata_usercmd_2eproto[3]);
+std::string CUserCmdBasePB::GetTypeName() const {
+  return "CUserCmdBasePB";
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
@@ -1873,6 +2017,10 @@ Arena::CreateMaybeMessage< ::CInButtonStatePB >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::CSubtickMoveStep*
 Arena::CreateMaybeMessage< ::CSubtickMoveStep >(Arena* arena) {
   return Arena::CreateMessageInternal< ::CSubtickMoveStep >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CBaseUserCmdExecutionNotes*
+Arena::CreateMaybeMessage< ::CBaseUserCmdExecutionNotes >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::CBaseUserCmdExecutionNotes >(arena);
 }
 template<> PROTOBUF_NOINLINE ::CBaseUserCmdPB*
 Arena::CreateMaybeMessage< ::CBaseUserCmdPB >(Arena* arena) {

@@ -25,18 +25,15 @@ void c_interfaces::initialize()
 	m_global_vars = *reinterpret_cast<i_global_vars**>(g_opcodes->scan_absolute(client_dll, xorstr_("48 89 15 ? ? ? ? 48 89 42"), 0x3));
 	CHECK(xorstr_("Global Vars"), m_global_vars);
 
-	m_trace = *reinterpret_cast<i_trace**>(g_opcodes->scan_absolute(client_dll, xorstr_("4C 8B 35 ? ? ? ? 24 ? 0C ? 66 0F 7F 45 ? 88 45 ? 48 8B CB 48 8D 05 ? ? ? ? 89 7D ? 48 89 45 ? 89 7D ? C7 45 ? ? ? ? ? 44 88 7D"), 0x3));
+	m_trace = *reinterpret_cast<i_trace**>(g_opcodes->scan_absolute(client_dll, xorstr_("4C 8B 35 ? ? ? ? 24 ? 0C ? 66 0F 7F 45 ? 88 45 ? 48 8B CB 48 8D 05 ? ? ? ? 89 7D ? 48 89 45 ? 89 7D ? C7 45 ? ? ? ? ? 66 C7 45 ? ? ? 44 88 7D"), 0x3));
 	CHECK(xorstr_("Traces"), m_global_vars);
 
-	m_entity_system = *reinterpret_cast<i_entity_system**>(g_opcodes->scan_absolute(client_dll, xorstr_("48 8B 0D ? ? ? ? 48 89 7C 24 ? 8B FA C1 EB"), 0x3));
+	m_entity_system = *reinterpret_cast<i_entity_system**>(g_opcodes->scan_absolute(client_dll, xorstr_("48 8B 0D ? ? ? ? 4C 8D 05 ? ? ? ? 48 8D 54 24 ? E8"), 0x3));
 	CHECK(xorstr_("Entity"), m_entity_system);
 
-	using get_input_t = i_csgo_input * (__fastcall*)();
-	get_input_t get_input = reinterpret_cast<get_input_t>(g_opcodes->scan_absolute(client_dll, xorstr_("E8 ? ? ? ? 48 8B 56 ? 48 8B C8 E8 ? ? ? ? 4C 89 7E"), 0x1));
 
-	CHECK(xorstr_("Input"), get_input)
-
-	m_csgo_input = get_input();
+	m_csgo_input = *reinterpret_cast<i_csgo_input**>(g_opcodes->scan_absolute(client_dll, xorstr_("48 8B 0D ? ? ? ? 8B D3 E8 ? ? ? ? F2 0F 10 86"), 0x3));
+	CHECK(xorstr_("Input"), m_csgo_input)
 
 	m_mem_alloc = *reinterpret_cast<i_mem_alloc**>(g_opcodes->export_fn((std::size_t)g_modules->m_modules.tier0_dll.get(), xorstr_("g_pMemAlloc")));
 	CHECK("Mem Alloc", m_mem_alloc);

@@ -104,26 +104,14 @@ public:
         if (!local_controller)
             return nullptr;
 
-        int player_idx = 0;
+        typedef uintptr_t(__fastcall* get_local_controller_by_internal_id_fn)(int);
+        static get_local_controller_by_internal_id_fn get_local_controller_by_internal_id = (get_local_controller_by_internal_id_fn)g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "48 83 EC ?? 83 F9 ?? 75 ?? 48 8B 0D ?? ?? ?? ?? 48 8D 54 24 ?? 48 8B 01 FF 90 ?? ?? ?? ?? 8B 08 48 63 C1 48 8D 0D ?? ?? ?? ?? 48 8B 04 C1 48 83 C4 ?? C3 CC CC CC CC CC CC CC CC CC CC CC CC CC 48 83 EC ?? 83 F9");
+        typedef uintptr_t(__fastcall* setup_cmd_fn)(uintptr_t);
+        static setup_cmd_fn setup_cmd = (setup_cmd_fn)g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "48 83 EC 28 E8 ?? ?? ?? ?? 8B 80");
+        typedef uintptr_t(__fastcall* get_controller_cmd_fn)(uintptr_t, uintptr_t);
+        static get_controller_cmd_fn get_controller_cmd = (get_controller_cmd_fn)g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "40 53 48 83 EC 20 8B DA E8 ?? ?? ?? ?? 4C");
 
-        using get_entity_index_t = void* (__fastcall*)(void*, int*);
-        static get_entity_index_t get_entity_index = reinterpret_cast<get_entity_index_t>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 8B 8D ? ? ? ? 8D 51", 0x1));
-
-        get_entity_index(local_controller, &player_idx);
-
-        int entity_index = player_idx - 1;
-        if (player_idx == -1)
-            entity_index = -1;
-
-        static auto construct_input_data = reinterpret_cast<void* (__fastcall*)(void*, int)>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 48 8B CF 4C 8B F8", 0x1));
-        static auto sig_poo = *reinterpret_cast<void**>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B CF 4C 8B F8", 0x3));
-
-        void* array_inputs = construct_input_data(sig_poo, entity_index);
-        int sequence_number = *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(array_inputs) + 0x59A8);
-
-        static auto automake_user_cmd = reinterpret_cast<void*>(g_opcodes->scan_absolute(g_modules->m_modules.client_dll.get_name(), "E8 ? ? ? ? 48 8B 0D ? ? ? ? 45 33 E4 48 89 45", 0x1));
-        static auto poo = reinterpret_cast<c_user_cmd * (__fastcall*)(void*, int)>(automake_user_cmd);
-
-        return poo(local_controller, sequence_number);
+        auto controller = get_local_controller_by_internal_id(0);
+        return (c_user_cmd*)get_controller_cmd(controller, setup_cmd(controller));
     }
 };

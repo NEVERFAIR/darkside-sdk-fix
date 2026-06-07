@@ -30,9 +30,11 @@ trace_filter_t::trace_filter_t(std::uint64_t mask, c_cs_player_pawn* entity, c_c
 {
 	m_mask = mask;
 	m_ptr[0] = m_ptr[1] = 0;
-	m_ptr2 = 15;
-	m_ptr3 = layer;
-	m_ptr4 = 0x49;
+	m_ptr2 = 255;
+	m_ptr3 = 255;
+	m_ptr5 = 255;
+	m_ptr6 = layer;
+	m_ptr7 = 0x49;
 
 	m_collision = 0;
 

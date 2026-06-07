@@ -25,10 +25,9 @@
 #include <google/protobuf/arenastring.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
-#include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/generated_enum_util.h>
 #include <google/protobuf/descriptor.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -43,7 +42,6 @@ PROTOBUF_NAMESPACE_CLOSE
 struct TableStruct_network_5fconnection_2eproto {
   static const uint32_t offsets[];
 };
-extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_network_5fconnection_2eproto;
 PROTOBUF_NAMESPACE_OPEN
 PROTOBUF_NAMESPACE_CLOSE
 
@@ -175,20 +173,16 @@ constexpr ENetworkDisconnectionReason ENetworkDisconnectionReason_MIN = NETWORK_
 constexpr ENetworkDisconnectionReason ENetworkDisconnectionReason_MAX = NETWORK_DISCONNECT_KICKED_INSECURECLIENT;
 constexpr int ENetworkDisconnectionReason_ARRAYSIZE = ENetworkDisconnectionReason_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ENetworkDisconnectionReason_descriptor();
+const std::string& ENetworkDisconnectionReason_Name(ENetworkDisconnectionReason value);
 template<typename T>
 inline const std::string& ENetworkDisconnectionReason_Name(T enum_t_value) {
   static_assert(::std::is_same<T, ENetworkDisconnectionReason>::value ||
     ::std::is_integral<T>::value,
     "Incorrect type passed to function ENetworkDisconnectionReason_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    ENetworkDisconnectionReason_descriptor(), enum_t_value);
+  return ENetworkDisconnectionReason_Name(static_cast<ENetworkDisconnectionReason>(enum_t_value));
 }
-inline bool ENetworkDisconnectionReason_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ENetworkDisconnectionReason* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ENetworkDisconnectionReason>(
-    ENetworkDisconnectionReason_descriptor(), name, value);
-}
+bool ENetworkDisconnectionReason_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ENetworkDisconnectionReason* value);
 // ===================================================================
 
 
@@ -223,10 +217,6 @@ extern ::PROTOBUF_NAMESPACE_ID::internal::ExtensionIdentifier< ::PROTOBUF_NAMESP
 PROTOBUF_NAMESPACE_OPEN
 
 template <> struct is_proto_enum< ::ENetworkDisconnectionReason> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::ENetworkDisconnectionReason>() {
-  return ::ENetworkDisconnectionReason_descriptor();
-}
 
 PROTOBUF_NAMESPACE_CLOSE
 

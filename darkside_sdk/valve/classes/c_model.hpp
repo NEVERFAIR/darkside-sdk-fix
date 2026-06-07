@@ -441,7 +441,10 @@ public:
 	int32_t m_hitgroup; //0x0038
 	uint8_t m_shape_type; //0x003C
 	bool m_translation_only; //0x003D
-	char pad_003E[50]; //0x003E
+	std::uint32_t m_crc;                 // 0x0040
+	char pad1[4];                // 0x0044 color ?
+	std::uint16_t m_hitbox_index;        // 0x0048
+	char pad_003E[0x22]; //0x003E
 };
 
 class c_hitboxsets
@@ -459,10 +462,11 @@ public:
 class c_rendermesh
 {
 public:
-	char pad_0000[320]; //0x0000
+	char pad_0000[336]; //0x0000
 	c_hitboxsets* m_hitboxsets; //0x0118
 	int32_t m_nHitboxSets; //0x0120
 };
+
 
 class c_rendermeshes {
 public:

@@ -8,10 +8,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include <google/protobuf/io/zero_copy_stream_impl_lite.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
@@ -99,153 +96,6 @@ struct CSGOUserCmdPBDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CSGOUserCmdPBDefaultTypeInternal _CSGOUserCmdPB_default_instance_;
-static ::_pb::Metadata file_level_metadata_cs_5fusercmd_2eproto[4];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_cs_5fusercmd_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_cs_5fusercmd_2eproto = nullptr;
-
-const uint32_t TableStruct_cs_5fusercmd_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB, _impl_.src_tick_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB, _impl_.dst_tick_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB, _impl_.frac_),
-  1,
-  2,
-  0,
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB_CL, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB_CL, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CSGOInterpolationInfoPB_CL, _impl_.frac_),
-  0,
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.view_angles_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.render_tick_count_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.render_tick_fraction_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.player_tick_count_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.player_tick_fraction_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.cl_interp_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.sv_interp0_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.sv_interp1_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.player_interp_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.frame_number_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.target_ent_index_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.shoot_position_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.target_head_pos_check_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.target_abs_pos_check_),
-  PROTOBUF_FIELD_OFFSET(::CSGOInputHistoryEntryPB, _impl_.target_abs_ang_check_),
-  0,
-  9,
-  10,
-  11,
-  12,
-  1,
-  2,
-  3,
-  4,
-  13,
-  14,
-  5,
-  6,
-  7,
-  8,
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_._has_bits_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.base_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.input_history_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.attack1_start_history_index_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.attack2_start_history_index_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.left_hand_desired_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.is_predicting_body_shot_fx_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.is_predicting_head_shot_fx_),
-  PROTOBUF_FIELD_OFFSET(::CSGOUserCmdPB, _impl_.is_predicting_kill_ragdolls_),
-  0,
-  ~0u,
-  5,
-  6,
-  1,
-  2,
-  3,
-  4,
-};
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 9, -1, sizeof(::CSGOInterpolationInfoPB)},
-  { 12, 19, -1, sizeof(::CSGOInterpolationInfoPB_CL)},
-  { 20, 41, -1, sizeof(::CSGOInputHistoryEntryPB)},
-  { 56, 70, -1, sizeof(::CSGOUserCmdPB)},
-};
-
-static const ::_pb::Message* const file_default_instances[] = {
-  &::_CSGOInterpolationInfoPB_default_instance_._instance,
-  &::_CSGOInterpolationInfoPB_CL_default_instance_._instance,
-  &::_CSGOInputHistoryEntryPB_default_instance_._instance,
-  &::_CSGOUserCmdPB_default_instance_._instance,
-};
-
-const char descriptor_table_protodef_cs_5fusercmd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020cs_usercmd.proto\032\026networkbasetypes.pro"
-  "to\032\rusercmd.proto\"V\n\027CSGOInterpolationIn"
-  "foPB\022\024\n\010src_tick\030\001 \001(\005:\002-1\022\024\n\010dst_tick\030\002"
-  " \001(\005:\002-1\022\017\n\004frac\030\003 \001(\002:\0010\"-\n\032CSGOInterpo"
-  "lationInfoPB_CL\022\017\n\004frac\030\003 \001(\002:\0010\"\305\004\n\027CSG"
-  "OInputHistoryEntryPB\022 \n\013view_angles\030\002 \001("
-  "\0132\013.CMsgQAngle\022\031\n\021render_tick_count\030\004 \001("
-  "\005\022\034\n\024render_tick_fraction\030\005 \001(\002\022\031\n\021playe"
-  "r_tick_count\030\006 \001(\005\022\034\n\024player_tick_fracti"
-  "on\030\007 \001(\002\022.\n\tcl_interp\030\014 \001(\0132\033.CSGOInterp"
-  "olationInfoPB_CL\022,\n\nsv_interp0\030\r \001(\0132\030.C"
-  "SGOInterpolationInfoPB\022,\n\nsv_interp1\030\016 \001"
-  "(\0132\030.CSGOInterpolationInfoPB\022/\n\rplayer_i"
-  "nterp\030\017 \001(\0132\030.CSGOInterpolationInfoPB\022\024\n"
-  "\014frame_number\030@ \001(\005\022\034\n\020target_ent_index\030"
-  "A \001(\005:\002-1\022#\n\016shoot_position\030B \001(\0132\013.CMsg"
-  "Vector\022*\n\025target_head_pos_check\030C \001(\0132\013."
-  "CMsgVector\022)\n\024target_abs_pos_check\030D \001(\013"
-  "2\013.CMsgVector\022)\n\024target_abs_ang_check\030E "
-  "\001(\0132\013.CMsgQAngle\"\325\002\n\rCSGOUserCmdPB\022\035\n\004ba"
-  "se\030\001 \001(\0132\017.CBaseUserCmdPB\022/\n\rinput_histo"
-  "ry\030\002 \003(\0132\030.CSGOInputHistoryEntryPB\022\'\n\033at"
-  "tack1_start_history_index\030\006 \001(\005:\002-1\022\'\n\033a"
-  "ttack2_start_history_index\030\007 \001(\005:\002-1\022 \n\021"
-  "left_hand_desired\030\t \001(\010:\005false\022)\n\032is_pre"
-  "dicting_body_shot_fx\030\013 \001(\010:\005false\022)\n\032is_"
-  "predicting_head_shot_fx\030\014 \001(\010:\005false\022*\n\033"
-  "is_predicting_kill_ragdolls\030\r \001(\010:\005false"
-  ;
-static const ::_pbi::DescriptorTable* const descriptor_table_cs_5fusercmd_2eproto_deps[2] = {
-  &::descriptor_table_networkbasetypes_2eproto,
-  &::descriptor_table_usercmd_2eproto,
-};
-static ::_pbi::once_flag descriptor_table_cs_5fusercmd_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_cs_5fusercmd_2eproto = {
-    false, false, 1120, descriptor_table_protodef_cs_5fusercmd_2eproto,
-    "cs_usercmd.proto",
-    &descriptor_table_cs_5fusercmd_2eproto_once, descriptor_table_cs_5fusercmd_2eproto_deps, 2, 4,
-    schemas, file_default_instances, TableStruct_cs_5fusercmd_2eproto::offsets,
-    file_level_metadata_cs_5fusercmd_2eproto, file_level_enum_descriptors_cs_5fusercmd_2eproto,
-    file_level_service_descriptors_cs_5fusercmd_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_cs_5fusercmd_2eproto_getter() {
-  return &descriptor_table_cs_5fusercmd_2eproto;
-}
-
-// Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_cs_5fusercmd_2eproto(&descriptor_table_cs_5fusercmd_2eproto);
 
 // ===================================================================
 
@@ -265,12 +115,12 @@ class CSGOInterpolationInfoPB::_Internal {
 
 CSGOInterpolationInfoPB::CSGOInterpolationInfoPB(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CSGOInterpolationInfoPB)
 }
 CSGOInterpolationInfoPB::CSGOInterpolationInfoPB(const CSGOInterpolationInfoPB& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CSGOInterpolationInfoPB* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
@@ -279,7 +129,7 @@ CSGOInterpolationInfoPB::CSGOInterpolationInfoPB(const CSGOInterpolationInfoPB& 
     , decltype(_impl_.src_tick_){}
     , decltype(_impl_.dst_tick_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   ::memcpy(&_impl_.frac_, &from._impl_.frac_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.dst_tick_) -
     reinterpret_cast<char*>(&_impl_.frac_)) + sizeof(_impl_.dst_tick_));
@@ -301,7 +151,7 @@ inline void CSGOInterpolationInfoPB::SharedCtor(
 
 CSGOInterpolationInfoPB::~CSGOInterpolationInfoPB() {
   // @@protoc_insertion_point(destructor:CSGOInterpolationInfoPB)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -329,7 +179,7 @@ void CSGOInterpolationInfoPB::Clear() {
     _impl_.dst_tick_ = -1;
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CSGOInterpolationInfoPB::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -377,7 +227,7 @@ const char* CSGOInterpolationInfoPB::_InternalParse(const char* ptr, ::_pbi::Par
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -416,8 +266,8 @@ uint8_t* CSGOInterpolationInfoPB::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CSGOInterpolationInfoPB)
   return target;
@@ -449,19 +299,22 @@ size_t CSGOInterpolationInfoPB::ByteSizeLong() const {
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CSGOInterpolationInfoPB::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CSGOInterpolationInfoPB::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CSGOInterpolationInfoPB::GetClassData() const { return &_class_data_; }
+void CSGOInterpolationInfoPB::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CSGOInterpolationInfoPB*>(
+      &from));
+}
 
-
-void CSGOInterpolationInfoPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CSGOInterpolationInfoPB*>(&to_msg);
-  auto& from = static_cast<const CSGOInterpolationInfoPB&>(from_msg);
+void CSGOInterpolationInfoPB::MergeFrom(const CSGOInterpolationInfoPB& from) {
+  CSGOInterpolationInfoPB* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CSGOInterpolationInfoPB)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -480,7 +333,7 @@ void CSGOInterpolationInfoPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CSGOInterpolationInfoPB::CopyFrom(const CSGOInterpolationInfoPB& from) {
@@ -503,11 +356,10 @@ void CSGOInterpolationInfoPB::InternalSwap(CSGOInterpolationInfoPB* other) {
   swap(_impl_.dst_tick_, other->_impl_.dst_tick_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CSGOInterpolationInfoPB::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_cs_5fusercmd_2eproto_getter, &descriptor_table_cs_5fusercmd_2eproto_once,
-      file_level_metadata_cs_5fusercmd_2eproto[0]);
+std::string CSGOInterpolationInfoPB::GetTypeName() const {
+  return "CSGOInterpolationInfoPB";
 }
+
 
 // ===================================================================
 
@@ -521,19 +373,19 @@ class CSGOInterpolationInfoPB_CL::_Internal {
 
 CSGOInterpolationInfoPB_CL::CSGOInterpolationInfoPB_CL(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CSGOInterpolationInfoPB_CL)
 }
 CSGOInterpolationInfoPB_CL::CSGOInterpolationInfoPB_CL(const CSGOInterpolationInfoPB_CL& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CSGOInterpolationInfoPB_CL* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.frac_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   _this->_impl_.frac_ = from._impl_.frac_;
   // @@protoc_insertion_point(copy_constructor:CSGOInterpolationInfoPB_CL)
 }
@@ -551,7 +403,7 @@ inline void CSGOInterpolationInfoPB_CL::SharedCtor(
 
 CSGOInterpolationInfoPB_CL::~CSGOInterpolationInfoPB_CL() {
   // @@protoc_insertion_point(destructor:CSGOInterpolationInfoPB_CL)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -574,7 +426,7 @@ void CSGOInterpolationInfoPB_CL::Clear() {
 
   _impl_.frac_ = 0;
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CSGOInterpolationInfoPB_CL::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -604,7 +456,7 @@ const char* CSGOInterpolationInfoPB_CL::_InternalParse(const char* ptr, ::_pbi::
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -631,8 +483,8 @@ uint8_t* CSGOInterpolationInfoPB_CL::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CSGOInterpolationInfoPB_CL)
   return target;
@@ -652,19 +504,22 @@ size_t CSGOInterpolationInfoPB_CL::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CSGOInterpolationInfoPB_CL::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CSGOInterpolationInfoPB_CL::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CSGOInterpolationInfoPB_CL::GetClassData() const { return &_class_data_; }
+void CSGOInterpolationInfoPB_CL::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CSGOInterpolationInfoPB_CL*>(
+      &from));
+}
 
-
-void CSGOInterpolationInfoPB_CL::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CSGOInterpolationInfoPB_CL*>(&to_msg);
-  auto& from = static_cast<const CSGOInterpolationInfoPB_CL&>(from_msg);
+void CSGOInterpolationInfoPB_CL::MergeFrom(const CSGOInterpolationInfoPB_CL& from) {
+  CSGOInterpolationInfoPB_CL* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CSGOInterpolationInfoPB_CL)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -673,7 +528,7 @@ void CSGOInterpolationInfoPB_CL::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_
   if (from._internal_has_frac()) {
     _this->_internal_set_frac(from._internal_frac());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CSGOInterpolationInfoPB_CL::CopyFrom(const CSGOInterpolationInfoPB_CL& from) {
@@ -694,11 +549,10 @@ void CSGOInterpolationInfoPB_CL::InternalSwap(CSGOInterpolationInfoPB_CL* other)
   swap(_impl_.frac_, other->_impl_.frac_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CSGOInterpolationInfoPB_CL::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_cs_5fusercmd_2eproto_getter, &descriptor_table_cs_5fusercmd_2eproto_once,
-      file_level_metadata_cs_5fusercmd_2eproto[1]);
+std::string CSGOInterpolationInfoPB_CL::GetTypeName() const {
+  return "CSGOInterpolationInfoPB_CL";
 }
+
 
 // ===================================================================
 
@@ -819,12 +673,12 @@ void CSGOInputHistoryEntryPB::clear_target_abs_ang_check() {
 }
 CSGOInputHistoryEntryPB::CSGOInputHistoryEntryPB(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CSGOInputHistoryEntryPB)
 }
 CSGOInputHistoryEntryPB::CSGOInputHistoryEntryPB(const CSGOInputHistoryEntryPB& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CSGOInputHistoryEntryPB* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
@@ -845,7 +699,7 @@ CSGOInputHistoryEntryPB::CSGOInputHistoryEntryPB(const CSGOInputHistoryEntryPB& 
     , decltype(_impl_.frame_number_){}
     , decltype(_impl_.target_ent_index_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   if (from._internal_has_view_angles()) {
     _this->_impl_.view_angles_ = new ::CMsgQAngle(*from._impl_.view_angles_);
   }
@@ -906,7 +760,7 @@ inline void CSGOInputHistoryEntryPB::SharedCtor(
 
 CSGOInputHistoryEntryPB::~CSGOInputHistoryEntryPB() {
   // @@protoc_insertion_point(destructor:CSGOInputHistoryEntryPB)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -982,7 +836,7 @@ void CSGOInputHistoryEntryPB::Clear() {
     _impl_.target_ent_index_ = -1;
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CSGOInputHistoryEntryPB::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -1129,7 +983,7 @@ const char* CSGOInputHistoryEntryPB::_InternalParse(const char* ptr, ::_pbi::Par
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -1249,8 +1103,8 @@ uint8_t* CSGOInputHistoryEntryPB::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CSGOInputHistoryEntryPB)
   return target;
@@ -1366,19 +1220,22 @@ size_t CSGOInputHistoryEntryPB::ByteSizeLong() const {
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CSGOInputHistoryEntryPB::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CSGOInputHistoryEntryPB::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CSGOInputHistoryEntryPB::GetClassData() const { return &_class_data_; }
+void CSGOInputHistoryEntryPB::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CSGOInputHistoryEntryPB*>(
+      &from));
+}
 
-
-void CSGOInputHistoryEntryPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CSGOInputHistoryEntryPB*>(&to_msg);
-  auto& from = static_cast<const CSGOInputHistoryEntryPB&>(from_msg);
+void CSGOInputHistoryEntryPB::MergeFrom(const CSGOInputHistoryEntryPB& from) {
+  CSGOInputHistoryEntryPB* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CSGOInputHistoryEntryPB)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -1444,7 +1301,7 @@ void CSGOInputHistoryEntryPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CSGOInputHistoryEntryPB::CopyFrom(const CSGOInputHistoryEntryPB& from) {
@@ -1471,11 +1328,10 @@ void CSGOInputHistoryEntryPB::InternalSwap(CSGOInputHistoryEntryPB* other) {
   swap(_impl_.target_ent_index_, other->_impl_.target_ent_index_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CSGOInputHistoryEntryPB::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_cs_5fusercmd_2eproto_getter, &descriptor_table_cs_5fusercmd_2eproto_once,
-      file_level_metadata_cs_5fusercmd_2eproto[2]);
+std::string CSGOInputHistoryEntryPB::GetTypeName() const {
+  return "CSGOInputHistoryEntryPB";
 }
+
 
 // ===================================================================
 
@@ -1516,12 +1372,12 @@ void CSGOUserCmdPB::clear_base() {
 }
 CSGOUserCmdPB::CSGOUserCmdPB(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CSGOUserCmdPB)
 }
 CSGOUserCmdPB::CSGOUserCmdPB(const CSGOUserCmdPB& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::MessageLite() {
   CSGOUserCmdPB* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_._has_bits_){from._impl_._has_bits_}
@@ -1535,7 +1391,7 @@ CSGOUserCmdPB::CSGOUserCmdPB(const CSGOUserCmdPB& from)
     , decltype(_impl_.attack1_start_history_index_){}
     , decltype(_impl_.attack2_start_history_index_){}};
 
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   if (from._internal_has_base()) {
     _this->_impl_.base_ = new ::CBaseUserCmdPB(*from._impl_.base_);
   }
@@ -1565,7 +1421,7 @@ inline void CSGOUserCmdPB::SharedCtor(
 
 CSGOUserCmdPB::~CSGOUserCmdPB() {
   // @@protoc_insertion_point(destructor:CSGOUserCmdPB)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<std::string>()) {
   (void)arena;
     return;
   }
@@ -1602,7 +1458,7 @@ void CSGOUserCmdPB::Clear() {
     _impl_.attack2_start_history_index_ = -1;
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_metadata_.Clear<std::string>();
 }
 
 const char* CSGOUserCmdPB::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
@@ -1698,7 +1554,7 @@ const char* CSGOUserCmdPB::_InternalParse(const char* ptr, ::_pbi::ParseContext*
     }
     ptr = UnknownFieldParse(
         tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        _internal_metadata_.mutable_unknown_fields<std::string>(),
         ptr, ctx);
     CHK_(ptr != nullptr);
   }  // while
@@ -1770,8 +1626,8 @@ uint8_t* CSGOUserCmdPB::_InternalSerialize(
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
+        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CSGOUserCmdPB)
   return target;
@@ -1832,19 +1688,22 @@ size_t CSGOUserCmdPB::ByteSizeLong() const {
     }
 
   }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
+  }
+  int cached_size = ::_pbi::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CSGOUserCmdPB::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CSGOUserCmdPB::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CSGOUserCmdPB::GetClassData() const { return &_class_data_; }
+void CSGOUserCmdPB::CheckTypeAndMergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
+  MergeFrom(*::_pbi::DownCast<const CSGOUserCmdPB*>(
+      &from));
+}
 
-
-void CSGOUserCmdPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CSGOUserCmdPB*>(&to_msg);
-  auto& from = static_cast<const CSGOUserCmdPB&>(from_msg);
+void CSGOUserCmdPB::MergeFrom(const CSGOUserCmdPB& from) {
+  CSGOUserCmdPB* const _this = this;
   // @@protoc_insertion_point(class_specific_merge_from_start:CSGOUserCmdPB)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
@@ -1877,7 +1736,7 @@ void CSGOUserCmdPB::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
 
 void CSGOUserCmdPB::CopyFrom(const CSGOUserCmdPB& from) {
@@ -1906,11 +1765,10 @@ void CSGOUserCmdPB::InternalSwap(CSGOUserCmdPB* other) {
   swap(_impl_.attack2_start_history_index_, other->_impl_.attack2_start_history_index_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata CSGOUserCmdPB::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_cs_5fusercmd_2eproto_getter, &descriptor_table_cs_5fusercmd_2eproto_once,
-      file_level_metadata_cs_5fusercmd_2eproto[3]);
+std::string CSGOUserCmdPB::GetTypeName() const {
+  return "CSGOUserCmdPB";
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN

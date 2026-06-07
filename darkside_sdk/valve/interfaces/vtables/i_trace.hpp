@@ -110,12 +110,15 @@ public:
 	uint8_t m_ptr3{};
 	uint8_t m_ptr4{};
 	uint8_t m_ptr5{};
+	uint8_t m_ptr6{}; 
+	uint8_t m_ptr7{}; 
+	char pad_003A[6]; 
 	uint8_t m_collision{};
 
 	trace_filter_t( ) = default;
 	trace_filter_t( std::uint64_t mask, c_cs_player_pawn* entity, c_cs_player_pawn* player, int layer );
 };
-static_assert( sizeof( trace_filter_t ) == 0x40 );
+static_assert( sizeof( trace_filter_t ) == 0x48 );
 
 class i_trace
 {
@@ -130,10 +133,10 @@ public:
 	}
 
 	void create_trace(trace_data_t* const trace, vec3_t start, vec3_t end, const trace_filter_t& filter, int penetration_count) {
-		using fn_create_trace_t = void(__fastcall*) (trace_data_t*, vec3_t, vec3_t, trace_filter_t, int);
+		using fn_create_trace_t = void(__fastcall*) (trace_data_t*, vec3_t, vec3_t, trace_filter_t, int, bool); // thanks badster
 		static fn_create_trace_t fn = reinterpret_cast<fn_create_trace_t>(g_opcodes->scan(g_modules->m_modules.client_dll.get_name(), "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 56 41 57 48 83 EC ? F2 0F 10 02"));
 
-		fn(trace, start, end, filter, penetration_count);
+		fn(trace, start, end, filter, penetration_count, 1);
 	}
 
 	void init_trace_info(game_trace_t* const hit) {

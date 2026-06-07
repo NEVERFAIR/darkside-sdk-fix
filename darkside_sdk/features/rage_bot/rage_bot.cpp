@@ -227,6 +227,9 @@ aim_target_t* c_rage_bot::get_nearest_target()
 		if (!lag_record || !pawn || reinterpret_cast<uintptr_t>(pawn) == 0xdddddddddddddddd || !pawn->is_alive() || !pawn->m_scene_node())
 			continue;
 
+		if (pawn->m_scene_node()->m_origin().is_zero())
+			continue;
+
 		float distance = pawn->m_scene_node()->m_origin().dist(shoot_pos);
 
 		if (distance < best_distance)
@@ -379,10 +382,38 @@ bool c_rage_bot::multi_points(lag_record_t* record, int hitbox, std::vector<aim_
 
 	return true;
 }
+std::vector<vec3_t> get_point(c_cs_player_pawn* player, int hitbox)
+{
+	std::vector<vec3_t> points = {};
 
+	const auto game_scene = player->m_scene_node();
+	if (!game_scene)
+		return points;
+
+	const auto skeleton = game_scene->get_skeleton_instance();
+	if (!skeleton)
+		return points;
+
+	auto& model_state = skeleton->m_model_state();
+	auto& model = model_state.m_model();
+	if (!model)
+		return points;
+
+	const auto bbox = model->get_hitbox(hitbox);
+	if (!bbox)
+		return points;
+	
+	auto hitbox_name = bbox->m_bone_name;
+	auto bone_index = player->get_bone_index(hitbox_name);
+	auto bone_position = player->get_bone_position(bone_index);
+	vec3_t center = bone_position;
+
+	points.emplace_back(center);
+
+	return points;
+}
 aim_point_t c_rage_bot::select_points(lag_record_t* record, float& damage)
 {
-	std::vector<aim_point_t> points{};
 	aim_point_t best_point{ vec3_t(0.f, 0.f, 0.f), -1 };
 
 	if (!g_ctx->m_local_pawn->is_alive())
@@ -412,16 +443,13 @@ aim_point_t c_rage_bot::select_points(lag_record_t* record, float& damage)
 
 	for (auto& hitbox : m_hitboxes)
 	{
-		std::vector<aim_point_t> points{};
-		points.reserve(68);
 
-		if (!multi_points(record, hitbox, points))
-			continue;
+		const auto& points = get_point(record->m_pawn, hitbox);
 
 		for (auto& point : points) {
 			penetration_data_t pen_data{};
 
-			if (!g_auto_wall->fire_bullet(shoot_pos, point.m_point, record->m_pawn, weapon_data, pen_data, is_taser))
+			if (!g_auto_wall->fire_bullet(shoot_pos, point, record->m_pawn, weapon_data, pen_data, is_taser))
 				continue;
 
 			vec3_t point_angle;
@@ -429,7 +457,8 @@ aim_point_t c_rage_bot::select_points(lag_record_t* record, float& damage)
 
 			if (point_damage > best_damage && prev_hitbox != hitbox || point_damage > best_damage + 30.f)
 			{
-				best_point = point;
+				aim_point_t test = aim_point_t(point, hitbox);
+				best_point = test;
 				best_damage = point_damage;
 				prev_hitbox = hitbox;
 			}
@@ -570,16 +599,9 @@ int c_rage_bot::calculate_hit_chance(c_cs_player_pawn* pawn, vec3_t angles, c_ba
 		vec3_t spread_angle = calculate_spread_angles(angles, seed, inaccuracy, spread);
 
 		vec3_t result = spread_angle * weapon_data->m_range() + shoot_pos;
+		penetration_data_t pen_data;
 
-		ray_t ray{};
-		game_trace_t trace{};
-		trace_filter_t filter{};
-		g_interfaces->m_trace->init_trace(filter, g_ctx->m_local_pawn, MASK_SHOT, 0x3, 0x7);
-
-		g_interfaces->m_trace->trace_shape(&ray, shoot_pos, result, &filter, &trace);
-		g_interfaces->m_trace->clip_ray_entity(&ray, shoot_pos, result, pawn, &filter, &trace);
-
-		if (trace.m_hit_entity && trace.m_hit_entity->is_player_pawn() && trace.m_hit_entity->get_handle().get_entry_index() == pawn->get_handle().get_entry_index())
+		if (g_auto_wall->fire_bullet(shoot_pos, result, pawn, weapon_data, pen_data, false))
 			hits++;
 	}
 

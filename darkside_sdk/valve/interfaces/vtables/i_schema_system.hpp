@@ -14,10 +14,10 @@ public:
         return *reinterpret_cast<const char**>( (unsigned __int64)( this ) + 0x8 );
     };
     short get_fields_size( ) {
-        return *reinterpret_cast<short*>( (unsigned __int64)( this ) + 0x1C );
+        return *reinterpret_cast<short*>( (unsigned __int64)( this ) + 0x24 );
     };
     c_schema_class_field* get_fields( ) {
-        return *reinterpret_cast<c_schema_class_field**>( (unsigned __int64)( this ) + 0x28 );
+        return *reinterpret_cast<c_schema_class_field**>( (unsigned __int64)( this ) + 0x30 );
     };
 };
 

@@ -27,7 +27,7 @@ public:
 	}
 
 	int get_highest_entiy_index( ) {
-		return *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(this) + 0x20F0);
+		return *reinterpret_cast<int*>(reinterpret_cast<uintptr_t>(this) + 0x2090);
 	}
 
 	c_cs_player_controller* get_local_controller_from_pawn( c_cs_player_pawn* pawn ) {
